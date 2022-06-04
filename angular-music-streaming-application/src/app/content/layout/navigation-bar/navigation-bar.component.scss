@@ -1,5 +1,5 @@
 .main-navigation {
-  height: 80px;
+  height: auto;
 
   .nav-item a {
     font-weight: 500;
@@ -11,5 +11,15 @@
 
   .signup-button {
     background-color: firebrick !important;
+  }
+
+  .navbar-collapse.collapse.show {
+    .nav-item a {
+      text-align: center;
+    }
+
+    .navigation-actions {
+      justify-content: center;
+    }
   }
 }

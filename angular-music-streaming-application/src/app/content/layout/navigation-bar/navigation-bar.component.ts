@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class NavigationBarComponent implements OnInit {
 
   projectLogoPath!: String;
+  isCollapsed!: Boolean;
 
   constructor() {
   }
