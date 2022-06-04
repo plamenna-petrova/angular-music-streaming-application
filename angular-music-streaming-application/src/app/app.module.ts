@@ -30,6 +30,9 @@ import { FooterComponent } from './content/layout/footer/footer.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +65,9 @@ import { RegisterComponent } from './auth/register/register.component';
     MdbTabsModule,
     MdbTooltipModule,
     MdbValidationModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
