@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MastheadHeaderComponent implements OnInit {
 
+  mastheadBackgroundImageUrl!: String
+
   constructor() { }
 
   ngOnInit(): void {
+    this.mastheadBackgroundImageUrl = "../../../../assets/images/pexels-edward-eyer-811838.jpg";
   }
 
 }

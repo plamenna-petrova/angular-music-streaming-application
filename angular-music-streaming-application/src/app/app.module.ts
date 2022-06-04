@@ -24,6 +24,7 @@ import { MdbScrollspyModule } from 'mdb-angular-ui-kit/scrollspy';
 import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
+import { HomeComponent } from './content/components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
     AlbumsComponent,
     TracksComponent,
     NavigationBarComponent,
-    MastheadHeaderComponent
+    MastheadHeaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

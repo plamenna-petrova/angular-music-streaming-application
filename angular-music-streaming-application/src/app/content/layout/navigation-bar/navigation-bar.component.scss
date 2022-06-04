@@ -1,3 +1,15 @@
-.music-app-navigation {
+.main-navigation {
   height: 80px;
+
+  .nav-item a {
+    font-weight: 500;
+  }
+
+  .nav-item a:hover {
+    color: firebrick;
+  }
+
+  .signup-button {
+    background-color: firebrick !important;
+  }
 }
