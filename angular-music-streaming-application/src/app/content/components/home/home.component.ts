@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { MastheadHeaderComponent } from '../../layout/masthead-header/masthead-header.component';
+import { AlbumsCatalogueComponent } from './albums-catalogue/albums-catalogue.component';
 
 @Component({
   selector: 'app-home',

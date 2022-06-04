@@ -25,6 +25,7 @@ import { MdbTabsModule } from 'mdb-angular-ui-kit/tabs';
 import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { HomeComponent } from './content/components/home/home.component';
+import { AlbumsCatalogueComponent } from './content/components/home/albums-catalogue/albums-catalogue.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { HomeComponent } from './content/components/home/home.component';
     TracksComponent,
     NavigationBarComponent,
     MastheadHeaderComponent,
-    HomeComponent
+    HomeComponent,
+    AlbumsCatalogueComponent
   ],
   imports: [
     BrowserModule,
