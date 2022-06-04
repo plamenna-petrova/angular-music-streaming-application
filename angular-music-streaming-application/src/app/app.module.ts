@@ -27,6 +27,8 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { HomeComponent } from './content/components/home/home.component';
 import { AlbumsCatalogueComponent } from './content/components/home/albums-catalogue/albums-catalogue.component';
 import { FooterComponent } from './content/layout/footer/footer.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { FooterComponent } from './content/layout/footer/footer.component';
     MastheadHeaderComponent,
     HomeComponent,
     AlbumsCatalogueComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

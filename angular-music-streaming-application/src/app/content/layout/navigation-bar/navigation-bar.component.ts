@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { navigateToComponent } from 'src/utils/navigationFunctions';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -8,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class NavigationBarComponent implements OnInit {
 
   projectLogoPath!: String;
-  isCollapsed!: Boolean;
 
-  constructor() {
+  constructor(private router: Router) {
+
+  }
+
+  navigateToSignInPage(): void {
+    navigateToComponent(this.router, 'login');
   }
 
   ngOnInit(): void {
