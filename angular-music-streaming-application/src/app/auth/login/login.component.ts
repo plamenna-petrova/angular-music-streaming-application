@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Authenticate } from 'src/app/core/models/authenticate.model';
+import { LoginModel } from 'src/app/core/models/login.model';
 import { User } from 'src/app/core/models/user.model';
 import { AuthService } from 'src/app/core/services/auth.service';
 
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   submitLoginForm(): void {
-    let authenticationCredentials = new Authenticate();
+    let authenticationCredentials = new LoginModel();
 
     authenticationCredentials.username = this.loginForm.value.username;
     authenticationCredentials.password = this.loginForm.value.password;

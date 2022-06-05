@@ -1,4 +1,4 @@
-export class Authenticate {
+export class LoginModel {
   username!: string;
   password!: string;
 }

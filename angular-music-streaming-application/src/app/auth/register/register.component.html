@@ -6,7 +6,7 @@
           alt="Sample image">
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <form>
+        <form [formGroup]="registerForm">
           <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
             <p class="lead fw-normal mb-4 me-3">Sign up to Rockstodons</p>
           </div>
@@ -14,30 +14,39 @@
           <!-- Email input -->
           <div class="form-outline mb-4">
             <mdb-form-control>
-              <input mdbInput type="email" id="email" class="form-control form-control-lg" />
+              <input mdbInput type="text" id="email" class="form-control form-control-lg"
+                formControlName="email" />
               <label mdbLabel class="form-label" for="email">Email</label>
             </mdb-form-control>
+            <span class="text-danger"
+              *ngIf="registerForm.get('email')!.hasError('required') && registerForm.touched">Required Field</span>
           </div>
 
           <!-- Username input -->
           <div class="form-outline mb-4">
             <mdb-form-control>
-              <input mdbInput type="text" id="username" class="form-control form-control-lg" />
+              <input mdbInput type="text" id="username" class="form-control form-control-lg"
+                formControlName="username" />
               <label mdbLabel class="form-label" for="username">Username</label>
             </mdb-form-control>
+            <span class="text-danger"
+              *ngIf="registerForm.get('username')!.hasError('required') && registerForm.touched">Required Field</span>
           </div>
 
           <!-- Password input -->
           <div class="form-outline mb-3">
             <mdb-form-control>
-              <input mdbInput type="text" id="password" class="form-control form-control-lg" />
+              <input mdbInput type="text" id="password" class="form-control form-control-lg"
+                formControlName="password" />
               <label mdbLabel class="form-label" for="password">Password</label>
             </mdb-form-control>
+            <span class="text-danger"
+              *ngIf="registerForm.get('password')!.hasError('required') && registerForm.touched">Required Field</span>
           </div>
 
           <div class="text-center text-lg-start mt-4 pt-2">
             <button type="button" class="btn btn-danger btn-lg signup-button"
-              style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+              style="padding-left: 2.5rem; padding-right: 2.5rem;" (click)="submitRegistrationForm()">Register</button>
             <h3 class="fw-bold mt-2 pt-1 mb-0">Already have an account? <a routerLink="/login"
                 class="link-danger login-link">Login</a>
             </h3>

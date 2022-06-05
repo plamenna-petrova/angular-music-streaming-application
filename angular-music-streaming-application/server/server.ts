@@ -16,34 +16,12 @@ server.post('/login', (req: any, res: any) => {
     )[0];
 
     if (user) {
-        res.send({ ...formatUser(user), token: checkIfAdmin(user) });
+        res.send({ ...formatUser(user), token: user.token });
     } else {
         res.status(401).send('Incorrect username or password');
     }
 });
 
-server.post('/register', (req: any, res: any) => {
-    const users = readUsers();
-    const user = users.filter((u: { username: any; }) => u.username === req.body.username)[0];
-
-    if (user === undefined || user === null) {
-        res.send({
-            ...formatUser(req.body),
-            token: checkIfAdmin(req.body)
-        });
-        db.users.push(req.body);
-    } else {
-        res.status(500).send('User already exists');
-    }
-});
-
-server.use('/users', (req: any, res: any, next: any) => {
-    if (isAuthorized(req) || req.query.bypassAuth === 'true') {
-        next();
-    } else {
-        res.sendStatus(401);
-    }
-});
 
 server.use(router);
 server.listen(3000, () => {
