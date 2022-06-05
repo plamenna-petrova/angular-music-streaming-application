@@ -8,13 +8,11 @@ const fs = require('fs');
 server.use(middlewares);
 server.use(jsonServer.bodyParser);
 
-server.post('/login', (req: any, res: any, next: any) => {
+server.post('/login', (req: any, res: any) => {
     const users = readUsers();
 
-    console.log(users);
-
     const user = users.filter(
-        (user: { username: any; password: any; }) => user.username === req.body.username && user.password === req.body.password
+        (u: any) => u.username === req.body.username && u.password === req.body.password
     )[0];
 
     if (user) {
@@ -74,4 +72,14 @@ function readUsers() {
     const dbRaw = fs.readFileSync('./server/db.json');
     const users = JSON.parse(dbRaw).users
     return users;
+}
+
+function generateToken() {
+    let charsForTokenConstruction = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".split("");
+    let tokenArray = [];
+    for (let i: number = 0; i < 32; i++) {
+        let randomCharacterIndex: number = (Math.random() * (charsForTokenConstruction.length - 1)).toFixed(0) as unknown as number;
+        tokenArray[i] = charsForTokenConstruction[randomCharacterIndex];
+    }
+    return tokenArray.join("");
 }

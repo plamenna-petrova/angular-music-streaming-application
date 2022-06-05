@@ -1,25 +1,30 @@
 <!-- Footer -->
 <footer class="text-center text-white" style="background-color: rgba(3, 3, 3, 0.869)">
-    <!-- Grid container -->
-    <div class="container p-4 pb-0">
-      <!-- Section: CTA -->
-      <section class="">
-        <p class="d-flex justify-content-center align-items-center">
-          <span class="me-3">Register for free</span>
-          <button mdbRipple type="button" class="btn btn-outline-light btn-rounded footer-signup-button" (click)="navigateToSignInFormFromFooter()">
-            Sign in!
-          </button>
-        </p>
-      </section>
-      <!-- Section: CTA -->
-    </div>
-    <!-- Grid container -->
-  
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      © {{currentYear}} Copyright:
-      <a class="text-white" routerLink="/home">Rockstodons</a>
-    </div>
-    <!-- Copyright -->
-  </footer>
-  <!-- Footer -->
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
+    <!-- Section: CTA -->
+    <section class="">
+      <p class="d-flex justify-content-center align-items-center">
+        <span class="me-3">Register for free</span>
+        <button *ngIf="!(currentUser$ | async)" mdbRipple type="button"
+          class="btn btn-outline-light btn-rounded footer-signup-button" (click)="navigateToSignInFormFromFooter()">
+          Sign in!
+        </button>
+        <button *ngIf="currentUser$ | async as user" mdbRipple type="button"
+          class="btn btn-outline-light btn-rounded footer-signup-button" (click)="logout()">
+          Logout!
+        </button>
+      </p>
+    </section>
+    <!-- Section: CTA -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © {{currentYear}} Copyright:
+    <a class="text-white" routerLink="/home">Rockstodons</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->

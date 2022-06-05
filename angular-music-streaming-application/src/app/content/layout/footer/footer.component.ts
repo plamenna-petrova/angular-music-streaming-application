@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/core/models/user.model';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 import { navigateToComponent } from 'src/utils/navigationFunctions';
 
@@ -10,18 +13,24 @@ import { navigateToComponent } from 'src/utils/navigationFunctions';
 })
 export class FooterComponent implements OnInit {
 
-  currentYear!: number
+  currentYear!: number;
+  currentUser$!: Observable<User | null>;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private authService: AuthService) {
 
   }
 
-  navigateToSignInFormFromFooter() : void {
+  navigateToSignInFormFromFooter(): void {
     navigateToComponent(this.router, '/login');
+  }
+
+  logout(): void {
+    console.log("logging out");
   }
 
   ngOnInit(): void {
     this.currentYear = new Date().getFullYear();
+    this.currentUser$ = this.authService.user$;
   }
 
 }
