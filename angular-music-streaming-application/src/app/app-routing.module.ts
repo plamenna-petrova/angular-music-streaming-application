@@ -5,6 +5,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { AlbumsComponent } from './content/components/albums/albums.component';
 import { HomeComponent } from './content/components/home/home.component';
 import { TracksComponent } from './content/components/tracks/tracks.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -21,11 +22,13 @@ const routes: Routes = [
   },
   {
     path: 'albums',
-    component: AlbumsComponent
+    component: AlbumsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'tracks',
-    component: TracksComponent
+    component: TracksComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '',
