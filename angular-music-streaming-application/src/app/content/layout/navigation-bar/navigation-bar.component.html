@@ -39,8 +39,8 @@
             style="min-width: 350px;" />
           <span class="input-group-text border-0 d-none d-lg-flex"><i class="fas fa-search"></i></span>
         </form>
-        <button *ngIf="!(currentUser$ | async)" type="button" class="btn btn-danger signup-button mx-3 ml-5"
-          (click)="navigateToSignInPageFromNavbar()">
+        <button *ngIf="!(currentUser$ | async) || currentUser$ === null" type="button" class="btn btn-danger signup-button mx-3 ml-5"
+          (click)="navigateToSignInFormFromNavbar()">
           <i class="fas fa-lock me-3"></i>
           Sign In
         </button>

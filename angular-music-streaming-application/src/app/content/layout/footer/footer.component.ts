@@ -25,7 +25,8 @@ export class FooterComponent implements OnInit {
   }
 
   logout(): void {
-    console.log("logging out");
+    this.authService.logout();
+    this.navigateToSignInFormFromFooter();
   }
 
   ngOnInit(): void {
