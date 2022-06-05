@@ -22,15 +22,25 @@ export class AuthService {
   register(registerModel: RegisterModel): Observable<User> {
     return this.httpClient.post<User>(`http://localhost:3000/users`, registerModel).pipe(tap((user: User) => {
       this.userSubject$.next(user);
-      localStorage.setItem('user', JSON.stringify(user));
+      let registerUserToStore = { ...user };
+      delete registerUserToStore.id;
+      delete registerUserToStore.token;
+      localStorage.setItem('user', JSON.stringify(registerUserToStore));
     }));
   }
 
   login(loginModel: LoginModel): Observable<User> {
     return this.httpClient.post<User>(`http://localhost:3000/login`, loginModel).pipe(tap((user: User) => {
       this.userSubject$.next(user);
-      localStorage.setItem('user', JSON.stringify(user));
+      let loggedInUserToStore = { ...user };
+      delete loggedInUserToStore.id;
+      delete loggedInUserToStore.token;
+      localStorage.setItem('user', JSON.stringify(loggedInUserToStore));
     }));
+  }
+
+  getAuthToken(): any {
+    return localStorage.getItem('token');
   }
 
   logout() {

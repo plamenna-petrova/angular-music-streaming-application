@@ -5,24 +5,27 @@ import {
   HttpHandler,
   HttpRequest
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  intercept(
-    req: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
-    const token = localStorage.getItem('token');
+  constructor(private authService: AuthService) {
 
-    if (token) {
-      const authReq = req.clone({
-        headers: req.headers.set('Authorization', token)
+  }
+
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const token = this.authService.getAuthToken();
+
+    if (token != null) {
+      const authRequest = request.clone({
+        headers: request.headers.set('Authorization', `Bearer ${JSON.parse(token)}`)
       });
-      return next.handle(authReq);
+      return next.handle(authRequest);
     } else {
-      return next.handle(req);
+      return next.handle(request);
     }
+
   }
 }

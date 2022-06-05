@@ -15,6 +15,62 @@
       "role": "Normal User",
       "token": "G1orXfey4EU4VyRjQLb6O1Ik846CamoV",
       "id": 2
+    },
+    {
+      "email": "plamennaavp@abv.bg",
+      "username": "duncanaa",
+      "password": "123",
+      "role": "Normal User",
+      "token": "3ZN4pixmTMFEfvtqdGRdwqYJwyQ1kgOJ",
+      "id": 3
+    },
+    {
+      "email": "plamennavpaaa@abv.bg",
+      "username": "duncan1",
+      "password": "123",
+      "role": "Normal User",
+      "token": "Az3hbuI5WfyrDmhrDwwMD6VVTcxHY8T6",
+      "id": 4
+    },
+    {
+      "email": "johndoe@test.com",
+      "username": "johnathan",
+      "password": "123",
+      "role": "Normal User",
+      "token": "T8yngWsNjHwIlPwbhaRnVXN9Fx5c6MjB",
+      "id": 5
+    },
+    {
+      "email": "plamennavp@gmail.com",
+      "username": "Ronak",
+      "password": "123",
+      "role": "Normal User",
+      "token": "VchKpTS6LWAGVBnRMpZHRRhQxmhp9TkJ",
+      "id": 6
+    },
+    {
+      "email": "janedoe@test.com",
+      "username": "jane",
+      "password": "123",
+      "role": "Normal User",
+      "token": "IOkP6yNAz6l334lYKfNBBGoGQ2z8A41p",
+      "id": 7
+    },
+    {
+      "email": "test@testiiing.com",
+      "username": "Ronakg",
+      "password": "2323",
+      "role": "Normal User",
+      "token": "pjJ45A3Oo7wyAgdvWfr3zs4clWxZ2vyz",
+      "id": 8
+    },
+    {
+      "email": "tee@test.com",
+      "username": "fggg",
+      "password": "123",
+      "role": "Normal User",
+      "token": "VdIs2mojddRdgJhLYWSIK0J5XTPWajWs",
+      "id": 9
     }
   ]
 }

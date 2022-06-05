@@ -33,6 +33,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { AuthService } from './core/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
     HttpClientModule
   ],
   providers: [
+    AuthService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

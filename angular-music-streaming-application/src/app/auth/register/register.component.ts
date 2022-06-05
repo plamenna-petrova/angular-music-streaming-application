@@ -19,8 +19,6 @@ export class RegisterComponent implements OnInit {
   response!: {};
 
   users!: User[];
-  invalidUsername!: Boolean;
-  invalidEmail!: Boolean;
 
   constructor(private fromBuilder: FormBuilder, private authService: AuthService, private router: Router, private httpClient: HttpClient) {
     this.registerForm = this.fromBuilder.group({
@@ -37,18 +35,21 @@ export class RegisterComponent implements OnInit {
     registrationCredentials.username = this.registerForm.value.username;
     registrationCredentials.password = this.registerForm.value.password;
 
+    let invalidEmail = false;
+    let invalidUsername = false;
+
     this.users.forEach(user => {
       if (user.email === registrationCredentials.email) {
         alert("The email is already taken");
-        this.invalidEmail = true;
+        invalidEmail = true;
       }
       if (user.username === registrationCredentials.username) {
         alert("The username is already taken");
-        this.invalidUsername = true;
+        invalidUsername = true;
       }
     });
 
-    if (this.invalidEmail || this.invalidUsername) {
+    if (invalidEmail || invalidUsername) {
       return;
     }
 
@@ -58,6 +59,7 @@ export class RegisterComponent implements OnInit {
     this.authService.register(registrationCredentials).subscribe({
       next: data => {
         this.response = data;
+        console.log("in registration");
         console.log(this.response);
         localStorage.setItem('token', JSON.stringify(registrationCredentials.token));
         this.router.navigate(['/home']);
