@@ -14,10 +14,9 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  
   registerForm!: FormGroup;
-
   response!: {};
-
   users!: User[];
 
   constructor(private fromBuilder: FormBuilder, private authService: AuthService, private router: Router, private httpClient: HttpClient) {
@@ -59,8 +58,6 @@ export class RegisterComponent implements OnInit {
     this.authService.register(registrationCredentials).subscribe({
       next: data => {
         this.response = data;
-        console.log("in registration");
-        console.log(this.response);
         localStorage.setItem('token', JSON.stringify(registrationCredentials.token));
         this.router.navigate(['/home']);
       },

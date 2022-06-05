@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
           this.response = data;
           let user = this.response as User;
           if (user.role === 'Administrator') {
-            this.router.navigate(['/albums']);
+            this.router.navigate(['/dashboard']);
           } else {
             this.router.navigate(['/home']);
           }
