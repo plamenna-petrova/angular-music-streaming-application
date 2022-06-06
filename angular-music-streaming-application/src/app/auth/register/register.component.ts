@@ -15,15 +15,15 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  
+
   registerForm!: FormGroup;
   response!: {};
   users!: User[];
 
   constructor(
-    private fromBuilder: FormBuilder, 
-    private authService: AuthService, 
-    private router: Router, 
+    private fromBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
     private httpClient: HttpClient,
     private toastr: ToastrService) {
     this.registerForm = this.fromBuilder.group({
@@ -34,6 +34,18 @@ export class RegisterComponent implements OnInit {
         Validators.minLength(5),
       ])]
     });
+  }
+
+  get email() {
+    return this.registerForm.get('email');
+  }
+
+  get username() {
+    return this.registerForm.get('username');
+  }
+
+  get password() {
+    return this.registerForm.get('password');
   }
 
   submitRegistrationForm(): void {
@@ -94,6 +106,10 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllUsers();
+  }
+
+  ngOnChanges(): void {
+    console.log(this.registerForm);
   }
 
 }

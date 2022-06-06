@@ -22,10 +22,10 @@ export class AuthService {
   register(registerModel: RegisterModel): Observable<User> {
     return this.httpClient.post<User>(`http://localhost:3000/users`, registerModel).pipe(tap((user: User) => {
       this.userSubject$.next(user);
-      let registerUserToStore = { ...user };
-      delete registerUserToStore.id;
-      delete registerUserToStore.token;
-      localStorage.setItem('user', JSON.stringify(registerUserToStore));
+      let registeredUserToStore = { ...user };
+      delete registeredUserToStore.id;
+      delete registeredUserToStore.token;
+      localStorage.setItem('user', JSON.stringify(registeredUserToStore));
     }));
   }
 

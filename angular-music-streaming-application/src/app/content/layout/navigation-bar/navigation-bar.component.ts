@@ -32,9 +32,8 @@ export class NavigationBarComponent implements OnInit {
   ngOnInit(): void {
     this.projectLogoPath = "../../../../assets/images/rockstodons-logo-removebg-preview.png";
     this.currentUser$ = this.authService.user$;
-    this.currentUser$.subscribe(data => {
-      console.log("observable data");
-      this.currentUserRole = data?.role;
+    this.currentUser$.subscribe(currentUser => {
+      this.currentUserRole = currentUser?.role;
     });
   }
 }

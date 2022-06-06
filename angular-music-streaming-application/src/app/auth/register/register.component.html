@@ -14,12 +14,11 @@
           <!-- Email input -->
           <div class="form-outline mb-4">
             <mdb-form-control>
-              <input mdbInput type="text" id="email" class="form-control form-control-lg"
-                formControlName="email" />
+              <input mdbInput type="text" id="email" class="form-control form-control-lg" formControlName="email" />
               <label mdbLabel class="form-label" for="email">Email</label>
             </mdb-form-control>
-            <span class="text-danger"
-              *ngIf="registerForm.get('email')!.hasError('required') && registerForm.touched">Required Field</span>
+            <span class="text-danger" *ngIf="email!.hasError('required') && registerForm.touched">The email is
+              required</span>
           </div>
 
           <!-- Username input -->
@@ -29,8 +28,8 @@
                 formControlName="username" />
               <label mdbLabel class="form-label" for="username">Username</label>
             </mdb-form-control>
-            <span class="text-danger"
-              *ngIf="registerForm.get('username')!.hasError('required') && registerForm.touched">Required Field</span>
+            <span class="text-danger" *ngIf="username!.hasError('required') && registerForm.touched">The username is
+              required</span>
           </div>
 
           <!-- Password input -->
@@ -40,8 +39,14 @@
                 formControlName="password" />
               <label mdbLabel class="form-label" for="password">Password</label>
             </mdb-form-control>
+            <div *ngIf="password!.touched">
+              <span class="text-danger"
+              *ngIf="password!.errors?.['required']">The password is
+              required</span>
             <span class="text-danger"
-              *ngIf="registerForm.get('password')!.hasError('required') && registerForm.touched">Required Field</span>
+              *ngIf="password!.errors?.['minlength']">The password must be
+              at least 5 symbols long</span>
+            </div>
           </div>
 
           <div class="text-center text-lg-start mt-4 pt-2">
