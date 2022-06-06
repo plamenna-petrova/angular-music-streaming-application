@@ -34,7 +34,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { AuthService } from './core/services/auth.service';
-import { DashboardComponent } from './content/components/dashboard/dashboard.component';
 
 import { ToastrModule } from 'ngx-toastr';
 
@@ -50,7 +49,6 @@ import { ToastrModule } from 'ngx-toastr';
     FooterComponent,
     LoginComponent,
     RegisterComponent,
-    DashboardComponent
   ],
   imports: [
     BrowserModule,
