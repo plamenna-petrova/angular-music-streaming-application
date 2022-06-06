@@ -1,6 +1,5 @@
 {
-  "users": [
-    {
+  "users": [{
       "email": "admin@admin.com",
       "username": "admin",
       "password": "admin123",
@@ -80,5 +79,19 @@
       "token": "2VC1iMOJctIZXxEP7FKPB9LKrMbRtXHR",
       "id": 10
     }
-  ]
+  ],
+  "albums": [{
+    "id": 1,
+    "createdOn": "2021-04-11T08:41:26.804Z",
+    "lastUpdatedOn": "2022-04-24T08:35:48.749Z",
+    "name": "Fortitude",
+    "type": "studio",
+    "performer": "Gojira",
+    "genre": "Heavy Metal",
+    "coverImageUrl": "https://rebelstore.net/wp-content/uploads/2021/06/Gojira-Fortitude-CD.jpg",
+    "numberOfTracks": 11,
+    "description": "Gojira newest album",
+    "releaseDate": "2021-04-11T08:41:26.804Z",
+    "popularity": "High"
+  }]
 }

@@ -8,9 +8,10 @@ export class Album {
     type!: string;
     performer!: string;
     genre!: string;
+    coverImageUrl!: string;
     numberOfTracks!: number;
     description!: string;
-    dateOfRelease!: Date;
+    releaseDate!: Date;
     popularity!: string;
     tracks!: Track[];
 }

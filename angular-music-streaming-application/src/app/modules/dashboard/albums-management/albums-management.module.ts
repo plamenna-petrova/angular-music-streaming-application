@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { AlbumsManagementRoutingModule } from './albums-management-routing.module';
 import { AlbumsManagementComponent } from './albums-management.component';
 
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -11,7 +13,9 @@ import { AlbumsManagementComponent } from './albums-management.component';
   ],
   imports: [
     CommonModule,
-    AlbumsManagementRoutingModule
+    AlbumsManagementRoutingModule,
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
 export class AlbumsManagementModule { }
