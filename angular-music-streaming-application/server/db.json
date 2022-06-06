@@ -1,5 +1,6 @@
 {
-  "users": [{
+  "users": [
+    {
       "email": "admin@admin.com",
       "username": "admin",
       "password": "admin123",
@@ -80,18 +81,104 @@
       "id": 10
     }
   ],
-  "albums": [{
-    "id": 1,
-    "createdOn": "2021-04-11T08:41:26.804Z",
-    "lastUpdatedOn": "2022-04-24T08:35:48.749Z",
-    "name": "Fortitude",
-    "type": "studio",
-    "performer": "Gojira",
-    "genre": "Heavy Metal",
-    "coverImageUrl": "https://rebelstore.net/wp-content/uploads/2021/06/Gojira-Fortitude-CD.jpg",
-    "numberOfTracks": 11,
-    "description": "Gojira newest album",
-    "releaseDate": "2021-04-11T08:41:26.804Z",
-    "popularity": "High"
-  }]
+  "albums": [
+    {
+      "id": 1,
+      "createdOn": "2021-04-11T08:41:26.804Z",
+      "lastUpdatedOn": "2022-04-24T08:35:48.749Z",
+      "name": "Fortitude",
+      "type": "studio",
+      "performer": "Gojira",
+      "genre": "Heavy Metal",
+      "coverImageUrl": "https://rebelstore.net/wp-content/uploads/2021/06/Gojira-Fortitude-CD.jpg",
+      "numberOfTracks": 11,
+      "description": "Gojira newest album",
+      "releaseDate": "2021-04-11T08:41:26.804Z",
+      "popularity": "High"
+    },
+    {
+      "name": "dfdffd",
+      "type": "Medium",
+      "performer": "Mastodon",
+      "genre": "Heavy Metal",
+      "coverImageUrl": "https://i.discogs.com/zY1Rmb7Qne2C8eHqAZwuMVdHcBh3_kcbkU_HV5OzwUY/rs:fit/g:sm/q:90/h:597/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTIwNzc5/ODEzLTE2MzU1NTcw/MzYtMjg4Ny5qcGVn.jpeg",
+      "numberOfTracks": 12,
+      "description": "Brand new",
+      "releaseDate": null,
+      "popularity": null,
+      "createdOn": "2022-06-06T22:51:11.893Z",
+      "lastUpdatedOn": "2022-06-06T22:51:11.893Z",
+      "id": 2
+    },
+    {
+      "name": "Hushed and Grim",
+      "type": "Studio",
+      "performer": "Mastodon",
+      "genre": "Heavy Metal",
+      "coverImageUrl": "https://i.discogs.com/zY1Rmb7Qne2C8eHqAZwuMVdHcBh3_kcbkU_HV5OzwUY/rs:fit/g:sm/q:90/h:597/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTIwNzc5/ODEzLTE2MzU1NTcw/MzYtMjg4Ny5qcGVn.jpeg",
+      "numberOfTracks": 12,
+      "description": "sdsdfsdf",
+      "releaseDate": "2021-11-08T22:00:00.000Z",
+      "popularity": "Medium",
+      "createdOn": "2022-06-06T23:01:48.132Z",
+      "lastUpdatedOn": "2022-06-06T23:01:48.132Z",
+      "id": 3
+    },
+    {
+      "name": "Hushed and Grim",
+      "type": "Studio",
+      "performer": "Mastodon",
+      "genre": "Heavy Metal",
+      "coverImageUrl": "https://i.discogs.com/zY1Rmb7Qne2C8eHqAZwuMVdHcBh3_kcbkU_HV5OzwUY/rs:fit/g:sm/q:90/h:597/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTIwNzc5/ODEzLTE2MzU1NTcw/MzYtMjg4Ny5qcGVn.jpeg",
+      "numberOfTracks": 7,
+      "description": "sdfff",
+      "releaseDate": "2022-06-05T21:00:00.000Z",
+      "popularity": "Medium",
+      "createdOn": "2022-06-06T23:05:09.234Z",
+      "lastUpdatedOn": "2022-06-06T23:05:09.234Z",
+      "id": 4
+    },
+    {
+      "name": "Hushed and Grim",
+      "type": "Studio",
+      "performer": "Mastodon",
+      "genre": "Heavy Metal",
+      "coverImageUrl": "https://media.pitchfork.com/photos/613a64a57c34b5ffaef74527/3:2/w_2400,h_1600,c_limit/Mastodon.jpeg",
+      "numberOfTracks": 6,
+      "description": "sddsdfsf",
+      "releaseDate": "2022-06-05T21:00:00.000Z",
+      "popularity": "Medium",
+      "createdOn": "2022-06-06T23:19:40.891Z",
+      "lastUpdatedOn": "2022-06-06T23:19:40.891Z",
+      "id": 5
+    },
+    {
+      "name": "xcfddfdf",
+      "type": "Live",
+      "performer": "Mastodon",
+      "genre": "dfdfdfdf",
+      "coverImageUrl": "https://media.pitchfork.com/photos/613a64a57c34b5ffaef74527/3:2/w_2400,h_1600,c_limit/Mastodon.jpeg",
+      "numberOfTracks": 6,
+      "description": "fdfff",
+      "releaseDate": "2022-06-07T21:00:00.000Z",
+      "popularity": "Medium",
+      "createdOn": "2022-06-06T23:20:07.029Z",
+      "lastUpdatedOn": "2022-06-06T23:20:07.029Z",
+      "id": 6
+    },
+    {
+      "name": "sdff",
+      "type": "Live",
+      "performer": "Mastodon",
+      "genre": "Heavy Metal",
+      "coverImageUrl": "https://media.pitchfork.com/photos/613a64a57c34b5ffaef74527/3:2/w_2400,h_1600,c_limit/Mastodon.jpeg",
+      "numberOfTracks": 12,
+      "description": "ssfff",
+      "releaseDate": "2021-11-09T22:00:00.000Z",
+      "popularity": "Medium",
+      "createdOn": "2022-06-06T23:27:38.907Z",
+      "lastUpdatedOn": "2022-06-06T23:27:38.907Z",
+      "id": 7
+    }
+  ]
 }

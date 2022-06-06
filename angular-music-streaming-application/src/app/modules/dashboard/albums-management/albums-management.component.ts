@@ -28,19 +28,27 @@ export class AlbumsManagementComponent implements AfterViewInit {
     'popularity'
   ];
 
-  dataSource = new MatTableDataSource<Album>();
+  dataSource!: any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private albumsService: AlbumsService, private dialog: MatDialog) {
-
+    this.dataSource = new MatTableDataSource([]);
   }
 
-  openDialog() : void {
-    const dialogRef = this.dialog.open(AlbumEditDialogComponent);
+  onCreateClick(): void {
+    this.onEditClick();
+  }
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+  onEditClick(id?: number): void {
+    const dialogRef = this.dialog.open(AlbumEditDialogComponent, {
+      width: '800px',
+    });
+
+    dialogRef.componentInstance.createdAlbum.pipe(
+      take(1)
+    ).subscribe(() => {
+      this.getAllAlbums();
     });
   }
 
@@ -49,7 +57,7 @@ export class AlbumsManagementComponent implements AfterViewInit {
       take(1)
     ).subscribe((response) => {
       this.albums = response;
-      this.dataSource = new MatTableDataSource(this.albums);
+      this.dataSource.data = this.albums;
     });
   }
 
@@ -58,6 +66,8 @@ export class AlbumsManagementComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
+    console.log("data source");
+    console.log(this.dataSource);
     this.dataSource.paginator = this.paginator;
   }
 }
