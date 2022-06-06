@@ -43,6 +43,22 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
+  storeUserToken(username: string, users: User[], token?: string): void {
+    this.getAllUsers().subscribe(data => {
+      users = data;
+      users.forEach(user => {
+        if (user.username === username) {
+          token = user.token;
+          localStorage.setItem('token', JSON.stringify(token));
+        }
+      });
+    });
+  }
+
+  getAllUsers(): Observable<User[]> {
+    return this.httpClient.get<User[]>('http://localhost:3000/users');
+  }
+
   logout() {
     localStorage.removeItem('user');
     localStorage.removeItem('token');

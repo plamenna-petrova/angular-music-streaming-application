@@ -7,6 +7,7 @@ export class Track {
     title!: string;
     duration!: number;
     performedLanguage!: string;
+    isTrending!: Boolean;
     albumId!: number;
     album!: Album;
 }

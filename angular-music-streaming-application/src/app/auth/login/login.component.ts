@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
@@ -24,7 +23,6 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private httpClient: HttpClient,
     private toastr: ToastrService
   ) {
     this.loginForm = this.formBuilder.group({
@@ -39,7 +37,7 @@ export class LoginComponent implements OnInit {
     authenticationCredentials.username = this.loginForm.value.username;
     authenticationCredentials.password = this.loginForm.value.password;
 
-    this.storeUserToken(authenticationCredentials.username);
+    this.authService.storeUserToken(authenticationCredentials.username, this.users, this.token);
 
     setTimeout(() => {
       this.authService.login(authenticationCredentials).subscribe({
@@ -47,7 +45,7 @@ export class LoginComponent implements OnInit {
           this.response = data;
           let user = this.response as User;
           if (user.role === 'Administrator') {
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/dashboard', { outlets: { dashboard: ['albums-management'] } }]);
           } else {
             this.router.navigate(['/home']);
           }
@@ -60,18 +58,6 @@ export class LoginComponent implements OnInit {
         }
       });
     }, 100);
-  }
-
-  storeUserToken(username: string): void {
-    this.httpClient.get<User[]>('http://localhost:3000/users').subscribe(data => {
-      this.users = data;
-      this.users.forEach(user => {
-        if (user.username === username) {
-          this.token = user.token;
-          localStorage.setItem('token', JSON.stringify(this.token));
-        }
-      });
-    });
   }
 
   ngOnInit(): void {

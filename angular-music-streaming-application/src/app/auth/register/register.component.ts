@@ -6,7 +6,6 @@ import { Router } from '@angular/router';
 
 import { generateToken } from 'src/utils/tokenHelper';
 import { User } from 'src/app/core/models/user.model';
-import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -24,7 +23,6 @@ export class RegisterComponent implements OnInit {
     private fromBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private httpClient: HttpClient,
     private toastr: ToastrService) {
     this.registerForm = this.fromBuilder.group({
       email: ['', Validators.required],
@@ -94,18 +92,14 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  getAllUsers(): void {
-    this.httpClient.get<User[]>('http://localhost:3000/users').subscribe(data => {
+  ngOnInit(): void {
+    this.authService.getAllUsers().subscribe(data => {
       this.users = data;
       this.users.map(user => {
         delete user.token;
         return user;
       });
     });
-  }
-
-  ngOnInit(): void {
-    this.getAllUsers();
   }
 
   ngOnChanges(): void {
