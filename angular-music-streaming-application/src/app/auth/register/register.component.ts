@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { generateToken } from 'src/utils/tokenHelper';
 import { User } from 'src/app/core/models/user.model';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -19,11 +20,19 @@ export class RegisterComponent implements OnInit {
   response!: {};
   users!: User[];
 
-  constructor(private fromBuilder: FormBuilder, private authService: AuthService, private router: Router, private httpClient: HttpClient) {
+  constructor(
+    private fromBuilder: FormBuilder, 
+    private authService: AuthService, 
+    private router: Router, 
+    private httpClient: HttpClient,
+    private toastr: ToastrService) {
     this.registerForm = this.fromBuilder.group({
       email: ['', Validators.required],
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(5),
+      ])]
     });
   }
 
@@ -39,11 +48,17 @@ export class RegisterComponent implements OnInit {
 
     this.users.forEach(user => {
       if (user.email === registrationCredentials.email) {
-        alert("The email is already taken");
+        this.toastr.error('Cannot proceed further with registration', 'Email already taken', {
+          timeOut: 2000,
+          positionClass: 'toast-bottom-right'
+        });
         invalidEmail = true;
       }
       if (user.username === registrationCredentials.username) {
-        alert("The username is already taken");
+        this.toastr.error('Cannot proceed further with registration', 'Username already taken', {
+          timeOut: 4000,
+          positionClass: 'toast-bottom-right'
+        });
         invalidUsername = true;
       }
     });

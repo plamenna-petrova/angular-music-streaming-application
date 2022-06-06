@@ -36,6 +36,8 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { AuthService } from './core/services/auth.service';
 import { DashboardComponent } from './content/components/dashboard/dashboard.component';
 
+import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +73,8 @@ import { DashboardComponent } from './content/components/dashboard/dashboard.com
     MdbValidationModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     AuthService,
