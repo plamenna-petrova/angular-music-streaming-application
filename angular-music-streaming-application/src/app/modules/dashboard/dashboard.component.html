@@ -4,10 +4,10 @@
   <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
       <li [class.active]>
-        <a [routerLink]="['/dashboard', { outlets: { dashboard: ['albums-management'] } }]" [routerLinkActive]="['active']">Manage Albums</a>
+        <a [routerLink]="['/dashboard', { outlets: { dashboard: ['albums-management'] } }]" [routerLinkActive]="['active-route']">Manage Albums</a>
       </li>
       <li>
-        <a [routerLink]="['/dashboard', { outlets: { dashboard: ['tracks-management'] } }]">Manage Tracks</a>
+        <a [routerLink]="['/dashboard', { outlets: { dashboard: ['tracks-management'] } }]" [routerLinkActive]="['active-route']">Manage Tracks</a>
       </li>
     </ul>
   </div>

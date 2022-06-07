@@ -85,15 +85,15 @@
     {
       "id": 1,
       "createdOn": "2021-04-11T08:41:26.804Z",
-      "lastUpdatedOn": "2022-04-24T08:35:48.749Z",
+      "lastUpdatedOn": "2022-06-07T09:40:02.308Z",
       "name": "Fortitude",
-      "type": "studio",
+      "type": "Studio",
       "performer": "Gojira",
       "genre": "Heavy Metal",
       "coverImageUrl": "https://rebelstore.net/wp-content/uploads/2021/06/Gojira-Fortitude-CD.jpg",
       "numberOfTracks": 11,
-      "description": "Gojira newest album",
-      "releaseDate": "2021-04-11T08:41:26.804Z",
+      "description": "Gojira",
+      "releaseDate": "2021-04-11T21:00:00.000Z",
       "popularity": "High"
     },
     {
@@ -104,10 +104,10 @@
       "coverImageUrl": "https://i.discogs.com/zY1Rmb7Qne2C8eHqAZwuMVdHcBh3_kcbkU_HV5OzwUY/rs:fit/g:sm/q:90/h:597/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTIwNzc5/ODEzLTE2MzU1NTcw/MzYtMjg4Ny5qcGVn.jpeg",
       "numberOfTracks": 12,
       "description": "Brand new",
-      "releaseDate": null,
-      "popularity": null,
+      "releaseDate": "2022-06-07T21:00:00.000Z",
+      "popularity": "Low",
       "createdOn": "2022-06-06T22:51:11.893Z",
-      "lastUpdatedOn": "2022-06-06T22:51:11.893Z",
+      "lastUpdatedOn": "2022-06-07T09:24:58.416Z",
       "id": 2
     },
     {

@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { take } from 'rxjs';
+import { IAlbum } from 'src/app/core/interfaces/IAlbum';
 import { Album } from 'src/app/core/models/album.model';
 import { AlbumsService } from 'src/app/core/services/albums.service';
 import { AlbumEditDialogComponent } from './album-edit-dialog/album-edit-dialog.component';
@@ -25,15 +26,16 @@ export class AlbumsManagementComponent implements AfterViewInit {
     'numberOfTracks',
     'description',
     'releaseDate',
-    'popularity'
+    'popularity',
+    'editAlbum'
   ];
 
-  dataSource!: any;
-
+  dataSource = new MatTableDataSource<IAlbum>(this.albums);
+  
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private albumsService: AlbumsService, private dialog: MatDialog) {
-    this.dataSource = new MatTableDataSource([]);
+
   }
 
   onCreateClick(): void {
@@ -43,6 +45,9 @@ export class AlbumsManagementComponent implements AfterViewInit {
   onEditClick(id?: number): void {
     const dialogRef = this.dialog.open(AlbumEditDialogComponent, {
       width: '800px',
+      data: {
+        id: id
+      }
     });
 
     dialogRef.componentInstance.createdAlbum.pipe(
@@ -66,9 +71,9 @@ export class AlbumsManagementComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    console.log("data source");
-    console.log(this.dataSource);
     this.dataSource.paginator = this.paginator;
   }
 }
+
+
 

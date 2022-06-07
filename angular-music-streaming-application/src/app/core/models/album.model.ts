@@ -1,6 +1,7 @@
+import { IAlbum } from "../interfaces/IAlbum";
 import { Track } from "./track.model";
 
-export class Album {
+export class Album implements IAlbum {
     id!: number;
     createdOn!: Date;
     lastUpdatedOn!: Date;

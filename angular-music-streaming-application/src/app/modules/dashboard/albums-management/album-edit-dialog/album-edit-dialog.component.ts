@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-import { take } from 'rxjs';
+import { take, timeout } from 'rxjs';
 import { Album } from 'src/app/core/models/album.model';
 import { AlbumsService } from 'src/app/core/services/albums.service';
 import { EventEmitter } from '@angular/core';
@@ -25,7 +25,9 @@ export class AlbumEditDialogComponent implements OnInit {
     private albumsService: AlbumsService,
     private toastr: ToastrService,
     private formBuilder: FormBuilder,
-    public dialogRef: MatDialogRef<AlbumEditDialogComponent>) {
+    public dialogRef: MatDialogRef<AlbumEditDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { id: number }) {
+    this.id = this.data.id;
     this.buildForm();
   }
 
@@ -45,32 +47,48 @@ export class AlbumEditDialogComponent implements OnInit {
       genre: [album.genre, [Validators.required, Validators.minLength(3)]],
       coverImageUrl: [album.coverImageUrl, [Validators.required]],
       numberOfTracks: [album.numberOfTracks, [Validators.required]],
-      description: [album.description, [Validators.required, Validators.compose([Validators.minLength(3), Validators.maxLength(10)])]],
+      description: [album.description, [Validators.required, Validators.compose([Validators.minLength(3), Validators.maxLength(100)])]],
       releaseDate: [album.releaseDate, [Validators.required]],
       popularity: [album.popularity, [Validators.required]],
     });
   }
 
-  findInvalidControls() {
-    const invalid = [];
-    const controls = this.formGroup.controls;
-    for (const name in controls) {
-      if (controls[name].invalid) {
-        invalid.push(name);
-      }
-    }
-    return invalid;
-  }
-
   onSubmit(): void {
-    console.log("submitting form");
-
     if (this.formGroup.invalid) {
       console.log(this.formBuilder);
       console.log("invalid form group");
-      let invalidControls = this.findInvalidControls();
-      console.log("invalid controls");
-      console.log(invalidControls);
+      const invalidAlbumFormControls = this.findInvalidFormControls();
+      invalidAlbumFormControls.forEach(invalidControl => {
+        switch (invalidControl) {
+          case "name":
+            this.toastr.error('Please enter the name of the album again!', 'Invalid album name');
+            break;
+          case "type":
+            this.toastr.error('Please enter select the type of album again!', 'Invalid album type');
+            break;
+          case "performer":
+            this.toastr.error('Please enter the performer of the album again', 'Invalid album performer');
+            break;
+          case "genre":
+            this.toastr.error('Please enter the album genre again', 'Invalid album genre');
+            break;
+          case 'coverImageUrl':
+            this.toastr.error('Please enter the cover image of the album again', 'Invalid album cover image url');
+            break;
+          case 'numberOfTracks':
+            this.toastr.error('Please enter the number of tracks in the album again', 'Invalid number of tracks');
+            break;
+          case 'description':
+            this.toastr.error('Please enter the description of the album again', 'Invalid album description');
+            break;
+          case 'releaseDate':
+            this.toastr.error('Please enter the release date of the album again', 'Invalid album release date');
+            break;
+          case 'popularity':
+            this.toastr.error('Please enter the popularity rate of the album again', 'Invalid album popularity rate');
+            break;
+        }
+      });
       this.formGroup.markAllAsTouched();
       return;
     }
@@ -80,19 +98,30 @@ export class AlbumEditDialogComponent implements OnInit {
       ...this.formGroup.value
     };
 
-    console.log("form body");
-    console.log(body);
-
     this.albumsService.saveAlbum$(body).pipe(
       take(1)
     ).subscribe((response) => {
-      this.toastr.success(`Album ${response.name} successfully created.`, 'Success');
+      let newAlbum = response;
+      this.toastr.success(`Album ${newAlbum.name} successfully saved.`, 'Success');
       this.closeDialog();
       this.createdAlbum.emit(response);
     });
   }
 
+  findInvalidFormControls(): string[] {
+    const invalidFormConrols = [];
+    const controls = this.formGroup.controls;
+    for (const name in controls) {
+      if (controls[name].invalid) {
+        invalidFormConrols.push(name);
+      }
+    }
+    return invalidFormConrols;
+  }
+
   ngOnInit(): void {
+    console.log("init dialog");
+    console.log(this.id);
     if (this.id) {
       this.albumsService.getAlbumById$(this.id).pipe(
         take(1)
