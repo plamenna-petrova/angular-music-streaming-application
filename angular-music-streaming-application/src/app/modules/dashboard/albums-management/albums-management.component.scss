@@ -1,21 +1,26 @@
 .create-new-album-button {
-  margin-right: 25px;  
+  margin-right: 25px;
 }
 
-table {
-  width: 100%;
+.albums-table-container {
+  overflow-x: auto;
 
-  th {
-    text-align: center;
-  }
+  table {
+    width: 100%;
 
-  td {
-    text-align: center;
-  }
+    th {
+      text-align: center;
+    }
 
-  img {
-    height: 95px;
-    width: 85px;
-    padding: 6px;
+    td {
+      text-align: center;
+      min-width: 130px;
+    }
+
+    img {
+      height: 95px;
+      width: 85px;
+      padding: 6px;
+    }
   }
 }
