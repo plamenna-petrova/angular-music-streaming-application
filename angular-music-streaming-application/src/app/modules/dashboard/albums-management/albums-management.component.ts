@@ -6,6 +6,7 @@ import { take } from 'rxjs';
 import { IAlbum } from 'src/app/core/interfaces/IAlbum';
 import { Album } from 'src/app/core/models/album.model';
 import { AlbumsService } from 'src/app/core/services/albums.service';
+import { AlbumDeleteDialogComponent } from './album-delete-dialog/album-delete-dialog.component';
 import { AlbumEditDialogComponent } from './album-edit-dialog/album-edit-dialog.component';
 
 @Component({
@@ -27,11 +28,12 @@ export class AlbumsManagementComponent implements AfterViewInit {
     'description',
     'releaseDate',
     'popularity',
-    'editAlbum'
+    'editAlbum',
+    'deleteAlbum'
   ];
 
   dataSource = new MatTableDataSource<IAlbum>(this.albums);
-  
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private albumsService: AlbumsService, private dialog: MatDialog) {
@@ -51,6 +53,20 @@ export class AlbumsManagementComponent implements AfterViewInit {
     });
 
     dialogRef.componentInstance.createdAlbum.pipe(
+      take(1)
+    ).subscribe(() => {
+      this.getAllAlbums();
+    });
+  }
+
+  onDeleteClick(album: Album): void {
+    const dialogRef = this.dialog.open(AlbumDeleteDialogComponent, {
+      data: {
+        album: album
+      }
+    });
+
+    dialogRef.componentInstance.deletedAlbum.pipe(
       take(1)
     ).subscribe(() => {
       this.getAllAlbums();

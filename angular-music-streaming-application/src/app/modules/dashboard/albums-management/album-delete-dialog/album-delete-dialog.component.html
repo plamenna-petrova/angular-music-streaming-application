@@ -1,0 +1,10 @@
+<div class="container">
+  <h1 mat-dialog-title>Delete Album</h1>
+  <div mat-dialog-content>
+    Are you sure you want to delete {{album.name}} by {{album.performer}}?
+  </div>
+  <div mat-dialog-actions class="d-flex justify-content-between">
+    <button class="btn btn-danger" (click)="deleteAlbum()">Delete</button>
+    <button class="btn btn-danger" (click)="closeDialog()">Cancel</button>
+  </div>
+</div>

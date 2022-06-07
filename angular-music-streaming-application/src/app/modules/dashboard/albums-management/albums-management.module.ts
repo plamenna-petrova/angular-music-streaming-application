@@ -16,11 +16,13 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { AlbumEditDialogComponent } from './album-edit-dialog/album-edit-dialog.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AlbumDeleteDialogComponent } from './album-delete-dialog/album-delete-dialog.component';
 
 @NgModule({
   declarations: [
     AlbumsManagementComponent,
-    AlbumEditDialogComponent
+    AlbumEditDialogComponent,
+    AlbumDeleteDialogComponent
   ],
   imports: [
     CommonModule,

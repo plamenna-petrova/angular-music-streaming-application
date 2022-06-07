@@ -83,34 +83,6 @@
   ],
   "albums": [
     {
-      "id": 1,
-      "createdOn": "2021-04-11T08:41:26.804Z",
-      "lastUpdatedOn": "2022-06-07T09:40:02.308Z",
-      "name": "Fortitude",
-      "type": "Studio",
-      "performer": "Gojira",
-      "genre": "Heavy Metal",
-      "coverImageUrl": "https://rebelstore.net/wp-content/uploads/2021/06/Gojira-Fortitude-CD.jpg",
-      "numberOfTracks": 11,
-      "description": "Gojira",
-      "releaseDate": "2021-04-11T21:00:00.000Z",
-      "popularity": "High"
-    },
-    {
-      "name": "dfdffd",
-      "type": "Medium",
-      "performer": "Mastodon",
-      "genre": "Heavy Metal",
-      "coverImageUrl": "https://i.discogs.com/zY1Rmb7Qne2C8eHqAZwuMVdHcBh3_kcbkU_HV5OzwUY/rs:fit/g:sm/q:90/h:597/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTIwNzc5/ODEzLTE2MzU1NTcw/MzYtMjg4Ny5qcGVn.jpeg",
-      "numberOfTracks": 12,
-      "description": "Brand new",
-      "releaseDate": "2022-06-07T21:00:00.000Z",
-      "popularity": "Low",
-      "createdOn": "2022-06-06T22:51:11.893Z",
-      "lastUpdatedOn": "2022-06-07T09:24:58.416Z",
-      "id": 2
-    },
-    {
       "name": "Hushed and Grim",
       "type": "Studio",
       "performer": "Mastodon",
@@ -121,22 +93,8 @@
       "releaseDate": "2021-11-08T22:00:00.000Z",
       "popularity": "Medium",
       "createdOn": "2022-06-06T23:01:48.132Z",
-      "lastUpdatedOn": "2022-06-06T23:01:48.132Z",
+      "lastUpdatedOn": "2022-06-07T11:08:37.486Z",
       "id": 3
-    },
-    {
-      "name": "Hushed and Grim",
-      "type": "Studio",
-      "performer": "Mastodon",
-      "genre": "Heavy Metal",
-      "coverImageUrl": "https://i.discogs.com/zY1Rmb7Qne2C8eHqAZwuMVdHcBh3_kcbkU_HV5OzwUY/rs:fit/g:sm/q:90/h:597/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTIwNzc5/ODEzLTE2MzU1NTcw/MzYtMjg4Ny5qcGVn.jpeg",
-      "numberOfTracks": 7,
-      "description": "sdfff",
-      "releaseDate": "2022-06-05T21:00:00.000Z",
-      "popularity": "Medium",
-      "createdOn": "2022-06-06T23:05:09.234Z",
-      "lastUpdatedOn": "2022-06-06T23:05:09.234Z",
-      "id": 4
     },
     {
       "name": "Hushed and Grim",

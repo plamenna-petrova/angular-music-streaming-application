@@ -55,8 +55,6 @@ export class AlbumEditDialogComponent implements OnInit {
 
   onSubmit(): void {
     if (this.formGroup.invalid) {
-      console.log(this.formBuilder);
-      console.log("invalid form group");
       const invalidAlbumFormControls = this.findInvalidFormControls();
       invalidAlbumFormControls.forEach(invalidControl => {
         switch (invalidControl) {
@@ -86,7 +84,7 @@ export class AlbumEditDialogComponent implements OnInit {
             break;
           case 'popularity':
             this.toastr.error('Please enter the popularity rate of the album again', 'Invalid album popularity rate');
-            break;
+            break;  
         }
       });
       this.formGroup.markAllAsTouched();
@@ -102,7 +100,7 @@ export class AlbumEditDialogComponent implements OnInit {
       take(1)
     ).subscribe((response) => {
       let newAlbum = response;
-      this.toastr.success(`Album ${newAlbum.name} successfully saved.`, 'Success');
+      this.toastr.success(`The Album ${newAlbum.name} by ${newAlbum.performer} is successfully saved.`, 'Success');
       this.closeDialog();
       this.createdAlbum.emit(response);
     });
