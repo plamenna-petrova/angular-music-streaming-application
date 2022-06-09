@@ -28,22 +28,14 @@ export class AlbumsService {
        return this.httpClient.get<Album>(apiUrl);
     }
 
-    saveAlbum$(album: Album): Observable<Album> {
-       if (!album.id) {
-         return this.createNewAlbum$(album);
-       } else {
-         return this.editAlbum$(album);
-       }
-    }
-
-    createNewAlbum$(album: Album): Observable<Album> {
+    createAlbum$(album: Album): Observable<Album> {
        const apiUrl = `${environment.apiUrl}/albums`;
        album.createdOn = new Date();
        album.lastUpdatedOn = new Date();
        return this.httpClient.post<Album>(apiUrl, album);
     }
 
-    editAlbum$(album: Album): Observable<Album> {
+    updateAlbum$(album: Album): Observable<Album> {
        const apiUrl = `${environment.apiUrl}/albums/${album.id}`;
        album.lastUpdatedOn = new Date();
        return this.httpClient.put<Album>(apiUrl, album);

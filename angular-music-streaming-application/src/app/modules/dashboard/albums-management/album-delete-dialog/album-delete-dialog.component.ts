@@ -16,28 +16,28 @@ export class AlbumDeleteDialogComponent implements OnInit {
   @Output()
   public deletedAlbum = new EventEmitter<void>();
 
-  album!: Album;
+  albumToDelete!: Album;
 
   constructor(
     private albumsService: AlbumsService,
     private toastr: ToastrService,
-    public dialogRef: MatDialogRef<AlbumDeleteDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { album: Album }) {
-    this.album = this.data.album;
+    public albumDeletionDialogRef: MatDialogRef<AlbumDeleteDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public albumDialogData: { album: Album }) {
+    this.albumToDelete = this.albumDialogData.album;
   }
 
   deleteAlbum(): void {
-    this.albumsService.delete$(this.album.id).pipe(
+    this.albumsService.delete$(this.albumToDelete.id).pipe(
       take(1)
     ).subscribe(() => {
-      this.toastr.success('Album successfully deleted.', 'Success');
-      this.closeDialog();
+      this.toastr.success(`The Album ${this.albumToDelete.name} by ${this.albumToDelete.performer} is successfully deleted.`, `Success`);
+      this.closeDeleteAlbumDialog();
       this.deletedAlbum.emit();
     });
   }
 
-  closeDialog() {
-    this.dialogRef.close();
+  closeDeleteAlbumDialog() {
+    this.albumDeletionDialogRef.close();
   }
 
   ngOnInit(): void {

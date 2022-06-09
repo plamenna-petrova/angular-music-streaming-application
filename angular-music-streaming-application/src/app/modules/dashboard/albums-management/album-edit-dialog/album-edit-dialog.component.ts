@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-import { take, timeout } from 'rxjs';
+import { first, take, timeout } from 'rxjs';
 import { Album } from 'src/app/core/models/album.model';
 import { AlbumsService } from 'src/app/core/services/albums.service';
 import { EventEmitter } from '@angular/core';
@@ -15,32 +15,22 @@ import { EventEmitter } from '@angular/core';
 export class AlbumEditDialogComponent implements OnInit {
 
   id!: number;
-  album!: Album;
+  albumToUpdate!: Album;
+  albumUpdateForm!: FormGroup;
 
-  albumForm!: FormGroup;
-
-  createdAlbum = new EventEmitter<Album>();
+  updatedAlbum = new EventEmitter<Album>();
 
   constructor(
     private albumsService: AlbumsService,
     private toastr: ToastrService,
     private formBuilder: FormBuilder,
-    public dialogRef: MatDialogRef<AlbumEditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { id: number }) {
-    this.id = this.data.id;
-    this.buildForm();
+    public albumEditingDialogRef: MatDialogRef<AlbumEditDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public albumDialogData: { id: number }) {
+    this.id = this.albumDialogData.id;
   }
 
-  closeDialog(): void {
-    this.dialogRef.close();
-  }
-
-  private buildForm(album?: Album): void {
-    if (!album) {
-      album = new Album();
-    }
-
-    this.albumForm = this.formBuilder.group({
+  private buildAlbumUpdateForm(album: Album): void {
+    this.albumUpdateForm = this.formBuilder.group({
       name: [album.name, [Validators.required, Validators.compose([
         Validators.minLength(2),
         Validators.maxLength(50)
@@ -66,122 +56,73 @@ export class AlbumEditDialogComponent implements OnInit {
   }
 
   get name() {
-    return this.albumForm.get('name');
+    return this.albumUpdateForm.get('name');
   }
 
   get type() {
-    return this.albumForm.get('type');
+    return this.albumUpdateForm.get('type');
   }
 
   get performer() {
-    return this.albumForm.get('performer');
+    return this.albumUpdateForm.get('performer');
   }
 
   get genre() {
-    return this.albumForm.get('genre');
+    return this.albumUpdateForm.get('genre');
   }
 
   get coverImageUrl() {
-    return this.albumForm.get('coverImageUrl');
+    return this.albumUpdateForm.get('coverImageUrl');
   }
 
   get numberOfTracks() {
-    return this.albumForm.get('numberOfTracks');
+    return this.albumUpdateForm.get('numberOfTracks');
   }
 
   get description() {
-    return this.albumForm.get('description');
+    return this.albumUpdateForm.get('description');
   }
 
   get releaseDate() {
-    return this.albumForm.get('releaseDate');
+    return this.albumUpdateForm.get('releaseDate');
   }
 
   get popularity() {
-    return this.albumForm.get('popularity');
+    return this.albumUpdateForm.get('popularity');
   }
 
-  onSubmit(): void {
-    if (this.albumForm.invalid) {
-      const invalidAlbumFormControls = this.findInvalidFormControls();
+  closeEditAlbumDialog(): void {
+    this.albumEditingDialogRef.close();
+  }
 
-      if (invalidAlbumFormControls.length === Object.keys(this.albumForm.controls).length) {
-        this.toastr.error('Please enter all album input data again', 'All inputs invalid');
-      } else {
-        invalidAlbumFormControls.forEach(invalidControl => {
-          switch (invalidControl) {
-            case "name":
-              this.toastr.error('Please enter the name of the album again!', 'Invalid album name');
-              break;
-            case "type":
-              this.toastr.error('Please enter select the type of album again!', 'Invalid album type');
-              break;
-            case "performer":
-              this.toastr.error('Please enter the performer of the album again', 'Invalid album performer');
-              break;
-            case "genre":
-              this.toastr.error('Please enter the album genre again', 'Invalid album genre');
-              break;
-            case 'coverImageUrl':
-              this.toastr.error('Please enter the cover image of the album again', 'Invalid album cover image url');
-              break;
-            case 'numberOfTracks':
-              this.toastr.error('Please enter the number of tracks in the album again', 'Invalid number of tracks');
-              break;
-            case 'description':
-              this.toastr.error('Please enter the description of the album again', 'Invalid album description');
-              break;
-            case 'releaseDate':
-              this.toastr.error('Please enter the release date of the album again', 'Invalid album release date');
-              break;
-            case 'popularity':
-              this.toastr.error('Please enter the popularity rate of the album again', 'Invalid album popularity rate');
-              break;
-          }
-        });
-      }
-
-      this.albumForm.markAllAsTouched();
+  submitAlbumUpdateForm(): void {
+    if (this.albumUpdateForm.invalid) {
+      this.albumUpdateForm.markAllAsTouched();
       return;
     }
 
-    const body: Album = {
-      ...this.album,
-      ...this.albumForm.value
+    const updateAlbumRequestBody: Album = {
+      ...this.albumToUpdate,
+      ...this.albumUpdateForm.value
     };
 
-    this.albumsService.saveAlbum$(body).pipe(
+    this.albumsService.updateAlbum$(updateAlbumRequestBody).pipe(
       take(1)
     ).subscribe((response) => {
-      let newAlbum = response;
-      this.toastr.success(`The Album ${newAlbum.name} by ${newAlbum.performer} is successfully saved.`, 'Success');
-      this.closeDialog();
-      this.createdAlbum.emit(response);
+      let editedAlbum = response;
+      this.toastr.success(`The Album ${editedAlbum.name} by ${editedAlbum.performer} is successfully edited.`, 'Success');
+      this.closeEditAlbumDialog();
+      this.updatedAlbum.emit(response);
     });
   }
 
-  findInvalidFormControls(): string[] {
-    const invalidFormConrols = [];
-    const controls = this.albumForm.controls;
-    for (const name in controls) {
-      if (controls[name].invalid) {
-        invalidFormConrols.push(name);
-      }
-    }
-    return invalidFormConrols;
-  }
-
   ngOnInit(): void {
-    if (this.id) {
-      this.albumsService.getAlbumById$(this.id).pipe(
-        take(1)
-      ).subscribe((response) => {
-        this.album = response;
-        this.buildForm(response);
-      });
-    } else {
-      this.buildForm();
-    }
+    this.albumsService.getAlbumById$(this.id).pipe(
+      first()
+    ).subscribe((response) => {
+      this.albumToUpdate = response;
+      this.buildAlbumUpdateForm(this.albumToUpdate);
+    });
   }
 
 }

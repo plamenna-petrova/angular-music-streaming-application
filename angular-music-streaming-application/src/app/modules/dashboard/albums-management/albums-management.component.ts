@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -6,18 +6,20 @@ import { take } from 'rxjs';
 import { IAlbum } from 'src/app/core/interfaces/IAlbum';
 import { Album } from 'src/app/core/models/album.model';
 import { AlbumsService } from 'src/app/core/services/albums.service';
+import { AlbumCreateDialogComponent } from './album-create-dialog/album-create-dialog.component';
 import { AlbumDeleteDialogComponent } from './album-delete-dialog/album-delete-dialog.component';
 import { AlbumEditDialogComponent } from './album-edit-dialog/album-edit-dialog.component';
 
 @Component({
   selector: 'app-albums-management',
   templateUrl: './albums-management.component.html',
-  styleUrls: ['./albums-management.component.scss']
+  styleUrls: ['./albums-management.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AlbumsManagementComponent implements AfterViewInit {
 
   albums!: Album[];
-  displayedColumns: string[] = [
+  displayedAlbumsColumns: string[] = [
     'id',
     'name',
     'type',
@@ -36,37 +38,45 @@ export class AlbumsManagementComponent implements AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private albumsService: AlbumsService, private dialog: MatDialog) {
+  constructor(private albumsService: AlbumsService, private albumDialog: MatDialog) {
 
   }
 
-  onCreateClick(): void {
-    this.onEditClick();
-  }
-
-  onEditClick(id?: number): void {
-    const dialogRef = this.dialog.open(AlbumEditDialogComponent, {
-      width: '800px',
-      data: {
-        id: id
-      }
+  onCreateAlbumClick(): void {
+    const albumCreationDialogRef = this.albumDialog.open(AlbumCreateDialogComponent, {
+      width: '800px'
     });
 
-    dialogRef.componentInstance.createdAlbum.pipe(
+    albumCreationDialogRef.componentInstance.createdAlbum.pipe(
       take(1)
     ).subscribe(() => {
       this.getAllAlbums();
     });
   }
 
-  onDeleteClick(album: Album): void {
-    const dialogRef = this.dialog.open(AlbumDeleteDialogComponent, {
+  onEditAlbumClick(id: number): void {
+    const albumEditingDialogRef = this.albumDialog.open(AlbumEditDialogComponent, {
+      width: '800px',
+      data: {
+        id: id
+      }
+    });
+
+    albumEditingDialogRef.componentInstance.updatedAlbum.pipe(
+      take(1)
+    ).subscribe(() => {
+      this.getAllAlbums();
+    });
+  }
+
+  onDeleteAlbumClick(album: Album): void {
+    const albumDeletionDialogRef = this.albumDialog.open(AlbumDeleteDialogComponent, {
       data: {
         album: album
       }
     });
 
-    dialogRef.componentInstance.deletedAlbum.pipe(
+    albumDeletionDialogRef.componentInstance.deletedAlbum.pipe(
       take(1)
     ).subscribe(() => {
       this.getAllAlbums();

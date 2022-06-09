@@ -83,17 +83,17 @@
   ],
   "albums": [
     {
-      "name": "Hushed and Grim",
-      "type": "Studio",
+      "name": "Hushed and Grimm",
+      "type": "Live",
       "performer": "Mastodon",
       "genre": "Heavy Metal",
       "coverImageUrl": "https://i.discogs.com/zY1Rmb7Qne2C8eHqAZwuMVdHcBh3_kcbkU_HV5OzwUY/rs:fit/g:sm/q:90/h:597/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTIwNzc5/ODEzLTE2MzU1NTcw/MzYtMjg4Ny5qcGVn.jpeg",
-      "numberOfTracks": 12,
-      "description": "sdsdfsdf",
-      "releaseDate": "2021-11-08T22:00:00.000Z",
-      "popularity": "Medium",
+      "numberOfTracks": 9,
+      "description": "sdsdf",
+      "releaseDate": "2021-11-07T22:00:00.000Z",
+      "popularity": "Low",
       "createdOn": "2022-06-06T23:01:48.132Z",
-      "lastUpdatedOn": "2022-06-07T11:45:51.705Z",
+      "lastUpdatedOn": "2022-06-09T20:36:21.608Z",
       "id": 3
     },
     {
@@ -133,10 +133,38 @@
       "numberOfTracks": 12,
       "description": "ssfff",
       "releaseDate": "2021-11-09T22:00:00.000Z",
-      "popularity": "Medium",
+      "popularity": "High",
       "createdOn": "2022-06-06T23:27:38.907Z",
-      "lastUpdatedOn": "2022-06-06T23:27:38.907Z",
+      "lastUpdatedOn": "2022-06-09T20:39:08.981Z",
       "id": 7
+    },
+    {
+      "name": "Fortitude",
+      "type": "Studio",
+      "performer": "Gojira",
+      "genre": "Heavy Metal",
+      "coverImageUrl": "https://m.media-amazon.com/images/I/81T0NUQTyfL._SL1425_.jpg",
+      "numberOfTracks": 11,
+      "description": "Gojira's new album",
+      "releaseDate": "2022-06-06T21:00:00.000Z",
+      "popularity": "High",
+      "createdOn": "2022-06-08T15:50:23.465Z",
+      "lastUpdatedOn": "2022-06-09T19:19:23.536Z",
+      "id": 8
+    },
+    {
+      "name": "Fortitude",
+      "type": "Studio",
+      "performer": "Gojira",
+      "genre": "Heavy Metal",
+      "coverImageUrl": "https://m.media-amazon.com/images/I/81T0NUQTyfL._SL1425_.jpg",
+      "numberOfTracks": 5,
+      "description": "Gojira's new album",
+      "releaseDate": "2022-06-07T21:00:00.000Z",
+      "popularity": "Medium",
+      "createdOn": "2022-06-09T18:46:54.391Z",
+      "lastUpdatedOn": "2022-06-09T18:46:54.391Z",
+      "id": 9
     }
   ]
 }

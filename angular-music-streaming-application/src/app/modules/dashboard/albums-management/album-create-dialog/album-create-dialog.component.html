@@ -1,0 +1,102 @@
+<div class="container">
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-dark" (click)="closeCreateAlbumDialog()"><i class="fas fa-xmark"></i></button>
+    </div>
+    <form *ngIf="albumCreationForm" [formGroup]="albumCreationForm" (ngSubmit)="submitAlbumCreationForm()">
+      <h2 mat-dialog-tile>Create New Album</h2>
+      <mat-dialog-content class="mat-typography">
+        <mat-form-field appearance="fill" class="mb-2">
+          <mat-label>Enter the name of the album</mat-label>
+          <input matInput formControlName="name">
+          <mat-error *ngIf="name!.hasError('required') && albumCreationForm.touched" class="text-dark">The name of the album is
+            required</mat-error>
+          <mat-error *ngIf="name!.hasError('minlength') && albumCreationForm.touched" class="text-dark">The name of the album must
+            be at least 2 characters long</mat-error>
+          <mat-error *ngIf="name!.hasError('maxlength') && albumCreationForm.touched" class="text-dark">The name of the album must
+            not be more than 50 characters long</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="mb-2">
+          <mat-label>Select album type</mat-label>
+          <mat-select formControlName="type">
+            <mat-option value="Studio">Studio</mat-option>
+            <mat-option value="Live">Live</mat-option>
+            <mat-option value="Extended play">Extended play</mat-option>
+          </mat-select>
+          <mat-error *ngIf="type!.hasError('required') && albumCreationForm.touched" class="text-dark">The type of the album is
+            required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="mb-2">
+          <mat-label>Enter the album performer</mat-label>
+          <input matInput formControlName="performer">
+          <mat-error *ngIf="performer!.hasError('required') && albumCreationForm.touched" class="text-dark">The album performer is
+            required</mat-error>
+          <mat-error *ngIf="performer!.hasError('minlength') && albumCreationForm.touched" class="text-dark">The album performer
+            must
+            be at least 2 characters long</mat-error>
+          <mat-error *ngIf="performer!.hasError('maxlength') && albumCreationForm.touched" class="text-dark">The album performer
+            must
+            not be more than 50 characters long</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="mb-2">
+          <mat-label>Enter the genre of the album</mat-label>
+          <input matInput formControlName="genre">
+          <mat-error *ngIf="genre!.hasError('required') && albumCreationForm.touched" class="text-dark">The album genre is
+            required</mat-error>
+          <mat-error *ngIf="genre!.hasError('minlength') && albumCreationForm.touched" class="text-dark">The album genre must
+            be at least 2 characters long</mat-error>
+          <mat-error *ngIf="genre!.hasError('maxlength') && albumCreationForm.touched" class="text-dark">The album genre must
+            not be more than 50 characters long</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="mb-2">
+          <mat-label>Enter the url of the album cover image</mat-label>
+          <textarea matInput formControlName="coverImageUrl"></textarea>
+          <mat-error *ngIf="coverImageUrl!.hasError('required') && albumCreationForm.touched" class="text-dark">The cover image url of the
+            album is
+            required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="mb-2">
+          <mat-label>Enter the number of tracks in the album</mat-label>
+          <input type="number" matInput formControlName="numberOfTracks">
+          <mat-error *ngIf="numberOfTracks!.hasError('required') && albumCreationForm.touched" class="text-dark">The number of tracks is
+            required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="mb-2">
+          <mat-label>Enter album description</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+          <mat-error *ngIf="description!.hasError('required') && albumCreationForm.touched" class="text-dark">The description of
+            the album is
+            required</mat-error>
+          <mat-error *ngIf="description!.hasError('minlength') && albumCreationForm.touched" class="text-dark">The description of
+            the album must
+            be at least 3 characters long</mat-error>
+          <mat-error *ngIf="description!.hasError('maxlength') && albumCreationForm.touched" class="text-dark">The description of
+            the album must
+            not be more than 100 characters long</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="mb-2">
+          <mat-label>Choose the release date of the album</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="releaseDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="releaseDate!.hasError('required') && albumCreationForm.touched" class="text-dark">The release date of the
+            album is
+            required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="mb-2">
+          <mat-label>Select album popularity rate</mat-label>
+          <mat-select formControlName="popularity">
+            <mat-option value="Low">Low</mat-option>
+            <mat-option value="Medium">Medium</mat-option>
+            <mat-option value="High">High</mat-option>
+          </mat-select>
+          <mat-error *ngIf="popularity!.hasError('required') && albumCreationForm.touched" class="text-dark">The popularity of the
+            album is
+            required</mat-error>
+        </mat-form-field>
+      </mat-dialog-content>
+      <mat-dialog-actions class="d-flex justify-content-start">
+        <button type="submit" class="btn btn-danger">Save</button>
+      </mat-dialog-actions>
+    </form>
+  </div>
+  

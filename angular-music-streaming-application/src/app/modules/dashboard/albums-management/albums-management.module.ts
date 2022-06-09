@@ -13,16 +13,18 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
-import { AlbumEditDialogComponent } from './album-edit-dialog/album-edit-dialog.component';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AlbumCreateDialogComponent } from './album-create-dialog/album-create-dialog.component';
+import { AlbumEditDialogComponent } from './album-edit-dialog/album-edit-dialog.component';
 import { AlbumDeleteDialogComponent } from './album-delete-dialog/album-delete-dialog.component';
+
 
 @NgModule({
   declarations: [
     AlbumsManagementComponent,
     AlbumEditDialogComponent,
-    AlbumDeleteDialogComponent
+    AlbumDeleteDialogComponent,
+    AlbumCreateDialogComponent
   ],
   imports: [
     CommonModule,
