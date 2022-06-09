@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { take } from 'rxjs';
-import { IAlbum } from 'src/app/core/interfaces/IAlbum';
+import { IAlbum } from 'src/app/core/interfaces/IAlbum.interface';
 import { Album } from 'src/app/core/models/album.model';
 import { AlbumsService } from 'src/app/core/services/albums.service';
 import { AlbumCreateDialogComponent } from './album-create-dialog/album-create-dialog.component';
@@ -19,6 +19,7 @@ import { AlbumEditDialogComponent } from './album-edit-dialog/album-edit-dialog.
 export class AlbumsManagementComponent implements AfterViewInit {
 
   albums!: Album[];
+
   displayedAlbumsColumns: string[] = [
     'id',
     'name',
@@ -34,9 +35,9 @@ export class AlbumsManagementComponent implements AfterViewInit {
     'deleteAlbum'
   ];
 
-  dataSource = new MatTableDataSource<IAlbum>(this.albums);
+  albumsDataSource = new MatTableDataSource<IAlbum>(this.albums);
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatPaginator) albumsPaginator!: MatPaginator;
 
   constructor(private albumsService: AlbumsService, private albumDialog: MatDialog) {
 
@@ -88,7 +89,8 @@ export class AlbumsManagementComponent implements AfterViewInit {
       take(1)
     ).subscribe((response) => {
       this.albums = response;
-      this.dataSource.data = this.albums;
+      console.log(this.albums);
+      this.albumsDataSource.data = this.albums;
     });
   }
 
@@ -97,7 +99,7 @@ export class AlbumsManagementComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    this.albumsDataSource.paginator = this.albumsPaginator;
   }
 }
 

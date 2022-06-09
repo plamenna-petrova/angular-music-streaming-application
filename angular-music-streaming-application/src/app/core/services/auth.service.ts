@@ -9,6 +9,7 @@ import { RegisterModel } from "../models/register.model";
   providedIn: 'root'
 })
 export class AuthService {
+  
   private userSubject$ = new BehaviorSubject<User | null>(null);
   user$ = this.userSubject$.asObservable();
 
@@ -64,4 +65,5 @@ export class AuthService {
     localStorage.removeItem('token');
     this.userSubject$.next(null);
   }
+
 }

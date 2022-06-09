@@ -10,5 +10,4 @@ export class Track {
     isTrending!: Boolean;
     albumId!: number;
     album!: Album;
-    albumImageUrl!: string;
 }

@@ -1,4 +1,4 @@
-import { IAlbum } from "../interfaces/IAlbum";
+import { IAlbum } from "../interfaces/IAlbum.interface";
 import { Track } from "./track.model";
 
 export class Album implements IAlbum {

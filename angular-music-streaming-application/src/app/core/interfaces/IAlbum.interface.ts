@@ -1,7 +1,5 @@
 export interface IAlbum {
     id: number;
-    createdOn: Date;
-    lastUpdatedOn: Date;
     name: string;
     type: string;
     performer: string;
