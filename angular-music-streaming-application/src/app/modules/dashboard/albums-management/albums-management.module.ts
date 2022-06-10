@@ -20,6 +20,7 @@ import { AlbumDeleteDialogComponent } from './album-delete-dialog/album-delete-d
 import { TracksDetailsDialogComponent } from './tracks-details-dialog/tracks-details-dialog.component';
 import { AlbumDescriptionDialogComponent } from './album-description-dialog/album-description-dialog.component';
 
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AlbumDescriptionDialogComponent } from './album-description-dialog/albu
     MatDatepickerModule,
     MatNativeDateModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   exports: [
     MatDialogModule

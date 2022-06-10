@@ -45,7 +45,10 @@ export class AlbumEditDialogComponent implements OnInit {
         Validators.maxLength(25)
       ])]],
       coverImageUrl: [album.coverImageUrl, [Validators.required]],
-      numberOfTracks: [album.numberOfTracks, [Validators.required]],
+      numberOfTracks: [album.numberOfTracks, [Validators.required, Validators.compose([
+        Validators.min(1),
+        Validators.max(20)
+      ])]],
       description: [album.description, [Validators.required, Validators.compose([
         Validators.minLength(3),
         Validators.maxLength(500)
@@ -55,40 +58,40 @@ export class AlbumEditDialogComponent implements OnInit {
     });
   }
 
-  get name() {
-    return this.albumUpdateForm.get('name');
+  get name(): AbstractControl {
+    return this.albumUpdateForm.get('name')!;
   }
 
-  get type() {
-    return this.albumUpdateForm.get('type');
+  get type(): AbstractControl {
+    return this.albumUpdateForm.get('type')!;
   }
 
-  get performer() {
-    return this.albumUpdateForm.get('performer');
+  get performer(): AbstractControl {
+    return this.albumUpdateForm.get('performer')!;
   }
 
-  get genre() {
-    return this.albumUpdateForm.get('genre');
+  get genre(): AbstractControl {
+    return this.albumUpdateForm.get('genre')!;
   }
 
-  get coverImageUrl() {
-    return this.albumUpdateForm.get('coverImageUrl');
+  get coverImageUrl(): AbstractControl {
+    return this.albumUpdateForm.get('coverImageUrl')!;
   }
 
-  get numberOfTracks() {
-    return this.albumUpdateForm.get('numberOfTracks');
+  get numberOfTracks(): AbstractControl {
+    return this.albumUpdateForm.get('numberOfTracks')!;
   }
 
-  get description() {
-    return this.albumUpdateForm.get('description');
+  get description(): AbstractControl {
+    return this.albumUpdateForm.get('description')!;
   }
 
-  get releaseDate() {
-    return this.albumUpdateForm.get('releaseDate');
+  get releaseDate(): AbstractControl {
+    return this.albumUpdateForm.get('releaseDate')!;
   }
 
-  get popularity() {
-    return this.albumUpdateForm.get('popularity');
+  get popularity(): AbstractControl {
+    return this.albumUpdateForm.get('popularity')!;
   }
 
   closeEditAlbumDialog(): void {
@@ -97,7 +100,7 @@ export class AlbumEditDialogComponent implements OnInit {
 
   submitAlbumUpdateForm(): void {
     if (this.albumUpdateForm.invalid) {
-      this.albumUpdateForm.markAllAsTouched();
+      this.toastr.error(`Errors found in some of the input values`, `Sorry, cannot submit form!`);
       return;
     }
 

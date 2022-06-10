@@ -13,7 +13,10 @@ export class AlbumDescriptionDialogComponent implements OnInit {
   constructor( public albumDescriptionDialogRef: MatDialogRef<AlbumDescriptionDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public albumDialogData: {description: string}) {
     this.albumDescription = this.albumDialogData.description;
-    console.log(this.albumDescription);
+  }
+
+  closeAlbumDescriptionDialog() {
+    this.albumDescriptionDialogRef.close();  
   }
 
   ngOnInit(): void {

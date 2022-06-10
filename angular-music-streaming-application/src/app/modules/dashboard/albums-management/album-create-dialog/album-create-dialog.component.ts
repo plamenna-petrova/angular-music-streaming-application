@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs';
@@ -45,50 +45,53 @@ export class AlbumCreateDialogComponent implements OnInit {
         Validators.maxLength(25)
       ])]],
       coverImageUrl: [this.albumToCreate.coverImageUrl, [Validators.required]],
-      numberOfTracks: [this.albumToCreate.numberOfTracks, [Validators.required]],
-      description: [this.albumToCreate.description, [Validators.required, Validators.compose([
+      numberOfTracks: [this.albumToCreate.numberOfTracks, [Validators.required, Validators.compose([
+        Validators.min(1),
+        Validators.max(20)
+      ])]],
+      description: [this.albumToCreate.description, [Validators.required], Validators.compose([
         Validators.minLength(3),
         Validators.maxLength(500)
-      ])]],
+      ])],
       releaseDate: [this.albumToCreate.releaseDate, [Validators.required]],
       popularity: [this.albumToCreate.popularity, [Validators.required]],
     });
   }
 
-  get name() {
-    return this.albumCreationForm.get('name');
+  get name(): AbstractControl {
+    return this.albumCreationForm.get('name')!;
   }
 
-  get type() {
-    return this.albumCreationForm.get('type');
+  get type(): AbstractControl {
+    return this.albumCreationForm.get('type')!;
   }
 
-  get performer() {
-    return this.albumCreationForm.get('performer');
+  get performer(): AbstractControl {
+    return this.albumCreationForm.get('performer')!;
   }
 
-  get genre() {
-    return this.albumCreationForm.get('genre');
+  get genre(): AbstractControl {
+    return this.albumCreationForm.get('genre')!;
   }
 
-  get coverImageUrl() {
-    return this.albumCreationForm.get('coverImageUrl');
+  get coverImageUrl(): AbstractControl {
+    return this.albumCreationForm.get('coverImageUrl')!;
   }
 
-  get numberOfTracks() {
-    return this.albumCreationForm.get('numberOfTracks');
+  get numberOfTracks(): AbstractControl {
+    return this.albumCreationForm.get('numberOfTracks')!;
   }
 
-  get description() {
-    return this.albumCreationForm.get('description');
+  get description(): AbstractControl {
+    return this.albumCreationForm.get('description')!;
   }
 
-  get releaseDate() {
-    return this.albumCreationForm.get('releaseDate');
+  get releaseDate(): AbstractControl {
+    return this.albumCreationForm.get('releaseDate')!;
   }
 
-  get popularity() {
-    return this.albumCreationForm.get('popularity');
+  get popularity(): AbstractControl {
+    return this.albumCreationForm.get('popularity')!;
   }
 
   closeCreateAlbumDialog(): void {

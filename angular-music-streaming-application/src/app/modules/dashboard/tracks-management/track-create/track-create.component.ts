@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs';
@@ -53,12 +53,38 @@ export class TrackCreateComponent implements OnInit {
   private buildTrackCreationForm() {
     this.trackToCreate = new Track();
     this.trackCreationForm = this.formBuilder.group({
-      title: [this.trackToCreate.title, [Validators.required]],
+      title: [this.trackToCreate.title, [Validators.required, Validators.compose([
+        Validators.minLength(2),
+        Validators.maxLength(30)
+      ])]],
       duration: [this.trackToCreate.duration, [Validators.required]],
       albumId: [this.trackToCreate.albumId, Validators.required],
-      performedLanguage: [this.trackToCreate.performedLanguage, [Validators.required]],
+      performedLanguage: [this.trackToCreate.performedLanguage, [Validators.required, Validators.compose([
+        Validators.minLength(3),
+        Validators.maxLength(30)
+      ])]],
       isTrending: [this.trackToCreate.isTrending]
     });
+  }
+
+  get title(): AbstractControl {
+    return this.trackCreationForm.get('title')!;
+  }
+
+  get duration(): AbstractControl {
+    return this.trackCreationForm.get('duration')!;
+  }
+
+  get albumId(): AbstractControl {
+    return this.trackCreationForm.get('albumId')!;
+  }
+
+  get performedLanguage(): AbstractControl {
+    return this.trackCreationForm.get('performedLanguage')!;
+  }
+
+  get isTrending(): AbstractControl {
+    return this.trackCreationForm.get('isTrending')!;
   }
 
   ngOnInit(): void {

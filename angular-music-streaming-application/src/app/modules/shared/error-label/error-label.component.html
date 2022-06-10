@@ -1,0 +1,21 @@
+<ng-container *ngIf="abstractControl!.invalid && abstractControl!.touched">
+  <mat-error *ngIf="abstractControl.errors?.['required']" class="text-dark">
+    This field is required
+  </mat-error>
+  <mat-error *ngIf="abstractControl.errors?.['minlength']" class="text-dark">
+    The minimum length for this field
+    is {{abstractControl.errors?.['minlength'].requiredLength}} characters
+  </mat-error>
+  <mat-error *ngIf="abstractControl.errors?.['maxlength']" class="text-dark">
+    The maximum length for this field
+    is {{abstractControl.errors?.['maxlength'].requiredLength}} characters
+  </mat-error>
+  <mat-error *ngIf="abstractControl.errors?.['min']" class="text-dark">
+    The minimum value is for this field
+    is {{abstractControl.errors?.['min'].min}}
+  </mat-error>
+  <mat-error *ngIf="abstractControl.errors?.['max']" class="text-dark">
+    The maximum value is for this field
+    is {{abstractControl.errors?.['max'].max}}
+  </mat-error>
+</ng-container>

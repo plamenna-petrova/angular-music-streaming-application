@@ -3,7 +3,7 @@
     <h2>Tracks for Album : {{albumDialogData.album.name}}</h2>
     <ul *ngFor="let track of tracks; index as i">
       <li>
-        <h4>Track #{{i+1}}</h4>
+        <h4 class="font-weight-bold">Track #{{i+1}}</h4>
         <span class="d-block">Title : {{track.title}}</span>
         <span class="d-block">Duration: {{track.duration}}</span>
         <span class="d-block">Performed Language : {{track.performedLanguage}}</span>

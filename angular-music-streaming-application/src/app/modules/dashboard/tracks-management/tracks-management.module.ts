@@ -18,6 +18,8 @@ import { TrackEditComponent } from './track-edit/track-edit.component';
 import { TrackDeleteComponent } from './track-delete/track-delete.component';
 import { TrackDetailsComponent } from './track-details/track-details.component';
 
+import { SharedModule } from '../../shared/shared.module';
+
 @NgModule({
   declarations: [
     TracksManagementComponent,
@@ -37,7 +39,8 @@ import { TrackDetailsComponent } from './track-details/track-details.component';
     MatCheckboxModule,
     MatCardModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class TracksManagementModule { }

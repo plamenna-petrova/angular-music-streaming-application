@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs';
@@ -34,7 +34,7 @@ export class TrackEditComponent implements OnInit {
 
   submitTrackUpdateForm() {
     if (this.trackUpdateForm.invalid) {
-      this.trackUpdateForm.markAllAsTouched();
+      this.toastr.error(`Errors found in some of the input values`, `Sorry, cannot submit form!`);
       return;
     }
 
@@ -54,12 +54,38 @@ export class TrackEditComponent implements OnInit {
 
   private buildTrackUpdateForm(track: Track) {
     this.trackUpdateForm = this.formBuilder.group({
-      title: [track.title, [Validators.required]],
+      title: [track.title, [Validators.required, Validators.compose([
+        Validators.minLength(2),
+        Validators.maxLength(30)
+      ])]],
       duration: [track.duration, [Validators.required]],
       albumId: [track.albumId, Validators.required],
-      performedLanguage: [track.performedLanguage, [Validators.required]],
+      performedLanguage: [track.performedLanguage, [Validators.required, Validators.compose([
+        Validators.minLength(3),
+        Validators.maxLength(30)
+      ])]],
       isTrending: [track.isTrending]
     });
+  }
+
+  get title(): AbstractControl {
+    return this.trackUpdateForm.get('title')!;
+  }
+
+  get duration(): AbstractControl {
+    return this.trackUpdateForm.get('duration')!;
+  }
+
+  get albumId(): AbstractControl {
+    return this.trackUpdateForm.get('albumId')!;
+  }
+
+  get performedLanguage(): AbstractControl {
+    return this.trackUpdateForm.get('performedLanguage')!;
+  }
+
+  get isTrending(): AbstractControl {
+    return this.trackUpdateForm.get('isTrending')!;
   }
 
   ngOnInit(): void {
