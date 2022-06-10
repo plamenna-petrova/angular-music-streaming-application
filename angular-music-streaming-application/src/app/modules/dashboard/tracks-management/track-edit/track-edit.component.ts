@@ -10,10 +10,10 @@ import { TracksService } from 'src/app/core/services/tracks.service';
 
 @Component({
   selector: 'app-tracks-edit',
-  templateUrl: './tracks-edit.component.html',
-  styleUrls: ['./tracks-edit.component.scss']
+  templateUrl: './track-edit.component.html',
+  styleUrls: ['./track-edit.component.scss']
 })
-export class TracksEditComponent implements OnInit {
+export class TrackEditComponent implements OnInit {
 
   id: any;
   trackToUpdate!: Track;
@@ -29,7 +29,7 @@ export class TracksEditComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private toastr: ToastrService) {
-    this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.id = parseInt(this.activatedRoute.snapshot.paramMap.get('id')!);
   }
 
   submitTrackUpdateForm() {
@@ -46,7 +46,6 @@ export class TracksEditComponent implements OnInit {
     this.tracksService.updateTrack$(createTrackRequestBody).pipe(
       take(1)
     ).subscribe((response) => {
-      console.log(response);
       let editedTrack = response;
       this.toastr.success(`The track ${editedTrack.title} is successfully edited.`);
       this.router.navigate(['/dashboard', { outlets: { dashboard: ['tracks-management'] } }]);
@@ -61,8 +60,6 @@ export class TracksEditComponent implements OnInit {
       performedLanguage: [track.performedLanguage, [Validators.required]],
       isTrending: [track.isTrending]
     });
-    console.log("form");
-    console.log(this.trackUpdateForm);
   }
 
   ngOnInit(): void {

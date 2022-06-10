@@ -23,6 +23,7 @@ export class TracksManagementComponent implements OnInit {
     'albumCoverImage',
     'performedLanguage',
     'isTrending',
+    'trackDetails',
     'editTrack',
     'deleteTrack'
   ]
@@ -38,7 +39,6 @@ export class TracksManagementComponent implements OnInit {
   private getAllTracks() {
     this.tracksService.getAllTracks$().subscribe(response => {
       this.tracks = response;
-      console.log(this.tracks);
       this.tracksDataSource.data = this.tracks;
     });
   }

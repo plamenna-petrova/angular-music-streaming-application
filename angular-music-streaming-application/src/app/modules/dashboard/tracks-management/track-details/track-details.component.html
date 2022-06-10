@@ -1,0 +1,27 @@
+<div *ngIf="track" class="container d-flex justify-content-center">
+  <mat-card class="track-details-card">
+    <mat-card-header>
+      <mat-card-title>Track Title: {{track.title}}</mat-card-title>
+      <mat-card-subtitle>
+        <span class="d-block">Duration : {{track.duration}}</span>
+        <span class="d-block">Performed Language : {{track.performedLanguage}}</span>
+        <span class="d-block">Album: {{track.album.name}}</span>
+        <span class="d-block">Performer: {{track.album.performer}}</span>
+        <span class="d-block">Genre: {{track.album.genre}}</span>
+        <span class="d-block">Is Trending: {{track.isTrending ? 'Trending' : 'Not Trending'}}</span>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="track.album.coverImageUrl">
+    <mat-card-content>
+      <div class="audit-info">
+        <span class="d-block">Created On : {{track.createdOn | date: 'dd/MM/yyyy'}}</span>
+        <span class="d-block">Last Updated On: {{track.lastUpdatedOn | date: 'dd/MM/yyyy'}}</span>
+      </div>
+      <div class="album-description">Album Description: {{track.album.description}}</div>
+    </mat-card-content>
+    <mat-card-actions>
+      <a class="btn btn-dark" [routerLink]="['/dashboard', { outlets: { dashboard: ['tracks-management'] } }]">Go
+        Back</a>
+    </mat-card-actions>
+  </mat-card>
+</div>

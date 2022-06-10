@@ -8,7 +8,9 @@ import { Album } from 'src/app/core/models/album.model';
 import { AlbumsService } from 'src/app/core/services/albums.service';
 import { AlbumCreateDialogComponent } from './album-create-dialog/album-create-dialog.component';
 import { AlbumDeleteDialogComponent } from './album-delete-dialog/album-delete-dialog.component';
+import { AlbumDescriptionDialogComponent } from './album-description-dialog/album-description-dialog.component';
 import { AlbumEditDialogComponent } from './album-edit-dialog/album-edit-dialog.component';
+import { TracksDetailsDialogComponent } from './tracks-details-dialog/tracks-details-dialog.component';
 
 @Component({
   selector: 'app-albums-management',
@@ -31,6 +33,7 @@ export class AlbumsManagementComponent implements AfterViewInit {
     'description',
     'releaseDate',
     'popularity',
+    'tracks',
     'editAlbum',
     'deleteAlbum'
   ];
@@ -41,6 +44,24 @@ export class AlbumsManagementComponent implements AfterViewInit {
 
   constructor(private albumsService: AlbumsService, private albumDialog: MatDialog) {
 
+  }
+
+  onAlbumDescriptionClick(description: string): void {
+    const albumDescriptionDialogRef = this.albumDialog.open(AlbumDescriptionDialogComponent, {
+      width: '400px',
+      data: {
+        description: description
+      }
+    });
+  }
+  
+  onTracksDetailsClick(album: Album): void {
+    const tracksDetailsDialogRef = this.albumDialog.open(TracksDetailsDialogComponent, {
+      width: '400px',
+      data: {
+        album: album
+      }
+    });
   }
 
   onCreateAlbumClick(): void {

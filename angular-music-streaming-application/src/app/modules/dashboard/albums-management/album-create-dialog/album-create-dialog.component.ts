@@ -48,7 +48,7 @@ export class AlbumCreateDialogComponent implements OnInit {
       numberOfTracks: [this.albumToCreate.numberOfTracks, [Validators.required]],
       description: [this.albumToCreate.description, [Validators.required, Validators.compose([
         Validators.minLength(3),
-        Validators.maxLength(100)
+        Validators.maxLength(500)
       ])]],
       releaseDate: [this.albumToCreate.releaseDate, [Validators.required]],
       popularity: [this.albumToCreate.popularity, [Validators.required]],

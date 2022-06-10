@@ -1,0 +1,9 @@
+.delete-track-card-container {
+  width: 500px !important;
+}
+
+@media screen and (max-width: 767px) {
+  .delete-track-card-container {
+    width: 300px !important;
+  }
+}

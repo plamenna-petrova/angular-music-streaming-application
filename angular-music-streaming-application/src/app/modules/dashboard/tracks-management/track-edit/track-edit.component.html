@@ -1,6 +1,7 @@
-<div class="container">
-  <form *ngIf="trackCreationForm" [formGroup]="trackCreationForm" (ngSubmit)="submitTrackCreationForm()">
-    <h2 mat-dialog-tile>Create New Track</h2>
+<div class="container d-flex justify-content-center mt-2">
+  <form *ngIf="trackUpdateForm" [formGroup]="trackUpdateForm" (ngSubmit)="submitTrackUpdateForm()">
+    <h2 mat-dialog-tile>Edit Track {{trackToUpdate.title}} from {{trackToUpdate.album.name}} by
+      {{trackToUpdate.album.performer}}</h2>
     <mat-form-field appearance="fill" class="mb-2">
       <mat-label>Enter the title of track</mat-label>
       <input matInput formControlName="title">
@@ -22,6 +23,9 @@
       <input matInput formControlName="performedLanguage">
     </mat-form-field>
     <mat-checkbox formControlName="isTrending" class="mr-5">Check whether the track is trending or not</mat-checkbox>
-    <button type="submit" class="btn btn-danger submit-track-creation-form-button">Create</button>
+    <div class="d-flex justify-content-between mt-4">
+      <a class="btn btn-dark" [routerLink]="['/dashboard', { outlets: { dashboard: ['tracks-management'] } }]">Go Back</a>
+      <button type="submit" class="btn btn-danger submit-track-creation-form-button">Edit</button>
+    </div>
   </form>
 </div>

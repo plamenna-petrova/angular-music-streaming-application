@@ -1,0 +1,20 @@
+<div class="container">
+  <mat-dialog-content *ngIf="tracks.length !== 0; else no_tracks">
+    <h2>Tracks for Album : {{albumDialogData.album.name}}</h2>
+    <ul *ngFor="let track of tracks; index as i">
+      <li>
+        <h4>Track #{{i+1}}</h4>
+        <span class="d-block">Title : {{track.title}}</span>
+        <span class="d-block">Duration: {{track.duration}}</span>
+        <span class="d-block">Performed Language : {{track.performedLanguage}}</span>
+        <span class="d-block">Is Trending : {{track.isTrending ? 'Trending' : 'Not Trending'}}</span>
+      </li>
+    </ul>
+  </mat-dialog-content>
+  <ng-template #no_tracks>
+    <h2>There are currently no tracks under the album : {{albumDialogData.album.name}}</h2>
+  </ng-template>
+  <mat-dialog-actions class="d-flex justify-content-end">
+    <button class="btn btn-dark" (click)="closeTracksDetailsDialog()">Close</button>
+  </mat-dialog-actions>
+</div>

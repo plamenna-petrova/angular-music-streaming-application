@@ -1,0 +1,17 @@
+.mat-form-field {
+  display: block !important;
+}
+
+form {
+  width: 70%;
+
+  .submit-track-creation-form-button {
+    margin-left: 80px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  form {
+    width: 95%;
+  }
+}

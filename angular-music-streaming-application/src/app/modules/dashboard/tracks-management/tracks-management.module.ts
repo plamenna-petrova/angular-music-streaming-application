@@ -10,18 +10,21 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { TracksCreateComponent } from './tracks-create/tracks-create.component';
+import { MatCardModule } from '@angular/material/card';
+import { TrackCreateComponent } from './track-create/track-create.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TracksEditComponent } from './tracks-edit/tracks-edit.component';
-import { TracksDeleteComponent } from './tracks-delete/tracks-delete.component';
+import { TrackEditComponent } from './track-edit/track-edit.component';
+import { TrackDeleteComponent } from './track-delete/track-delete.component';
+import { TrackDetailsComponent } from './track-details/track-details.component';
 
 @NgModule({
   declarations: [
     TracksManagementComponent,
-    TracksCreateComponent,
-    TracksEditComponent,
-    TracksDeleteComponent
+    TrackCreateComponent,
+    TrackEditComponent,
+    TrackDeleteComponent,
+    TrackDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -32,6 +35,7 @@ import { TracksDeleteComponent } from './tracks-delete/tracks-delete.component';
     MatFormFieldModule,
     MatSelectModule,
     MatCheckboxModule,
+    MatCardModule,
     FormsModule,
     ReactiveFormsModule
   ]

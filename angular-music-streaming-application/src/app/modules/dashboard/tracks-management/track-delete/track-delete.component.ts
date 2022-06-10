@@ -7,10 +7,10 @@ import { TracksService } from 'src/app/core/services/tracks.service';
 
 @Component({
   selector: 'app-tracks-delete',
-  templateUrl: './tracks-delete.component.html',
-  styleUrls: ['./tracks-delete.component.scss']
+  templateUrl: './track-delete.component.html',
+  styleUrls: ['./track-delete.component.scss']
 })
-export class TracksDeleteComponent implements OnInit {
+export class TrackDeleteComponent implements OnInit {
 
   id: any;
   trackToDelete!: Track;
@@ -20,7 +20,7 @@ export class TracksDeleteComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private toastr: ToastrService) {
-    this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.id = parseInt(this.activatedRoute.snapshot.paramMap.get('id')!);
   }
 
   deleteTrack(): void {

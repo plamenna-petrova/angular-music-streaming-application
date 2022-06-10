@@ -10,10 +10,10 @@ import { TracksService } from 'src/app/core/services/tracks.service';
 
 @Component({
   selector: 'app-tracks-create',
-  templateUrl: './tracks-create.component.html',
-  styleUrls: ['./tracks-create.component.scss']
+  templateUrl: './track-create.component.html',
+  styleUrls: ['./track-create.component.scss']
 })
-export class TracksCreateComponent implements OnInit {
+export class TrackCreateComponent implements OnInit {
 
   trackToCreate!: Track;
 
@@ -44,7 +44,8 @@ export class TracksCreateComponent implements OnInit {
       take(1)
     ).subscribe((response) => {
       let newTrack = response;
-      this.toastr.success(`The track ${newTrack.title} from the album ${newTrack.album.name} by ${newTrack.album.performer} is successfully created.`);
+      let albumForTrack = this.albums.find(album => album.id === newTrack.albumId);
+      this.toastr.success(`The track ${newTrack.title} from the album ${albumForTrack!.name} by ${albumForTrack!.performer} is successfully created.`);
       this.router.navigate(['/dashboard', { outlets: { dashboard: ['tracks-management'] } }]);
     });
   }

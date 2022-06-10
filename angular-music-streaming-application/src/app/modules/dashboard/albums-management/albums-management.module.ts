@@ -17,6 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlbumCreateDialogComponent } from './album-create-dialog/album-create-dialog.component';
 import { AlbumEditDialogComponent } from './album-edit-dialog/album-edit-dialog.component';
 import { AlbumDeleteDialogComponent } from './album-delete-dialog/album-delete-dialog.component';
+import { TracksDetailsDialogComponent } from './tracks-details-dialog/tracks-details-dialog.component';
+import { AlbumDescriptionDialogComponent } from './album-description-dialog/album-description-dialog.component';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { AlbumDeleteDialogComponent } from './album-delete-dialog/album-delete-d
     AlbumsManagementComponent,
     AlbumEditDialogComponent,
     AlbumDeleteDialogComponent,
-    AlbumCreateDialogComponent
+    AlbumCreateDialogComponent,
+    TracksDetailsDialogComponent,
+    AlbumDescriptionDialogComponent,
   ],
   imports: [
     CommonModule,

@@ -36,15 +36,29 @@
       </ng-container>
       <ng-container matColumnDef="description">
         <th mat-header-cell *matHeaderCellDef>Description</th>
-        <td mat-cell *matCellDef="let album"> {{album.description}} </td>
+        <td mat-cell *matCellDef="let album">
+          <button class="btn btn-outline-dark btn-rounded" (click)="onAlbumDescriptionClick(album.description)">
+            <i class="fas fa-info"></i>
+             Info
+          </button>
+        </td>
       </ng-container>
       <ng-container matColumnDef="releaseDate">
         <th mat-header-cell *matHeaderCellDef>Release Date</th>
-        <td mat-cell *matCellDef="let album"> {{ album.releaseDate | date }} </td>
+        <td mat-cell *matCellDef="let album"> {{ album.releaseDate | date: 'dd/MM/yyyy' }} </td>
       </ng-container>
       <ng-container matColumnDef="popularity">
         <th mat-header-cell *matHeaderCellDef>Popularity</th>
         <td mat-cell *matCellDef="let album"> {{ album.popularity }} </td>
+      </ng-container>
+      <ng-container matColumnDef="tracks">
+        <th mat-header-cell *matHeaderCellDef>Tracks</th>
+        <td mat-cell *matCellDef="let album">
+          <button class="btn btn-outline-dark btn-rounded" (click)="onTracksDetailsClick(album)">
+            <i class="fas fa-music mr-2"></i>
+            Tracks
+          </button>
+        </td>
       </ng-container>
       <ng-container matColumnDef="editAlbum">
         <th mat-header-cell *matHeaderCellDef>Edit Album</th>

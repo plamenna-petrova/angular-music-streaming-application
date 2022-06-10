@@ -35,6 +35,15 @@
           <i [ngClass]="track.isTrending ? 'fas fa-arrow-up' : 'fas fa-arrow-down'"></i>
         </td>
       </ng-container>
+      <ng-container matColumnDef="trackDetails">
+        <th mat-header-cell *matHeaderCellDef>Track Details</th>
+        <td mat-cell *matCellDef="let track">
+          <a class="btn btn-outline-dark btn-rounded track-detials-button" routerLink="track-details/{{track.id}}">
+            <i class="fas fa-info"></i>
+            Details
+          </a>
+        </td>
+      </ng-container>
       <ng-container matColumnDef="editTrack">
         <th mat-header-cell *matHeaderCellDef>Edit Track</th>
         <td mat-cell *matCellDef="let track">

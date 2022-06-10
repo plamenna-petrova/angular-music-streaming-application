@@ -26,11 +26,8 @@
         <li class="nav-item">
           <a class="nav-link text-uppercase" routerLink="tracks">Tracks</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-uppercase" routerLink="/">Playlists</a>
-        </li>
         <li class="nav-item" *ngIf="currentUserRole === 'Administrator'">
-          <a class="nav-link text-uppercase" routerLink="dashboard">Dashboard</a>
+          <a class="nav-link text-uppercase" [routerLink]="['/dashboard', { outlets: { dashboard: ['albums-management'] } }]" [routerLinkActive]="['active-route']">Dashboard</a>
         </li>
       </ul>
       <!-- Left links -->

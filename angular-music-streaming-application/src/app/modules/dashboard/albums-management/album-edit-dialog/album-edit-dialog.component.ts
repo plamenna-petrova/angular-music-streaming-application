@@ -48,7 +48,7 @@ export class AlbumEditDialogComponent implements OnInit {
       numberOfTracks: [album.numberOfTracks, [Validators.required]],
       description: [album.description, [Validators.required, Validators.compose([
         Validators.minLength(3),
-        Validators.maxLength(100)
+        Validators.maxLength(500)
       ])]],
       releaseDate: [album.releaseDate, [Validators.required]],
       popularity: [album.popularity, [Validators.required]],
