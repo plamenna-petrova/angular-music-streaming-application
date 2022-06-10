@@ -37,6 +37,12 @@ import { AuthService } from './core/services/auth.service';
 
 import { ToastrModule } from 'ngx-toastr';
 
+import { MatTableModule } from '@angular/material/table';
+import { MatRadioModule } from '@angular/material/radio';
+import {MatListModule} from '@angular/material/list';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,6 +79,11 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
+    MatTableModule,
+    MatRadioModule,
+    MatListModule,
+    MatGridListModule,
+    MatCardModule
   ],
   providers: [
     AuthService,

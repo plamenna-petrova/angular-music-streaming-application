@@ -1,0 +1,23 @@
+.display-options-container {
+  margin-top: 50px !important;
+
+  .mat-radio-button~.mat-radio-button {
+    margin-left: 16px;
+  }
+}
+
+.table-or-list-image {
+  height: 95px;
+  width: 85px;
+  padding: 6px;
+}
+
+.tile {
+  max-height: 800px;
+
+  img {
+    height: 400px;
+    width: 500px;
+    max-width: 500px;
+  }
+}

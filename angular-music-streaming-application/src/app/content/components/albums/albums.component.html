@@ -1,1 +1,98 @@
-<p>albums works!</p>
+<div class="container-fluid albums-table-container">
+  <h2 class="text-center mt-5">Albums Display Options</h2>
+  <div class="display-options-container d-flex justify-content-center">
+    <mat-radio-group aria-label="Select an option" [(ngModel)]="albumsDisplayType">
+      <mat-radio-button value="table">Table</mat-radio-button>
+      <mat-radio-button value="list">List</mat-radio-button>
+      <mat-radio-button value="grid">Grid</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div *ngIf="albumsDisplayType === 'table'">
+    <table mat-table [dataSource]="albumsDataSource" class="mat-elevation-z9 my-5">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let album"> {{album.id}} </td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let album"> {{album.name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef>Type</th>
+        <td mat-cell *matCellDef="let album"> {{album.type}} </td>
+      </ng-container>
+      <ng-container matColumnDef="performer">
+        <th mat-header-cell *matHeaderCellDef>Performer</th>
+        <td mat-cell *matCellDef="let album"> {{album.performer}} </td>
+      </ng-container>
+      <ng-container matColumnDef="genre">
+        <th mat-header-cell *matHeaderCellDef>Performer</th>
+        <td mat-cell *matCellDef="let album"> {{album.genre}} </td>
+      </ng-container>
+      <ng-container matColumnDef="coverImageUrl">
+        <th mat-header-cell *matHeaderCellDef>Image On Cover</th>
+        <td mat-cell *matCellDef="let album"><img class="table-or-list-image" [src]="album.coverImageUrl" /></td>
+      </ng-container>
+      <ng-container matColumnDef="numberOfTracks">
+        <th mat-header-cell *matHeaderCellDef>Number Of Tracks</th>
+        <td mat-cell *matCellDef="let album"> {{album.numberOfTracks}} </td>
+      </ng-container>
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <td mat-cell *matCellDef="let album">
+          <p *ngIf="album.description.length > 30; else short_description">
+            {{reduceAlbumDescriptionLength(album.description)}}
+          </p>
+          <ng-template #short_description>{{album.description}}</ng-template>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="releaseDate">
+        <th mat-header-cell *matHeaderCellDef>Release Date</th>
+        <td mat-cell *matCellDef="let album"> {{album.releaseDate}} </td>
+      </ng-container>
+      <ng-container matColumnDef="popularity">
+        <th mat-header-cell *matHeaderCellDef>Popularity</th>
+        <td mat-cell *matCellDef="let album"> {{album.popularity}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedAlbumsColumns"></tr>
+      <tr mat-row *matRowDef="let albumRow; columns: displayedAlbumsColumns;"></tr>
+    </table>
+  </div>
+  <div *ngIf="albumsDisplayType === 'list'">
+    <mat-list role="list" *ngFor="let album of albums" class="albums-list">
+      <mat-list-item role="listitem" class="font-weight-bold">Id: {{album.id}}</mat-list-item>
+      <mat-list-item role="listitem">Name: {{album.name}}</mat-list-item>
+      <mat-list-item role="listitem">Type: {{album.type}}</mat-list-item>
+      <mat-list-item role="listitem">Performer: {{album.performer}}</mat-list-item>
+      <mat-list-item role="listitem">Genre: {{album.genre}}</mat-list-item>
+      <mat-list-item role="listitem" class="my-3">Cover Image: <img class="table-or-list-image" [src]="album.coverImageUrl" /></mat-list-item>
+      <mat-list-item role="listitem">Number Of Tracks: {{album.numberOfTracks}}</mat-list-item>
+      <mat-list-item role="listitem">Description:
+        <span *ngIf="album.description.length > 30; else short_description">
+          {{reduceAlbumDescriptionLength(album.description)}}
+        </span>
+        <ng-template #short_description>{{album.description}}</ng-template>
+      </mat-list-item>
+      <mat-list-item role="listitem">Release Date: {{album.releaseDate | date: ('dd/MM/yyyy')}}</mat-list-item>
+      <mat-list-item role="listitem">Popularity: {{album.popularity}}</mat-list-item>
+    </mat-list>
+  </div>
+  <div *ngIf="albumsDisplayType === 'grid'">
+    <mat-grid-list cols="3" class="mt-5">
+      <mat-grid-tile *ngFor="let album of albums" class="tile mx-3">
+        <mat-card class="album-card">
+          <mat-card-header>
+            <mat-card-title>{{album.name}}</mat-card-title>
+            <mat-card-subtitle>{{album.performer}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <img class="grid-image" mat-card-image [src]="album.coverImageUrl" [alt]="album.name">
+            <p style="width: 400px">
+              {{album.description}}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>
