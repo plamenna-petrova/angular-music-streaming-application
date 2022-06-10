@@ -15,7 +15,7 @@ import { TracksService } from 'src/app/core/services/tracks.service';
 })
 export class TracksCreateComponent implements OnInit {
 
-  track!: Track;
+  trackToCreate!: Track;
 
   albums!: Album[];
 
@@ -43,22 +43,20 @@ export class TracksCreateComponent implements OnInit {
     this.tracksService.createTrack$(createTrackRequestBody).pipe(
       take(1)
     ).subscribe((response) => {
-      console.log("create new track");
-      console.log(response);
       let newTrack = response;
-      this.toastr.success(`The track ${newTrack.title} is successfully saved`);
+      this.toastr.success(`The track ${newTrack.title} from the album ${newTrack.album.name} by ${newTrack.album.performer} is successfully created.`);
       this.router.navigate(['/dashboard', { outlets: { dashboard: ['tracks-management'] } }]);
     });
   }
 
   private buildTrackCreationForm() {
-    this.track = new Track();
+    this.trackToCreate = new Track();
     this.trackCreationForm = this.formBuilder.group({
-      title: [this.track.title, [Validators.required]],
-      duration: [this.track.duration, [Validators.required]],
-      albumId: [this.track.albumId, Validators.required],
-      performedLanguage: [this.track.performedLanguage, [Validators.required]],
-      isTrending: [this.track.isTrending]
+      title: [this.trackToCreate.title, [Validators.required]],
+      duration: [this.trackToCreate.duration, [Validators.required]],
+      albumId: [this.trackToCreate.albumId, Validators.required],
+      performedLanguage: [this.trackToCreate.performedLanguage, [Validators.required]],
+      isTrending: [this.trackToCreate.isTrending]
     });
   }
 

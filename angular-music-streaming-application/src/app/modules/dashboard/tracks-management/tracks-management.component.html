@@ -35,24 +35,24 @@
           <i [ngClass]="track.isTrending ? 'fas fa-arrow-up' : 'fas fa-arrow-down'"></i>
         </td>
       </ng-container>
-      <!-- <ng-container matColumnDef="editAlbum">
-          <th mat-header-cell *matHeaderCellDef>Edit Album</th>
-          <td mat-cell *matCellDef="let album">
-            <button class="btn btn-outline-danger btn-rounded" (click)="onEditAlbumClick(album.id)">
-              <i class="fas fa-edit mr-2"></i>
-              Edit
-            </button>
-          </td>
-        </ng-container>
-        <ng-container matColumnDef="deleteAlbum">
-          <th mat-header-cell *matHeaderCellDef>Delete Album</th>
-          <td mat-cell *matCellDef="let album">
-            <button class="btn btn-outline-danger btn-rounded" (click)="onDeleteAlbumClick(album)">
-              <i class="fas fa-trash-can ml-5"></i>
-              Delete
-            </button>
-          </td>
-        </ng-container> -->
+      <ng-container matColumnDef="editTrack">
+        <th mat-header-cell *matHeaderCellDef>Edit Track</th>
+        <td mat-cell *matCellDef="let track">
+          <a class="btn btn-outline-danger btn-rounded create-new-track-button" routerLink="edit-track/{{track.id}}">
+            <i class="fas fa-edit"></i>
+            Edit
+          </a>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="deleteTrack">
+        <th mat-header-cell *matHeaderCellDef>Delete Track</th>
+        <td mat-cell *matCellDef="let track">
+          <a class="btn btn-outline-danger btn-rounded" routerLink="delete-track/{{track.id}}">
+            <i class="fas fa-trash-can ml-5"></i>
+            Delete
+          </a>
+        </td>
+      </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedTracksColumns"></tr>
       <tr mat-row *matRowDef="let trackRow; columns: displayedTracksColumns;"></tr>
     </table>

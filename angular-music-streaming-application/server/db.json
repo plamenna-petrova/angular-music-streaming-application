@@ -177,14 +177,28 @@
       "id": 1
     },
     {
-      "title": "Pain with an Anchor",
-      "duration": "4:20",
-      "albumId": 5,
-      "performedLanguage": "English",
+      "title": "Pain with an Anchorrr",
+      "duration": "4:22",
+      "albumId": 3,
+      "performedLanguage": "French",
       "isTrending": true,
       "createdOn": "2022-06-09T23:18:52.045Z",
-      "lastUpdatedOn": "2022-06-09T23:18:52.045Z",
-      "id": 2
+      "lastUpdatedOn": "2022-06-10T00:13:35.315Z",
+      "id": 2,
+      "album": {
+        "name": "Hushed and Grimm",
+        "type": "Live",
+        "performer": "Mastodon",
+        "genre": "Heavy Metal",
+        "coverImageUrl": "https://i.discogs.com/zY1Rmb7Qne2C8eHqAZwuMVdHcBh3_kcbkU_HV5OzwUY/rs:fit/g:sm/q:90/h:597/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTIwNzc5/ODEzLTE2MzU1NTcw/MzYtMjg4Ny5qcGVn.jpeg",
+        "numberOfTracks": 9,
+        "description": "Test",
+        "releaseDate": "2021-11-07T22:00:00.000Z",
+        "popularity": "Medium",
+        "createdOn": "2022-06-06T23:01:48.132Z",
+        "lastUpdatedOn": "2022-06-09T21:25:02.454Z",
+        "id": 3
+      }
     },
     {
       "title": "The Crux",
@@ -195,26 +209,6 @@
       "createdOn": "2022-06-09T23:20:19.265Z",
       "lastUpdatedOn": "2022-06-09T23:20:19.265Z",
       "id": 3
-    },
-    {
-      "title": "Sickle And Peace",
-      "duration": "3:46",
-      "albumId": 5,
-      "performedLanguage": "English",
-      "isTrending": true,
-      "createdOn": "2022-06-09T23:22:01.030Z",
-      "lastUpdatedOn": "2022-06-09T23:22:01.030Z",
-      "id": 4
-    },
-    {
-      "title": "Sickle And Peace",
-      "duration": "3:46",
-      "albumId": 5,
-      "performedLanguage": "English",
-      "isTrending": true,
-      "createdOn": "2022-06-09T23:22:04.679Z",
-      "lastUpdatedOn": "2022-06-09T23:22:04.679Z",
-      "id": 5
     },
     {
       "title": "Pain with an Anchor",

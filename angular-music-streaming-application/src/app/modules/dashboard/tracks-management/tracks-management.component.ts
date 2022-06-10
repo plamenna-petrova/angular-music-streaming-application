@@ -22,7 +22,9 @@ export class TracksManagementComponent implements OnInit {
     'albumName',
     'albumCoverImage',
     'performedLanguage',
-    'isTrending'
+    'isTrending',
+    'editTrack',
+    'deleteTrack'
   ]
 
   tracksDataSource = new MatTableDataSource<ITrack>(this.tracks);

@@ -13,11 +13,15 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { TracksCreateComponent } from './tracks-create/tracks-create.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TracksEditComponent } from './tracks-edit/tracks-edit.component';
+import { TracksDeleteComponent } from './tracks-delete/tracks-delete.component';
 
 @NgModule({
   declarations: [
     TracksManagementComponent,
-    TracksCreateComponent
+    TracksCreateComponent,
+    TracksEditComponent,
+    TracksDeleteComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,28 @@
+<div class="container">
+  <form *ngIf="trackUpdateForm" [formGroup]="trackUpdateForm" (ngSubmit)="submitTrackUpdateForm()">
+    <h2 mat-dialog-tile>Edit Track {{trackToUpdate.title}} from {{trackToUpdate.album.name}} by
+      {{trackToUpdate.album.performer}}</h2>
+    <mat-form-field appearance="fill" class="mb-2">
+      <mat-label>Enter the title of track</mat-label>
+      <input matInput formControlName="title">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="mb-2">
+      <mat-label>Enter the duration of the track</mat-label>
+      <input matInput formControlName="duration">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="mb-2">
+      <mat-label>Select Album</mat-label>
+      <mat-select formControlName="albumId">
+        <mat-option *ngFor="let album of albums" [value]="album.id">
+          {{album.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="mb-2">
+      <mat-label>Enter the track's performed language</mat-label>
+      <input matInput formControlName="performedLanguage">
+    </mat-form-field>
+    <mat-checkbox formControlName="isTrending" class="mr-5">Check whether the track is trending or not</mat-checkbox>
+    <button type="submit" class="btn btn-danger submit-track-creation-form-button">Edit</button>
+  </form>
+</div>
