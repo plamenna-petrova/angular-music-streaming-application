@@ -14,6 +14,7 @@ export class NavigationBarComponent implements OnInit {
 
   projectLogoPath!: String;
   currentUser$!: Observable<User | null>;
+  currentUsername?: string;
   currentUserRole?: string;
 
   constructor(private router: Router, private authService: AuthService) {
@@ -33,6 +34,7 @@ export class NavigationBarComponent implements OnInit {
     this.projectLogoPath = "../../../../assets/images/rockstodons-logo-removebg-preview.png";
     this.currentUser$ = this.authService.user$;
     this.currentUser$.subscribe(currentUser => {
+      this.currentUsername = currentUser?.username;
       this.currentUserRole = currentUser?.role;
     });
   }

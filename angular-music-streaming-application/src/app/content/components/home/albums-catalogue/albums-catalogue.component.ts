@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Album } from 'src/app/core/models/album.model';
+import { AlbumsService } from 'src/app/core/services/albums.service';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-albums-catalogue',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlbumsCatalogueComponent implements OnInit {
 
-  constructor() { }
+  albumsForCatalogue!: Album[];
+  albumsTopCatalogueResults!: Album[];
+  albumsBottomCatalogueResults!: Album[];
+
+  constructor(private albumsService: AlbumsService) {
+
+  }
 
   ngOnInit(): void {
+    this.albumsService.getAllAlbums$().pipe(
+      take(1)
+    ).subscribe((response) => {
+      this.albumsForCatalogue = response;
+      this.albumsTopCatalogueResults = this.albumsForCatalogue.slice(0, 4);
+      this.albumsBottomCatalogueResults = this.albumsForCatalogue.slice(4, 8);
+    });
   }
 
 }

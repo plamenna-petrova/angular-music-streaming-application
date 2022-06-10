@@ -27,18 +27,17 @@
           <a class="nav-link text-uppercase" routerLink="tracks">Tracks</a>
         </li>
         <li class="nav-item" *ngIf="currentUserRole === 'Administrator'">
-          <a class="nav-link text-uppercase" [routerLink]="['/dashboard', { outlets: { dashboard: ['albums-management'] } }]" [routerLinkActive]="['active-route']">Dashboard</a>
+          <a class="nav-link text-uppercase"
+            [routerLink]="['/dashboard', { outlets: { dashboard: ['albums-management'] } }]"
+            [routerLinkActive]="['active-route']">Dashboard</a>
         </li>
       </ul>
       <!-- Left links -->
 
       <div class="d-flex align-items-center navigation-actions">
-        <!-- Search form -->
-        <form class="input-group w-auto my-auto d-none d-sm-flex">
-          <input autocomplete="off" type="search" class="form-control rounded" placeholder="Search"
-            style="min-width: 350px;" />
-          <span class="input-group-text border-0 d-none d-lg-flex"><i class="fas fa-search"></i></span>
-        </form>
+        <div *ngIf="currentUser$ | async as user" class="mr-5">
+          <h3 class="mb-0">Hi, {{currentUsername}}, check the app</h3>
+        </div>
         <button *ngIf="!(currentUser$ | async)" type="button" class="btn btn-danger signup-button mx-3 ml-5"
           (click)="navigateToSignInFormFromNavbar()">
           <i class="fas fa-lock me-3"></i>

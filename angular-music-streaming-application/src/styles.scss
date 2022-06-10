@@ -9,22 +9,29 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
 @import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import '~@fortawesome/fontawesome-free/scss/solid.scss';
 @import '~@fortawesome/fontawesome-free/scss/regular.scss';
 @import '~@fortawesome/fontawesome-free/scss/brands.scss';
- 
+
 @import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
 
 // regular style toast
 @import '~ngx-toastr/toastr';
 
-html, body { height: 100%; }
-body { 
-  margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+html,
+body {
+  height: 100%;
 }
 
-.albums-table-container {
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.albums-table-container,
+.tracks-table-container {
   overflow-x: auto;
 
   table {
@@ -47,6 +54,14 @@ body {
       height: 95px;
       width: 85px;
       padding: 6px;
+    }
+
+    .fas.fa-arrow-up {
+      color: green;
+    }
+
+    .fas.fa-arrow-down {
+      color: firebrick;
     }
   }
 }
