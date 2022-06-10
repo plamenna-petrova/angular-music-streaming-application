@@ -175,6 +175,7 @@
       "isTrending": true,
       "albumId": 8,
       "id": 1,
+      "createdOn": "2022-06-09T18:46:54.391Z",
       "album": {
         "name": "Fortitude",
         "type": "Studio",
