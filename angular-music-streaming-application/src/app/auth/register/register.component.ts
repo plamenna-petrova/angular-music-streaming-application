@@ -58,22 +58,18 @@ export class RegisterComponent implements OnInit {
 
     this.users.forEach(user => {
       if (user.email === registrationCredentials.email) {
-        this.toastr.error('Cannot proceed further with registration', 'Email already taken', {
-          timeOut: 2000,
-          positionClass: 'toast-bottom-right'
-        });
         invalidEmail = true;
       }
       if (user.username === registrationCredentials.username) {
-        this.toastr.error('Cannot proceed further with registration', 'Username already taken', {
-          timeOut: 4000,
-          positionClass: 'toast-bottom-right'
-        });
         invalidUsername = true;
       }
     });
 
     if (invalidEmail || invalidUsername) {
+      this.toastr.error('Cannot proceed further with registration', 'Credentials already taken', {
+        timeOut: 2000,
+        positionClass: 'toast-bottom-right'
+      });
       return;
     }
 

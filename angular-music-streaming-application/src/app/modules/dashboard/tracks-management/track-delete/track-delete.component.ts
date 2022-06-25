@@ -12,7 +12,7 @@ import { TracksService } from 'src/app/core/services/tracks.service';
 })
 export class TrackDeleteComponent implements OnInit {
 
-  id: any;
+  id!: number;
   trackToDelete!: Track;
 
   constructor(
@@ -24,7 +24,7 @@ export class TrackDeleteComponent implements OnInit {
   }
 
   deleteTrack(): void {
-    this.tracksService.deleteTrack$(this.trackToDelete.id).pipe(
+    this.tracksService.deleteEntity$(this.trackToDelete.id).pipe(
       take(1)
     ).subscribe(() => {
       this.toastr.success(`The Track ${this.trackToDelete.title} from the album ${this.trackToDelete.album.name} by ${this.trackToDelete.album.performer} is successfully deleted.`, `Success`);
@@ -33,10 +33,11 @@ export class TrackDeleteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tracksService.getTrackById$(this.id).pipe(
+    this.tracksService.getEntityById$(this.id, undefined, 'album').pipe(
       take(1)
     ).subscribe((response) => {
       this.trackToDelete = response;
+      console.log(this.trackToDelete);
     });
   }
 

@@ -42,7 +42,7 @@ export class AlbumsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.albumsService.getAllAlbums$().pipe(
+    this.albumsService.getAllEntities$('tracks', null).pipe(
       take(1)
     ).subscribe((response) => {
       this.albums = response;

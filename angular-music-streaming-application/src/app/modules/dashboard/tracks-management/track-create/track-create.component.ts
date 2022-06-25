@@ -40,7 +40,10 @@ export class TrackCreateComponent implements OnInit {
       ...this.trackCreationForm.value
     }
 
-    this.tracksService.createTrack$(createTrackRequestBody).pipe(
+    createTrackRequestBody.createdOn = new Date();
+    createTrackRequestBody.lastUpdatedOn = new Date();
+
+    this.tracksService.createEntity$(createTrackRequestBody).pipe(
       take(1)
     ).subscribe((response) => {
       let newTrack = response;
@@ -88,7 +91,7 @@ export class TrackCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.albumsService.getAllAlbums$().pipe(
+    this.albumsService.getAllEntities$('tracks', null).pipe(
       take(1)
     ).subscribe((response) => {
       this.albums = response;

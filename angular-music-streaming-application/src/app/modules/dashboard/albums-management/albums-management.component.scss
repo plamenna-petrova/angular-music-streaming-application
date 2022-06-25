@@ -2,30 +2,5 @@
   margin-right: 30px;
 }
 
-.albums-table-container {
-  overflow-x: auto;
 
-  table {
-    width: 100%;
-
-    th {
-      text-align: center;
-    }
-
-    td {
-      text-align: center;
-      min-width: 130px;
-
-      li {
-        list-style-type: none;
-      }
-    }
-
-    img {
-      height: 95px;
-      width: 85px;
-      padding: 6px;
-    }
-  }
-}
 

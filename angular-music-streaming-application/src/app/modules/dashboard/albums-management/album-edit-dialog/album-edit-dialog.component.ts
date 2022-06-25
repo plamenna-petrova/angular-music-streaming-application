@@ -109,7 +109,9 @@ export class AlbumEditDialogComponent implements OnInit {
       ...this.albumUpdateForm.value
     };
 
-    this.albumsService.updateAlbum$(updateAlbumRequestBody).pipe(
+    updateAlbumRequestBody.lastUpdatedOn = new Date();
+
+    this.albumsService.updateEntity$(updateAlbumRequestBody, updateAlbumRequestBody.id).pipe(
       take(1)
     ).subscribe((response) => {
       let editedAlbum = response;
@@ -120,7 +122,7 @@ export class AlbumEditDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.albumsService.getAlbumById$(this.id).pipe(
+    this.albumsService.getEntityById$(this.id).pipe(
       first()
     ).subscribe((response) => {
       this.albumToUpdate = response;

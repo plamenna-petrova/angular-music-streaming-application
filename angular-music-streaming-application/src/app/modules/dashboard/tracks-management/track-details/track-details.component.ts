@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Track } from 'src/app/core/models/track.model';
 import { take } from 'rxjs';
-import { AlbumsService } from 'src/app/core/services/albums.service';
 import { TracksService } from 'src/app/core/services/tracks.service';
 
 @Component({
@@ -23,7 +22,7 @@ export class TrackDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tracksService.getTrackById$(this.id).pipe(
+    this.tracksService.getEntityById$(this.id, undefined, 'album').pipe(
       take(1)
     ).subscribe((response) => {
       this.track = response;

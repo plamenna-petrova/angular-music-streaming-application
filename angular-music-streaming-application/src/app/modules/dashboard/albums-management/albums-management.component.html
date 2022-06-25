@@ -81,7 +81,7 @@
       <tr mat-header-row *matHeaderRowDef="displayedAlbumsColumns"></tr>
       <tr mat-row *matRowDef="let albumRow; columns: displayedAlbumsColumns;"></tr>
     </table>
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of albums">
+    <mat-paginator [pageSizeOptions]="[3, 6, 10]" showFirstLastButtons aria-label="Select page of albums">
     </mat-paginator>
   </div>
 </div>

@@ -79,23 +79,25 @@
       "role": "Normal User",
       "token": "2VC1iMOJctIZXxEP7FKPB9LKrMbRtXHR",
       "id": 10
+    },
+    {
+      "email": "johnathan@test.com",
+      "username": "Johnny",
+      "password": "12345",
+      "role": "Normal User",
+      "token": "h74AZ2WZoH9UZeFHgyQ7oRVY0Su0XkGy",
+      "id": 11
+    },
+    {
+      "email": "jonathandoe@test.com",
+      "username": "JonathanDoe",
+      "password": "johnny123",
+      "role": "Normal User",
+      "token": "lEJ8xJLgeQfxaQYqbfwH397hatPn2ZoN",
+      "id": 12
     }
   ],
   "albums": [
-    {
-      "name": "Hushed and Grimm",
-      "type": "Live",
-      "performer": "Mastodon",
-      "genre": "Heavy Metal",
-      "coverImageUrl": "https://i.discogs.com/zY1Rmb7Qne2C8eHqAZwuMVdHcBh3_kcbkU_HV5OzwUY/rs:fit/g:sm/q:90/h:597/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTIwNzc5/ODEzLTE2MzU1NTcw/MzYtMjg4Ny5qcGVn.jpeg",
-      "numberOfTracks": 9,
-      "description": "Testtt",
-      "releaseDate": "2021-11-16T22:00:00.000Z",
-      "popularity": "Medium",
-      "createdOn": "2022-06-06T23:01:48.132Z",
-      "lastUpdatedOn": "2022-06-10T17:13:52.426Z",
-      "id": 3
-    },
     {
       "name": "Hushed and Grim",
       "type": "Studio",
@@ -107,22 +109,8 @@
       "releaseDate": "2022-06-05T21:00:00.000Z",
       "popularity": "Medium",
       "createdOn": "2022-06-06T23:19:40.891Z",
-      "lastUpdatedOn": "2022-06-10T15:20:55.159Z",
+      "lastUpdatedOn": "2022-06-25T23:46:31.029Z",
       "id": 5
-    },
-    {
-      "name": "xcfddfdf",
-      "type": "Live",
-      "performer": "Mastodon",
-      "genre": "dfdfdfdf",
-      "coverImageUrl": "https://media.pitchfork.com/photos/613a64a57c34b5ffaef74527/3:2/w_2400,h_1600,c_limit/Mastodon.jpeg",
-      "numberOfTracks": 6,
-      "description": "fdfff",
-      "releaseDate": "2022-06-07T21:00:00.000Z",
-      "popularity": "Medium",
-      "createdOn": "2022-06-06T23:20:07.029Z",
-      "lastUpdatedOn": "2022-06-06T23:20:07.029Z",
-      "id": 6
     },
     {
       "name": "sdff",
@@ -135,11 +123,11 @@
       "releaseDate": "2021-11-09T22:00:00.000Z",
       "popularity": "High",
       "createdOn": "2022-06-06T23:27:38.907Z",
-      "lastUpdatedOn": "2022-06-09T20:39:08.981Z",
+      "lastUpdatedOn": "2022-06-11T08:10:47.270Z",
       "id": 7
     },
     {
-      "name": "Fortitude",
+      "name": "Fortitudee",
       "type": "Studio",
       "performer": "Gojira",
       "genre": "Heavy Metal",
@@ -165,156 +153,30 @@
       "createdOn": "2022-06-09T18:46:54.391Z",
       "lastUpdatedOn": "2022-06-09T18:46:54.391Z",
       "id": 9
+    },
+    {
+      "name": "Fortitudee",
+      "type": "Live",
+      "performer": "Gojira",
+      "genre": "Metaal",
+      "coverImageUrl": "https://rebelstore.net/wp-content/uploads/2021/06/Gojira-Fortitude-CD.jpg",
+      "numberOfTracks": 10,
+      "description": "Test",
+      "releaseDate": "2021-11-09T22:00:00.000Z",
+      "popularity": "Medium",
+      "createdOn": "2022-06-25T23:46:13.281Z",
+      "lastUpdatedOn": "2022-06-25T23:47:11.672Z",
+      "id": 10
     }
   ],
   "tracks": [
     {
-      "title": "Born For One Thing",
-      "duration": "3:25",
-      "performedLanguage": "English",
-      "isTrending": true,
-      "albumId": 8,
-      "id": 1,
-      "createdOn": "2022-06-09T18:46:54.391Z",
-      "album": {
-        "name": "Fortitude",
-        "type": "Studio",
-        "performer": "Gojira",
-        "genre": "Heavy Metal",
-        "coverImageUrl": "https://m.media-amazon.com/images/I/81T0NUQTyfL._SL1425_.jpg",
-        "numberOfTracks": 11,
-        "description": "Gojira's new album",
-        "releaseDate": "2022-06-06T21:00:00.000Z",
-        "popularity": "High",
-        "createdOn": "2022-06-08T15:50:23.465Z",
-        "lastUpdatedOn": "2022-06-09T19:19:23.536Z",
-        "id": 8
-      },
-      "lastUpdatedOn": "2022-06-10T17:37:05.238Z"
-    },
-    {
-      "title": "Pain with an Anchorrr",
-      "duration": "4:22",
-      "albumId": 3,
-      "performedLanguage": "French",
-      "isTrending": true,
-      "createdOn": "2022-06-09T23:18:52.045Z",
-      "lastUpdatedOn": "2022-06-10T00:13:35.315Z",
-      "id": 2,
-      "album": {
-        "name": "Hushed and Grimm",
-        "type": "Live",
-        "performer": "Mastodon",
-        "genre": "Heavy Metal",
-        "coverImageUrl": "https://i.discogs.com/zY1Rmb7Qne2C8eHqAZwuMVdHcBh3_kcbkU_HV5OzwUY/rs:fit/g:sm/q:90/h:597/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTIwNzc5/ODEzLTE2MzU1NTcw/MzYtMjg4Ny5qcGVn.jpeg",
-        "numberOfTracks": 9,
-        "description": "Test",
-        "releaseDate": "2021-11-07T22:00:00.000Z",
-        "popularity": "Medium",
-        "createdOn": "2022-06-06T23:01:48.132Z",
-        "lastUpdatedOn": "2022-06-09T21:25:02.454Z",
-        "id": 3
-      }
-    },
-    {
-      "title": "The Crux",
-      "duration": "3:50",
-      "albumId": 5,
-      "performedLanguage": "English",
-      "isTrending": true,
-      "createdOn": "2022-06-09T23:20:19.265Z",
-      "lastUpdatedOn": "2022-06-09T23:20:19.265Z",
-      "id": 3
-    },
-    {
-      "title": "Pain with an Anchor",
-      "duration": "Mastodon",
+      "title": "Crusifixed",
+      "duration": "3:46",
       "albumId": 5,
       "performedLanguage": "English",
       "isTrending": null,
-      "createdOn": "2022-06-09T23:22:41.453Z",
-      "lastUpdatedOn": "2022-06-09T23:22:41.453Z",
-      "id": 6
-    },
-    {
-      "title": "Pain with an Anchor",
-      "duration": "3:56",
-      "albumId": 3,
-      "performedLanguage": "English",
-      "isTrending": true,
-      "createdOn": "2022-06-10T10:40:55.770Z",
-      "lastUpdatedOn": "2022-06-10T10:40:55.770Z",
-      "id": 7
-    },
-    {
-      "title": "Pain with an Anchor",
-      "duration": "3:56",
-      "albumId": 3,
-      "performedLanguage": "English",
-      "isTrending": false,
-      "createdOn": "2022-06-10T10:40:59.540Z",
-      "lastUpdatedOn": "2022-06-10T10:40:59.540Z",
-      "id": 8
-    },
-    {
-      "title": "The Crux",
-      "duration": "3:45",
-      "albumId": 3,
-      "performedLanguage": "English",
-      "isTrending": null,
-      "createdOn": "2022-06-10T10:41:31.366Z",
-      "lastUpdatedOn": "2022-06-10T10:41:31.366Z",
-      "id": 9
-    },
-    {
-      "title": "The Crux",
-      "duration": "3:45",
-      "albumId": 3,
-      "performedLanguage": "English",
-      "isTrending": true,
-      "createdOn": "2022-06-10T10:42:14.550Z",
-      "lastUpdatedOn": "2022-06-10T10:42:14.550Z",
-      "id": 10
-    },
-    {
-      "title": "The Crux",
-      "duration": "3:45",
-      "albumId": 5,
-      "performedLanguage": "English",
-      "isTrending": null,
-      "createdOn": "2022-06-10T10:42:50.542Z",
-      "lastUpdatedOn": "2022-06-10T10:42:50.542Z",
-      "id": 11
-    },
-    {
-      "title": "The Crux",
-      "duration": "3:45",
-      "albumId": 5,
-      "performedLanguage": "English",
-      "isTrending": null,
-      "createdOn": "2022-06-10T10:43:01.982Z",
-      "lastUpdatedOn": "2022-06-10T10:43:01.982Z",
-      "id": 12
-    },
-    {
-      "title": "The Crux",
-      "duration": "3:45",
-      "albumId": 8,
-      "performedLanguage": "English",
-      "isTrending": null,
-      "createdOn": "2022-06-10T10:43:25.062Z",
-      "lastUpdatedOn": "2022-06-10T10:43:25.062Z",
-      "id": 13
-    },
-    {
-      "title": "Pain with an Anchor",
-      "duration": "3:47",
-      "albumId": 3,
-      "performedLanguage": "English",
-      "isTrending": true,
-      "createdOn": "2022-06-10T10:44:51.637Z",
-      "lastUpdatedOn": "2022-06-10T10:44:51.637Z",
-      "id": 14
+      "id": 4
     },
     {
       "title": "Pain with an Anchor",
@@ -322,49 +184,9 @@
       "albumId": 5,
       "performedLanguage": "English",
       "isTrending": true,
-      "createdOn": "2022-06-10T10:47:16.589Z",
-      "lastUpdatedOn": "2022-06-10T10:47:16.589Z",
-      "id": 16
-    },
-    {
-      "title": "Pain with an Anchor",
-      "duration": "4:20",
-      "albumId": 3,
-      "performedLanguage": "English",
-      "isTrending": true,
-      "createdOn": "2022-06-10T10:48:35.728Z",
-      "lastUpdatedOn": "2022-06-10T10:48:35.728Z",
-      "id": 17
-    },
-    {
-      "title": "Pain with an Anchor",
-      "duration": "4:20",
-      "albumId": 5,
-      "performedLanguage": "English",
-      "isTrending": true,
-      "createdOn": "2022-06-10T12:59:07.834Z",
-      "lastUpdatedOn": "2022-06-10T12:59:07.834Z",
-      "id": 19
-    },
-    {
-      "title": "Pain with an Anchor",
-      "duration": "3:20",
-      "albumId": 5,
-      "performedLanguage": "English",
-      "isTrending": null,
-      "createdOn": "2022-06-10T13:03:20.468Z",
-      "lastUpdatedOn": "2022-06-10T13:03:20.468Z",
-      "id": 24
-    },
-    {
-      "title": "Sickle And Peaceee",
-      "duration": "4:20",
-      "albumId": 5,
-      "performedLanguage": "English",
-      "isTrending": true,
-      "createdOn": "2022-06-10T13:14:13.833Z",
-      "lastUpdatedOn": "2022-06-10T13:20:04.480Z",
-      "id": 25,
+      "createdOn": "2022-06-25T23:49:20.183Z",
+      "lastUpdatedOn": "2022-06-25T23:49:38.327Z",
+      "id": 5,
       "album": {
         "name": "Hushed and Grim",
         "type": "Studio",
@@ -372,23 +194,13 @@
         "genre": "Heavy Metal",
         "coverImageUrl": "https://media.pitchfork.com/photos/613a64a57c34b5ffaef74527/3:2/w_2400,h_1600,c_limit/Mastodon.jpeg",
         "numberOfTracks": 6,
-        "description": "sddsdfsf",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
         "releaseDate": "2022-06-05T21:00:00.000Z",
         "popularity": "Medium",
         "createdOn": "2022-06-06T23:19:40.891Z",
-        "lastUpdatedOn": "2022-06-06T23:19:40.891Z",
+        "lastUpdatedOn": "2022-06-25T23:46:31.029Z",
         "id": 5
       }
-    },
-    {
-      "title": "Example Track",
-      "duration": "3:20",
-      "albumId": 8,
-      "performedLanguage": "English",
-      "isTrending": null,
-      "createdOn": "2022-06-10T15:14:31.749Z",
-      "lastUpdatedOn": "2022-06-10T15:14:31.749Z",
-      "id": 26
     }
   ]
 }

@@ -37,8 +37,9 @@ export class TracksManagementComponent implements OnInit {
   }
 
   private getAllTracks() {
-    this.tracksService.getAllTracks$().subscribe(response => {
+    this.tracksService.getAllEntities$(null, 'album').subscribe(response => {
       this.tracks = response;
+      console.log(this.tracks);
       this.tracksDataSource.data = this.tracks;
     });
   }

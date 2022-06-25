@@ -27,7 +27,7 @@ export class AlbumDeleteDialogComponent implements OnInit {
   }
 
   deleteAlbum(): void {
-    this.albumsService.delete$(this.albumToDelete.id).pipe(
+    this.albumsService.deleteEntity$(this.albumToDelete.id).pipe(
       take(1)
     ).subscribe(() => {
       this.toastr.success(`The Album ${this.albumToDelete.name} by ${this.albumToDelete.performer} is successfully deleted.`, `Success`);

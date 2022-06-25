@@ -8,8 +8,7 @@ const fs = require('fs');
 server.use(middlewares);
 server.use(jsonServer.bodyParser);
 
-//@ts-ignore
-server.post('/login', (req, res) => {
+server.post('/login', (req: any, res: any) => {
     const users = readUsers();
 
     const user = users.filter(

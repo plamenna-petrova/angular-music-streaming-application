@@ -4,12 +4,13 @@ import { LoginModel } from "../models/login.model";
 import { BehaviorSubject, Observable, tap } from "rxjs";
 import { User } from "../models/user.model";
 import { RegisterModel } from "../models/register.model";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  
+
   private userSubject$ = new BehaviorSubject<User | null>(null);
   user$ = this.userSubject$.asObservable();
 
@@ -21,7 +22,8 @@ export class AuthService {
   }
 
   register(registerModel: RegisterModel): Observable<User> {
-    return this.httpClient.post<User>(`http://localhost:3000/users`, registerModel).pipe(tap((user: User) => {
+    const apiUrl = environment.apiUrl;
+    return this.httpClient.post<User>(`${apiUrl}/users`, registerModel).pipe(tap((user: User) => {
       this.userSubject$.next(user);
       let registeredUserToStore = { ...user };
       delete registeredUserToStore.id;
@@ -31,7 +33,8 @@ export class AuthService {
   }
 
   login(loginModel: LoginModel): Observable<User> {
-    return this.httpClient.post<User>(`http://localhost:3000/login`, loginModel).pipe(tap((user: User) => {
+    const apiUrl = environment.apiUrl;
+    return this.httpClient.post<User>(`${apiUrl}/login`, loginModel).pipe(tap((user: User) => {
       this.userSubject$.next(user);
       let loggedInUserToStore = { ...user };
       delete loggedInUserToStore.id;

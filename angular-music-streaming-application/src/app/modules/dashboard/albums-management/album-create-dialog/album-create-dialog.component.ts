@@ -108,7 +108,10 @@ export class AlbumCreateDialogComponent implements OnInit {
       ...this.albumCreationForm.value
     }
 
-    this.albumsService.createAlbum$(albumCreationRequestBody).pipe(
+    albumCreationRequestBody.createdOn = new Date();
+    albumCreationRequestBody.lastUpdatedOn = new Date();
+
+    this.albumsService.createEntity$(albumCreationRequestBody).pipe(
       take(1)
     ).subscribe((response) => {
       console.log(response);

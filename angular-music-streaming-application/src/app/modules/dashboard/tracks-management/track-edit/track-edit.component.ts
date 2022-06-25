@@ -15,7 +15,7 @@ import { TracksService } from 'src/app/core/services/tracks.service';
 })
 export class TrackEditComponent implements OnInit {
 
-  id: any;
+  id!: number;
   trackToUpdate!: Track;
 
   albums!: Album[];
@@ -43,7 +43,9 @@ export class TrackEditComponent implements OnInit {
       ...this.trackUpdateForm.value
     }
 
-    this.tracksService.updateTrack$(createTrackRequestBody).pipe(
+    createTrackRequestBody.lastUpdatedOn = new Date();
+
+    this.tracksService.updateEntity$(createTrackRequestBody, createTrackRequestBody.id).pipe(
       take(1)
     ).subscribe((response) => {
       let editedTrack = response;
@@ -89,14 +91,14 @@ export class TrackEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tracksService.getTrackById$(this.id).pipe(
+    this.tracksService.getEntityById$(this.id, undefined, 'album').pipe(
       take(1)
     ).subscribe((response) => {
       this.trackToUpdate = response;
       this.buildTrackUpdateForm(this.trackToUpdate);
     });
 
-    this.albumsService.getAllAlbums$().pipe(
+    this.albumsService.getAllEntities$('tracks', null).pipe(
       take(1)
     ).subscribe((response) => {
       this.albums = response;

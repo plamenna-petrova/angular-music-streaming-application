@@ -19,12 +19,12 @@ export class AlbumsCatalogueComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.albumsService.getAllAlbums$().pipe(
+    this.albumsService.getAllEntities$('tracks', null).pipe(
       take(1)
     ).subscribe((response) => {
       this.albumsForCatalogue = response;
       this.albumsTopCatalogueResults = this.albumsForCatalogue.slice(0, 4);
-      this.albumsBottomCatalogueResults = this.albumsForCatalogue.slice(4, 8);
+      this.albumsBottomCatalogueResults = this.albumsForCatalogue.slice(4, 10);
     });
   }
 

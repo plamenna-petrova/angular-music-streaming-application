@@ -54,7 +54,7 @@ export class AlbumsManagementComponent implements AfterViewInit {
       }
     });
   }
-  
+
   onTracksDetailsClick(album: Album): void {
     const tracksDetailsDialogRef = this.albumDialog.open(TracksDetailsDialogComponent, {
       width: '400px',
@@ -106,13 +106,13 @@ export class AlbumsManagementComponent implements AfterViewInit {
   }
 
   private getAllAlbums(): void {
-    this.albumsService.getAllAlbums$().pipe(
+    this.albumsService.getAllEntities$('tracks', null).pipe(
       take(1)
     ).subscribe((response) => {
       this.albums = response;
       console.log(this.albums);
       this.albumsDataSource.data = this.albums;
-    });
+    })
   }
 
   ngOnInit() {
