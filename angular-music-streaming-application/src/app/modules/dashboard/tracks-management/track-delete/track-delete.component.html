@@ -1,8 +1,7 @@
 <div class="container delete-track-card-container">
   <mat-card>
     <mat-card-title>Delete Track</mat-card-title>
-    <mat-card-subtitle class="mt-5">Do you really wish to delete {{trackToDelete?.title}} from the album {{trackToDelete?.album?.name}} by {{trackToDelete?.album?.performer}}
-      ?</mat-card-subtitle>
+    <mat-card-subtitle class="mt-5">Do you really wish to delete {{trackToDelete?.title}} from the album {{trackToDelete?.album?.name}} by {{trackToDelete?.album?.performer}}?</mat-card-subtitle>
     <mat-card-actions class="d-flex justify-content-between mt-5">
       <a class="btn btn-dark" [routerLink]="['/dashboard', { outlets: { dashboard: ['tracks-management'] } }]">Go
         Back</a>
