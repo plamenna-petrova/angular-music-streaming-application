@@ -91,14 +91,14 @@ export class TrackEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tracksService.getEntityById$(this.id, undefined, 'album').pipe(
+    this.tracksService.getEntityById$(this.id).pipe(
       take(1)
     ).subscribe((response) => {
       this.trackToUpdate = response;
       this.buildTrackUpdateForm(this.trackToUpdate);
     });
 
-    this.albumsService.getAllEntities$('tracks', null).pipe(
+    this.albumsService.getAllEntities$().pipe(
       take(1)
     ).subscribe((response) => {
       this.albums = response;

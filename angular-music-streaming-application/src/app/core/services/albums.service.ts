@@ -13,4 +13,14 @@ export class AlbumsService extends CrudService<Album, number> {
    constructor(protected override httpClient: HttpClient) {
       super(httpClient, `${environment.apiUrl}/albums`);
    }
+
+   override getAllEntities$(): Observable<Album[]> {
+      const getAllAlbumsApiUrl = `${environment.apiUrl}/albums`;
+      const httpParams = new HttpParams({
+         fromObject: {
+            _embed: 'tracks'
+         }
+      });
+      return this.httpClient.get<Album[]>(getAllAlbumsApiUrl, { params: httpParams });
+   }
 }

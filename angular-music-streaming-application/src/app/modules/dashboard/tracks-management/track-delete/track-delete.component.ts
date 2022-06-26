@@ -1,9 +1,13 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { take } from 'rxjs';
+import { Observable, take, tap } from 'rxjs';
+import { Album } from 'src/app/core/models/album.model';
 import { Track } from 'src/app/core/models/track.model';
+import { AlbumsService } from 'src/app/core/services/albums.service';
 import { TracksService } from 'src/app/core/services/tracks.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-tracks-delete',
@@ -14,9 +18,11 @@ export class TrackDeleteComponent implements OnInit {
 
   id!: number;
   trackToDelete!: Track;
+  albums!: Album[]
 
   constructor(
     private tracksService: TracksService,
+    private albumsService: AlbumsService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private toastr: ToastrService) {
@@ -33,11 +39,17 @@ export class TrackDeleteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tracksService.getEntityById$(this.id, undefined, 'album').pipe(
-      take(1)
-    ).subscribe((response) => {
-      this.trackToDelete = response;
-      console.log(this.trackToDelete);
+    this.tracksService.getEntityById$(this.id).pipe(
+      take(1),
+      tap((data) => { console.log('[Tap] Data', data); })
+    ).subscribe({
+      next: (response) => {
+        this.trackToDelete = response;
+      }, error: (error) => {
+        console.log(error);
+      }, complete: () => {
+        console.info('info');
+      }
     });
   }
 
