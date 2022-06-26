@@ -99,20 +99,6 @@
   ],
   "albums": [
     {
-      "name": "Hushed and Grim",
-      "type": "Studio",
-      "performer": "Mastodon",
-      "genre": "Heavy Metal",
-      "coverImageUrl": "https://media.pitchfork.com/photos/613a64a57c34b5ffaef74527/3:2/w_2400,h_1600,c_limit/Mastodon.jpeg",
-      "numberOfTracks": 6,
-      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-      "releaseDate": "2022-06-05T21:00:00.000Z",
-      "popularity": "Medium",
-      "createdOn": "2022-06-06T23:19:40.891Z",
-      "lastUpdatedOn": "2022-06-25T23:46:31.029Z",
-      "id": 5
-    },
-    {
       "name": "sdff",
       "type": "Live",
       "performer": "Mastodon",
@@ -171,36 +157,24 @@
   ],
   "tracks": [
     {
-      "title": "Crusifixed",
-      "duration": "3:46",
-      "albumId": 5,
-      "performedLanguage": "English",
-      "isTrending": null,
-      "id": 4
-    },
-    {
       "title": "Pain with an Anchor",
       "duration": "4:20",
-      "albumId": 5,
+      "albumId": 10,
+      "performedLanguage": "English",
+      "isTrending": null,
+      "createdOn": "2022-06-26T16:00:20.270Z",
+      "lastUpdatedOn": "2022-06-26T16:00:20.270Z",
+      "id": 1
+    },
+    {
+      "title": "Backbone",
+      "duration": "3:40",
+      "albumId": 10,
       "performedLanguage": "English",
       "isTrending": true,
-      "createdOn": "2022-06-25T23:49:20.183Z",
-      "lastUpdatedOn": "2022-06-25T23:49:38.327Z",
-      "id": 5,
-      "album": {
-        "name": "Hushed and Grim",
-        "type": "Studio",
-        "performer": "Mastodon",
-        "genre": "Heavy Metal",
-        "coverImageUrl": "https://media.pitchfork.com/photos/613a64a57c34b5ffaef74527/3:2/w_2400,h_1600,c_limit/Mastodon.jpeg",
-        "numberOfTracks": 6,
-        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-        "releaseDate": "2022-06-05T21:00:00.000Z",
-        "popularity": "Medium",
-        "createdOn": "2022-06-06T23:19:40.891Z",
-        "lastUpdatedOn": "2022-06-25T23:46:31.029Z",
-        "id": 5
-      }
+      "createdOn": "2022-06-26T16:00:41.345Z",
+      "lastUpdatedOn": "2022-06-26T16:00:41.345Z",
+      "id": 2
     }
   ]
 }

@@ -2,10 +2,10 @@ import { HttpParams } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 
-export interface ICrudService<T, ID> {
-    getAllEntities$(embeddedEntities: string | null, expandedEntity: string | null): Observable<T[]>;
-    getEntityById$(id: ID, embeddedEntities?: string, expandedEntity?: string): Observable<T>;
-    createEntity$(entity: T): Observable<T>;
-    updateEntity$(entity: T, id: ID): Observable<T>;
-    deleteEntity$(id: ID): Observable<void>;
+export interface ICrudService<TEntity, TID> {
+    getAllEntities$(): Observable<TEntity[]>;
+    getEntityById$(id: TID): Observable<TEntity>;
+    createEntity$(entity: TEntity): Observable<TEntity>;
+    updateEntity$(entity: TEntity, id: TID): Observable<TEntity>;
+    deleteEntity$(id: TID): Observable<void>;
 }

@@ -22,7 +22,7 @@ export class TrackDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tracksService.getEntityById$(this.id, undefined, 'album').pipe(
+    this.tracksService.getEntityById$(this.id).pipe(
       take(1)
     ).subscribe((response) => {
       this.track = response;

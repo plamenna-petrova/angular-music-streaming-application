@@ -31,7 +31,7 @@ export class TracksComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tracksService.getAllEntities$(null, 'album').pipe(
+    this.tracksService.getAllEntities$().pipe(
       take(1)
     ).subscribe((response) => {
       this.tracks = response;

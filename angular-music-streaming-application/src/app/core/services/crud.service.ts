@@ -6,7 +6,7 @@ import { ICrudService } from "../interfaces/ICrudService.interface";
 @Injectable({
     providedIn: 'root'
 })
-export abstract class CrudService<T, ID> implements ICrudService<T, ID> {
+export abstract class CrudService<TEntity, TID> implements ICrudService<TEntity, TID> {
 
     constructor(
         protected httpClient: HttpClient,
@@ -14,57 +14,27 @@ export abstract class CrudService<T, ID> implements ICrudService<T, ID> {
 
     }
 
-    getAllEntities$(embeddedEntities: string | null, expandedEntity: string | null): Observable<T[]> {
+    getAllEntities$(): Observable<TEntity[]> {
         const getAllEntitiesApiUrl = `${this.baseApiUrl}`;
-
-        let fromObject: { [key: string]: string } = {};
-
-        if (embeddedEntities !== null) {
-            fromObject["_embed"] = `${embeddedEntities}`;
-        }
-
-        if (expandedEntity !== null) {
-            fromObject["_expand"] = `${expandedEntity}`;
-        }
-
-        const httpParams = new HttpParams({
-            fromObject: fromObject
-        });
-
-        return this.httpClient.get<T[]>(getAllEntitiesApiUrl, { params: httpParams });
+        return this.httpClient.get<TEntity[]>(getAllEntitiesApiUrl);
     }
 
-    getEntityById$(id: ID, embeddedEntities?: string, expandedEntity?: string): Observable<T> {
+    getEntityById$(id: TID): Observable<TEntity> {
         const getEntityByIdApiUrl = `${this.baseApiUrl}/${id}`;
-
-        let fromObject: { [key: string]: string } = {};
-
-        if (embeddedEntities !== undefined) {
-            fromObject["_embed"] = `${embeddedEntities}`;
-        }
-
-        if (expandedEntity !== undefined) {
-            fromObject["_expand"] = `${expandedEntity}`;
-        }
-
-        const httpParams = new HttpParams({
-            fromObject: fromObject
-        });
-
-        return this.httpClient.get<T>(getEntityByIdApiUrl, { params: httpParams });
+        return this.httpClient.get<TEntity>(getEntityByIdApiUrl);
     }
 
-    createEntity$(entity: T): Observable<T> {
+    createEntity$(entity: TEntity): Observable<TEntity> {
         const createEntityApiUrl = `${this.baseApiUrl}`;
-        return this.httpClient.post<T>(createEntityApiUrl, entity);
+        return this.httpClient.post<TEntity>(createEntityApiUrl, entity);
     }
 
-    updateEntity$(entity: T, id: ID): Observable<T> {
+    updateEntity$(entity: TEntity, id: TID): Observable<TEntity> {
         const updateEntityApiUrl = `${this.baseApiUrl}/${id}`;
-        return this.httpClient.put<T>(updateEntityApiUrl, entity);
+        return this.httpClient.put<TEntity>(updateEntityApiUrl, entity);
     }
 
-    deleteEntity$(id: ID): Observable<void> {
+    deleteEntity$(id: TID): Observable<void> {
         const deleteEntityApiUrl = `${this.baseApiUrl}/${id}`;
         return this.httpClient.delete<void>(deleteEntityApiUrl);
     }
