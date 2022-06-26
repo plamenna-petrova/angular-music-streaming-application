@@ -17,9 +17,9 @@
           <mat-form-field appearance="fill" class="mt-2">
             <mat-label>Select album type</mat-label>
             <mat-select formControlName="type">
-              <mat-option value="Studio">Studio</mat-option>
-              <mat-option value="Live">Live</mat-option>
-              <mat-option value="Extended play">Extended play</mat-option>
+              <mat-option [value]="albumType.studio">{{albumType.studio}}</mat-option>
+              <mat-option [value]="albumType.live">{{albumType.live}}</mat-option>
+              <mat-option [value]="albumType.ep">{{albumType.ep}}</mat-option>
             </mat-select>
           </mat-form-field>
           <app-error-label [abstractControl]="type">

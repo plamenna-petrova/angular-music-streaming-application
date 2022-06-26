@@ -21,6 +21,12 @@ export class AlbumCreateDialogComponent implements OnInit {
 
   isLinear!: boolean;
 
+  albumType: Record<AlbumType, string> = {
+    studio: 'Studio',
+    live: 'Live',
+    ep: 'Extended Play'
+  }
+
   createdAlbum = new EventEmitter<Album>();
 
   constructor(
@@ -143,4 +149,8 @@ export class AlbumCreateDialogComponent implements OnInit {
   }
 
 }
+
+export type AlbumType = "studio" | "live" | "ep"
+
+
 

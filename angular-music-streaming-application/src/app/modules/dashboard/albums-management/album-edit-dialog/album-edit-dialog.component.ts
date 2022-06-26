@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { first, take, timeout } from 'rxjs';
@@ -16,7 +16,17 @@ export class AlbumEditDialogComponent implements OnInit {
 
   id!: number;
   albumToUpdate!: Album;
-  albumUpdateForm!: FormGroup;
+
+  albumKeyInformationFormGroup!: FormGroup;
+  albumDetailsFormGroup!: FormGroup;
+
+  isLinear!: boolean;
+
+  albumType: Record<AlbumType, string> = {
+    studio: 'Studio',
+    live: 'Live',
+    ep: 'Extended Play'
+  }
 
   updatedAlbum = new EventEmitter<Album>();
 
@@ -27,71 +37,79 @@ export class AlbumEditDialogComponent implements OnInit {
     public albumEditingDialogRef: MatDialogRef<AlbumEditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public albumDialogData: { id: number }) {
     this.id = this.albumDialogData.id;
+    this.isLinear = false;
   }
 
   private buildAlbumUpdateForm(album: Album): void {
-    this.albumUpdateForm = this.formBuilder.group({
-      name: [album.name, [Validators.required, Validators.compose([
+    this.albumKeyInformationFormGroup = new FormGroup({
+      name: new FormControl(album.name, Validators.compose([
+        Validators.required,
         Validators.minLength(2),
         Validators.maxLength(50)
-      ])]],
-      type: [album.type, [Validators.required]],
-      performer: [album.performer, [Validators.required, Validators.compose([
+      ])),
+      type: new FormControl(album.type, Validators.required),
+      performer: new FormControl(album.performer, Validators.compose([
+        Validators.required,
         Validators.minLength(2),
         Validators.maxLength(50)
-      ])]],
-      genre: [album.genre, [Validators.required, Validators.compose([
+      ])),
+      genre: new FormControl(album.genre, Validators.compose([
+        Validators.required,
         Validators.minLength(3),
         Validators.maxLength(25)
-      ])]],
-      coverImageUrl: [album.coverImageUrl, [Validators.required]],
-      numberOfTracks: [album.numberOfTracks, [Validators.required, Validators.compose([
+      ]))
+    });
+    this.albumDetailsFormGroup = new FormGroup({
+      coverImageUrl: new FormControl(album.coverImageUrl, Validators.required),
+      numberOfTracks: new FormControl(album.numberOfTracks, Validators.compose([
+        Validators.required,
         Validators.min(1),
         Validators.max(20)
-      ])]],
-      description: [album.description, [Validators.required, Validators.compose([
+      ])),
+      description: new FormControl(album.description, Validators.compose([
+        Validators.required,
         Validators.minLength(3),
         Validators.maxLength(500)
-      ])]],
-      releaseDate: [album.releaseDate, [Validators.required]],
-      popularity: [album.popularity, [Validators.required]],
+      ])),
+      releaseDate: new FormControl(album.releaseDate, Validators.required),
+      popularity: new FormControl(album.popularity, Validators.required)
     });
   }
 
   get name(): AbstractControl {
-    return this.albumUpdateForm.get('name')!;
+    return this.albumKeyInformationFormGroup.get('name')!;
   }
 
   get type(): AbstractControl {
-    return this.albumUpdateForm.get('type')!;
+    return this.albumKeyInformationFormGroup.get('type')!;
   }
 
   get performer(): AbstractControl {
-    return this.albumUpdateForm.get('performer')!;
+    return this.albumKeyInformationFormGroup.get('performer')!;
   }
 
   get genre(): AbstractControl {
-    return this.albumUpdateForm.get('genre')!;
+    return this.albumKeyInformationFormGroup.get('genre')!;
   }
 
   get coverImageUrl(): AbstractControl {
-    return this.albumUpdateForm.get('coverImageUrl')!;
+    return this.albumDetailsFormGroup.get('coverImageUrl')!;
   }
 
   get numberOfTracks(): AbstractControl {
-    return this.albumUpdateForm.get('numberOfTracks')!;
+    return this.albumDetailsFormGroup.get('numberOfTracks')!;
   }
 
   get description(): AbstractControl {
-    return this.albumUpdateForm.get('description')!;
+    return this.albumDetailsFormGroup.get('description')!;
   }
 
   get releaseDate(): AbstractControl {
-    return this.albumUpdateForm.get('releaseDate')!;
+    return this.albumDetailsFormGroup.get('releaseDate')!;
   }
 
   get popularity(): AbstractControl {
-    return this.albumUpdateForm.get('popularity')!;
+    return this.albumDetailsFormGroup.get('popularity')!;
   }
 
   closeEditAlbumDialog(): void {
@@ -99,14 +117,20 @@ export class AlbumEditDialogComponent implements OnInit {
   }
 
   submitAlbumUpdateForm(): void {
-    if (this.albumUpdateForm.invalid) {
-      this.toastr.error(`Errors found in some of the input values`, `Sorry, cannot submit form!`);
+    if (this.albumKeyInformationFormGroup.invalid) {
+      this.albumKeyInformationFormGroup.markAllAsTouched();
+      return;
+    }
+
+    if (this.albumDetailsFormGroup.invalid) {
+      this.albumDetailsFormGroup.markAllAsTouched();
       return;
     }
 
     const updateAlbumRequestBody: Album = {
       ...this.albumToUpdate,
-      ...this.albumUpdateForm.value
+      ...this.albumKeyInformationFormGroup.value,
+      ...this.albumDetailsFormGroup.value
     };
 
     updateAlbumRequestBody.lastUpdatedOn = new Date();
@@ -131,3 +155,5 @@ export class AlbumEditDialogComponent implements OnInit {
   }
 
 }
+
+export type AlbumType = "studio" | "live" | "ep"

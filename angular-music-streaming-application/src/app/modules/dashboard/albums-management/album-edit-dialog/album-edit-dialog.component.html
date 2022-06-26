@@ -2,76 +2,93 @@
   <div class="d-flex justify-content-end">
     <button class="btn btn-dark" (click)="closeEditAlbumDialog()"><i class="fas fa-xmark"></i></button>
   </div>
-  <form *ngIf="albumUpdateForm" [formGroup]="albumUpdateForm" (ngSubmit)="submitAlbumUpdateForm()">
-    <h2 mat-dialog-tile>Edit Album</h2>
-    <mat-dialog-content class="mat-typography">
-      <mat-form-field appearance="fill" class="mt-2">
-        <mat-label>Enter the name of the album</mat-label>
-        <input matInput formControlName="name">
-      </mat-form-field>
-      <app-error-label [abstractControl]="name">
-      </app-error-label>
-      <mat-form-field appearance="fill" class="mt-2">
-        <mat-label>Select album type</mat-label>
-        <mat-select formControlName="type">
-          <mat-option value="Studio">Studio</mat-option>
-          <mat-option value="Live">Live</mat-option>
-          <mat-option value="Extended play">Extended play</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <app-error-label [abstractControl]="type">
-      </app-error-label>
-      <mat-form-field appearance="fill" class="mt-2">
-        <mat-label>Enter the album performer</mat-label>
-        <input matInput formControlName="performer">
-      </mat-form-field>
-      <app-error-label [abstractControl]="performer">
-      </app-error-label>
-      <mat-form-field appearance="fill" class="mt-2">
-        <mat-label>Enter the genre of the album</mat-label>
-        <input matInput formControlName="genre">
-      </mat-form-field>
-      <app-error-label [abstractControl]="genre">
-      </app-error-label>
-      <mat-form-field appearance="fill" class="mt-2">
-        <mat-label>Enter the url of the album cover image</mat-label>
-        <textarea matInput formControlName="coverImageUrl"></textarea>
-      </mat-form-field>
-      <app-error-label [abstractControl]="coverImageUrl">
-      </app-error-label>
-      <mat-form-field appearance="fill" class="mt-2">
-        <mat-label>Enter the number of tracks in the album</mat-label>
-        <input type="number" matInput formControlName="numberOfTracks">
-      </mat-form-field>
-      <app-error-label [abstractControl]="numberOfTracks">
-      </app-error-label>
-      <mat-form-field appearance="fill" class="mt-2">
-        <mat-label>Enter album description</mat-label>
-        <textarea matInput formControlName="description"></textarea>
-      </mat-form-field>
-      <app-error-label [abstractControl]="description">
-      </app-error-label>
-      <mat-form-field appearance="fill" class="mt-2">
-        <mat-label>Choose the release date of the album</mat-label>
-        <input matInput [matDatepicker]="albumReleaseDatePicker" formControlName="releaseDate">
-        <mat-datepicker-toggle matSuffix [for]="albumReleaseDatePicker"></mat-datepicker-toggle>
-        <mat-datepicker #albumReleaseDatePicker></mat-datepicker>
-      </mat-form-field>
-      <app-error-label [abstractControl]="releaseDate">
-      </app-error-label>
-      <mat-form-field appearance="fill" class="mt-2">
-        <mat-label>Select album popularity rate</mat-label>
-        <mat-select formControlName="popularity">
-          <mat-option value="Low">Low</mat-option>
-          <mat-option value="Medium">Medium</mat-option>
-          <mat-option value="High">High</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <app-error-label [abstractControl]="popularity">
-      </app-error-label>
-    </mat-dialog-content>
-    <mat-dialog-actions class="d-flex justify-content-start">
-      <button type="submit" class="btn btn-danger">Edit</button>
-    </mat-dialog-actions>
-  </form>
+  <mat-dialog-content>
+    <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
+      <mat-step [stepControl]="albumKeyInformationFormGroup">
+        <form *ngIf="albumKeyInformationFormGroup" [formGroup]="albumKeyInformationFormGroup">
+          <ng-template matStepLabel>Fill the key information about the album</ng-template>
+          <mat-form-field appearance="fill" class="mt-2">
+            <mat-label>Enter the name of the album</mat-label>
+            <input matInput formControlName="name">
+          </mat-form-field>
+          <app-error-label [abstractControl]="name">
+          </app-error-label>
+          <mat-form-field appearance="fill" class="mt-2">
+            <mat-label>Select album type</mat-label>
+            <mat-select formControlName="type">
+              <mat-option [value]="albumType.studio">{{albumType.studio}}</mat-option>
+              <mat-option [value]="albumType.live">{{albumType.live}}</mat-option>
+              <mat-option [value]="albumType.ep">{{albumType.ep}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <app-error-label [abstractControl]="type">
+          </app-error-label>
+          <mat-form-field appearance="fill" class="mt-2">
+            <mat-label>Enter the album performer</mat-label>
+            <input matInput formControlName="performer">
+          </mat-form-field>
+          <app-error-label [abstractControl]="performer">
+          </app-error-label>
+          <mat-form-field appearance="fill" class="mt-2">
+            <mat-label>Enter the genre of the album</mat-label>
+            <input matInput formControlName="genre">
+          </mat-form-field>
+          <app-error-label [abstractControl]="genre">
+          </app-error-label>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="albumDetailsFormGroup">
+        <form *ngIf="albumDetailsFormGroup" [formGroup]="albumDetailsFormGroup">
+          <ng-template matStepLabel>Fill the details about the album</ng-template>
+          <mat-form-field appearance="fill" class="mt-2">
+            <mat-label>Enter the url of the album cover image</mat-label>
+            <textarea matInput formControlName="coverImageUrl"></textarea>
+          </mat-form-field>
+          <app-error-label [abstractControl]="coverImageUrl">
+          </app-error-label>
+          <mat-form-field appearance="fill" class="mt-2">
+            <mat-label>Enter the number of tracks in the album</mat-label>
+            <input type="number" matInput formControlName="numberOfTracks">
+          </mat-form-field>
+          <app-error-label [abstractControl]="numberOfTracks">
+          </app-error-label>
+          <mat-form-field appearance="fill" class="mt-2">
+            <mat-label>Enter album description</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+          </mat-form-field>
+          <app-error-label [abstractControl]="description">
+          </app-error-label>
+          <mat-form-field appearance="fill" class="mt-2">
+            <mat-label>Choose the release date of the album</mat-label>
+            <input matInput [matDatepicker]="albumReleaseDatePicker" formControlName="releaseDate">
+            <mat-datepicker-toggle matSuffix [for]="albumReleaseDatePicker"></mat-datepicker-toggle>
+            <mat-datepicker #albumReleaseDatePicker></mat-datepicker>
+          </mat-form-field>
+          <app-error-label [abstractControl]="releaseDate">
+          </app-error-label>
+          <mat-form-field appearance="fill" class="mt-2">
+            <mat-label>Select album popularity rate</mat-label>
+            <mat-select formControlName="popularity">
+              <mat-option value="Low">Low</mat-option>
+              <mat-option value="Medium">Medium</mat-option>
+              <mat-option value="High">High</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <app-error-label [abstractControl]="popularity">
+          </app-error-label>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>Finished with filling the album information and details?</p>
+        <div class="done-actions">
+          <button mat-raised-button matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary" (click)="stepper.reset()">Reset</button>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </mat-dialog-content>
+  <mat-dialog-actions class="d-flex justify-content-start">
+    <button type="submit" class="btn btn-danger" (click)="submitAlbumUpdateForm()">Save</button>
+  </mat-dialog-actions>
 </div>

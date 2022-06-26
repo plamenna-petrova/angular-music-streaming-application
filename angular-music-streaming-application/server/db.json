@@ -100,7 +100,7 @@
   "albums": [
     {
       "name": "sdff",
-      "type": "Live",
+      "type": "Studio",
       "performer": "Mastodon",
       "genre": "Progressive Metal",
       "coverImageUrl": "https://media.pitchfork.com/photos/613a64a57c34b5ffaef74527/3:2/w_2400,h_1600,c_limit/Mastodon.jpeg",
@@ -109,12 +109,12 @@
       "releaseDate": "2021-11-09T22:00:00.000Z",
       "popularity": "High",
       "createdOn": "2022-06-06T23:27:38.907Z",
-      "lastUpdatedOn": "2022-06-26T18:04:39.629Z",
+      "lastUpdatedOn": "2022-06-26T22:09:03.767Z",
       "id": 7
     },
     {
       "name": "Fortitudee",
-      "type": "Extended play",
+      "type": "Live",
       "performer": "Gojira",
       "genre": "Heavy Metal",
       "coverImageUrl": "https://m.media-amazon.com/images/I/81T0NUQTyfL._SL1425_.jpg",
@@ -123,12 +123,12 @@
       "releaseDate": "2022-06-06T21:00:00.000Z",
       "popularity": "Low",
       "createdOn": "2022-06-08T15:50:23.465Z",
-      "lastUpdatedOn": "2022-06-26T18:08:21.951Z",
+      "lastUpdatedOn": "2022-06-26T22:09:07.672Z",
       "id": 8
     },
     {
       "name": "Fortitude",
-      "type": "Studio",
+      "type": "EP",
       "performer": "Gojira",
       "genre": "Heavy Metal",
       "coverImageUrl": "https://m.media-amazon.com/images/I/81T0NUQTyfL._SL1425_.jpg",
@@ -137,7 +137,7 @@
       "releaseDate": "2022-06-07T21:00:00.000Z",
       "popularity": "Medium",
       "createdOn": "2022-06-09T18:46:54.391Z",
-      "lastUpdatedOn": "2022-06-09T18:46:54.391Z",
+      "lastUpdatedOn": "2022-06-26T22:09:11.368Z",
       "id": 9
     },
     {
@@ -151,12 +151,12 @@
       "releaseDate": "2021-11-09T22:00:00.000Z",
       "popularity": "Medium",
       "createdOn": "2022-06-25T23:46:13.281Z",
-      "lastUpdatedOn": "2022-06-25T23:47:11.672Z",
+      "lastUpdatedOn": "2022-06-26T22:09:16.454Z",
       "id": 10
     },
     {
       "name": "Hushed and Grimmmm",
-      "type": "Studio",
+      "type": "EP",
       "performer": "Mastodon",
       "genre": "Heavy Metal",
       "coverImageUrl": "https://www.comarecords.com/wp-content/uploads/2021/09/mastodon.jpg",
@@ -165,8 +165,22 @@
       "releaseDate": "2022-06-26T21:00:00.000Z",
       "popularity": "Medium",
       "createdOn": "2022-06-26T20:26:05.507Z",
-      "lastUpdatedOn": "2022-06-26T20:26:05.507Z",
+      "lastUpdatedOn": "2022-06-26T22:07:07.934Z",
       "id": 11
+    },
+    {
+      "name": "Test",
+      "type": "Extended Play",
+      "performer": "Tester",
+      "genre": "Test Genre",
+      "coverImageUrl": "https://350927.smushcdn.com/1388247/wp-content/uploads/2020/11/Unknown-Album-Cover-PP1.jpg?lossy=0&strip=1&webp=1",
+      "numberOfTracks": 2,
+      "description": "Testing Again after Record implementation",
+      "releaseDate": "2022-06-21T21:00:00.000Z",
+      "popularity": "Medium",
+      "createdOn": "2022-06-26T22:13:30.983Z",
+      "lastUpdatedOn": "2022-06-26T22:13:30.983Z",
+      "id": 12
     }
   ],
   "tracks": [
