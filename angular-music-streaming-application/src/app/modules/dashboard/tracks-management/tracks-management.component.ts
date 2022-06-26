@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
+import { Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ITrack } from 'src/app/core/interfaces/ITrack.interface';
 import { Track } from 'src/app/core/models/track.model';
 import { TracksService } from 'src/app/core/services/tracks.service';
+import { compareObjectData } from 'src/utils/tokenHelper';
 
 @Component({
   selector: 'app-tracks-management',
@@ -41,6 +43,30 @@ export class TracksManagementComponent implements OnInit {
       this.tracks = response;
       console.log(this.tracks);
       this.tracksDataSource.data = this.tracks;
+    });
+  }
+
+  sortTracksData(sort: Sort) {
+    const data = this.tracksDataSource.data.slice();
+
+    if (!sort.active || sort.direction === '') {
+      this.tracksDataSource.data = data;
+    }
+
+    this.tracksDataSource.data = data.sort((a, b) => {
+      const isInAscendingOrder = sort.direction === 'asc';
+      switch(sort.active) {
+        case 'id':
+          return compareObjectData(a.id, b.id, isInAscendingOrder);
+        case 'title':
+          return compareObjectData(a.title, b.title, isInAscendingOrder);
+        case 'duration':
+          return compareObjectData(a.duration, b.duration, isInAscendingOrder);
+        case 'performedLanguage':
+          return compareObjectData(a.performedLanguage, b.performedLanguage, isInAscendingOrder);
+        default:
+          return 0;  
+      }
     });
   }
 

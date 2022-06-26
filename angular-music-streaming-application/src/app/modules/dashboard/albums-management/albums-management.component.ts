@@ -1,6 +1,8 @@
+import { compileDeclareClassMetadata } from '@angular/compiler';
 import { AfterViewInit, ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { take } from 'rxjs';
 import { IAlbum } from 'src/app/core/interfaces/IAlbum.interface';
@@ -11,6 +13,8 @@ import { AlbumDeleteDialogComponent } from './album-delete-dialog/album-delete-d
 import { AlbumDescriptionDialogComponent } from './album-description-dialog/album-description-dialog.component';
 import { AlbumEditDialogComponent } from './album-edit-dialog/album-edit-dialog.component';
 import { TracksDetailsDialogComponent } from './tracks-details-dialog/tracks-details-dialog.component';
+
+import { compareObjectData } from 'src/utils/tokenHelper';
 
 @Component({
   selector: 'app-albums-management',
@@ -115,6 +119,36 @@ export class AlbumsManagementComponent implements AfterViewInit {
     })
   }
 
+  sortAlbumsData(sort: Sort) {
+    const data = this.albumsDataSource.data.slice();
+
+    if (!sort.active || sort.direction === '') {
+      this.albumsDataSource.data = data;
+    }
+
+    this.albumsDataSource.data = data.sort((a, b) => {
+      const isInAscendingOrder = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'id':
+          return compareObjectData(a.id, b.id, isInAscendingOrder);
+        case 'name':
+          return compareObjectData(a.name, b.name, isInAscendingOrder);
+        case 'type':
+          return compareObjectData(a.type, b.type, isInAscendingOrder);
+        case 'performer':
+          return compareObjectData(a.performer, b.performer, isInAscendingOrder);
+        case 'genre':
+          return compareObjectData(a.genre, b.genre, isInAscendingOrder);
+        case 'numberOfTracks':
+          return compareObjectData(a.numberOfTracks, b.numberOfTracks, isInAscendingOrder);
+        case 'popularity':
+          return compareObjectData(a.popularity, b.popularity, isInAscendingOrder);
+        default:
+          return 0;
+      }
+    });
+  }
+
   ngOnInit() {
     this.getAllAlbums();
   }
@@ -123,6 +157,7 @@ export class AlbumsManagementComponent implements AfterViewInit {
     this.albumsDataSource.paginator = this.albumsPaginator;
   }
 }
+
 
 
 

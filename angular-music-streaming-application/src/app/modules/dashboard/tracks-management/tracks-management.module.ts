@@ -11,9 +11,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
-import { TrackCreateComponent } from './track-create/track-create.component';
+import { MatSortModule } from '@angular/material/sort';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { TrackCreateComponent } from './track-create/track-create.component';
 import { TrackEditComponent } from './track-edit/track-edit.component';
 import { TrackDeleteComponent } from './track-delete/track-delete.component';
 import { TrackDetailsComponent } from './track-details/track-details.component';
@@ -38,6 +40,7 @@ import { SharedModule } from '../../shared/shared.module';
     MatSelectModule,
     MatCheckboxModule,
     MatCardModule,
+    MatSortModule,
     FormsModule,
     ReactiveFormsModule,
     SharedModule

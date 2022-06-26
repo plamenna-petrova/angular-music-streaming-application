@@ -12,8 +12,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSortModule } from '@angular/material/sort';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { AlbumCreateDialogComponent } from './album-create-dialog/album-create-dialog.component';
 import { AlbumEditDialogComponent } from './album-edit-dialog/album-edit-dialog.component';
 import { AlbumDeleteDialogComponent } from './album-delete-dialog/album-delete-dialog.component';
@@ -42,6 +44,7 @@ import { SharedModule } from '../../shared/shared.module';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSortModule,
     FormsModule,
     ReactiveFormsModule,
     SharedModule

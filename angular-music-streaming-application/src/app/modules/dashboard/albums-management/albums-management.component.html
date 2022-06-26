@@ -5,25 +5,25 @@
   </div>
 
   <div class="albums-table-container">
-    <table mat-table [dataSource]="albumsDataSource">
+    <table mat-table [dataSource]="albumsDataSource" matSort (matSortChange)="sortAlbumsData($event)">
       <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="id">Id</th>
         <td mat-cell *matCellDef="let album"> {{album.id}} </td>
       </ng-container>
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="name">Name</th>
         <td mat-cell *matCellDef="let album"> {{album.name}} </td>
       </ng-container>
       <ng-container matColumnDef="type">
-        <th mat-header-cell *matHeaderCellDef>Type</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="type">Type</th>
         <td mat-cell *matCellDef="let album"> {{album.type}} </td>
       </ng-container>
       <ng-container matColumnDef="performer">
-        <th mat-header-cell *matHeaderCellDef>Performer</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="performer">Performer</th>
         <td mat-cell *matCellDef="let album"> {{album.performer}} </td>
       </ng-container>
       <ng-container matColumnDef="genre">
-        <th mat-header-cell *matHeaderCellDef>Genre</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="genre">Genre</th>
         <td mat-cell *matCellDef="let album"> {{album.genre}} </td>
       </ng-container>
       <ng-container matColumnDef="coverImageUrl">
@@ -31,7 +31,7 @@
         <td mat-cell *matCellDef="let album"><img [src]="album.coverImageUrl" /></td>
       </ng-container>
       <ng-container matColumnDef="numberOfTracks">
-        <th mat-header-cell *matHeaderCellDef>Number Of Tracks</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="numberOfTracks">Number Of Tracks</th>
         <td mat-cell *matCellDef="let album"> {{album.numberOfTracks}} </td>
       </ng-container>
       <ng-container matColumnDef="description">
@@ -39,7 +39,7 @@
         <td mat-cell *matCellDef="let album">
           <button class="btn btn-outline-dark btn-rounded" (click)="onAlbumDescriptionClick(album.description)">
             <i class="fas fa-info"></i>
-             Info
+            Info
           </button>
         </td>
       </ng-container>
@@ -48,7 +48,7 @@
         <td mat-cell *matCellDef="let album"> {{ album.releaseDate | date: 'dd/MM/yyyy' }} </td>
       </ng-container>
       <ng-container matColumnDef="popularity">
-        <th mat-header-cell *matHeaderCellDef>Popularity</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header="popularity">Popularity</th>
         <td mat-cell *matCellDef="let album"> {{ album.popularity }} </td>
       </ng-container>
       <ng-container matColumnDef="tracks">
