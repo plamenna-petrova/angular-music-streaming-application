@@ -13,7 +13,9 @@ import { AlbumDescriptionDialogComponent } from 'src/app/modules/dashboard/album
 })
 export class AlbumsComponent implements OnInit {
 
-  albumsDisplayType: string = 'table';
+  public AlbumsDisplayTypeEnum = AlbumsDisplayType;
+
+  albumsDisplayType: AlbumsDisplayType = AlbumsDisplayType.table;
 
   albums!: Album[];
 
@@ -50,4 +52,10 @@ export class AlbumsComponent implements OnInit {
     })
   }
 
+}
+
+export enum AlbumsDisplayType {
+  table,
+  list,
+  grid
 }

@@ -13,6 +13,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSortModule } from '@angular/material/sort';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatButtonModule } from '@angular/material/button';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -45,6 +47,8 @@ import { SharedModule } from '../../shared/shared.module';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSortModule,
+    MatStepperModule,
+    MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
     SharedModule

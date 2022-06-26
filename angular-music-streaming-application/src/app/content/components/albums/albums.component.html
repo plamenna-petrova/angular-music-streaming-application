@@ -2,12 +2,12 @@
   <h2 class="text-center mt-5">Albums Display Options</h2>
   <div class="display-options-container d-flex justify-content-center">
     <mat-radio-group aria-label="Select an option" [(ngModel)]="albumsDisplayType">
-      <mat-radio-button value="table">Table</mat-radio-button>
-      <mat-radio-button value="list">List</mat-radio-button>
-      <mat-radio-button value="grid">Grid</mat-radio-button>
+      <mat-radio-button [value]="AlbumsDisplayTypeEnum.table">Table</mat-radio-button>
+      <mat-radio-button [value]="AlbumsDisplayTypeEnum.list">List</mat-radio-button>
+      <mat-radio-button [value]="AlbumsDisplayTypeEnum.grid">Grid</mat-radio-button>
     </mat-radio-group>
   </div>
-  <div *ngIf="albumsDisplayType === 'table'">
+  <div *ngIf="albumsDisplayType === AlbumsDisplayTypeEnum.table">
     <table mat-table [dataSource]="albumsDataSource" class="mat-elevation-z9 my-5">
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef>Id</th>
@@ -58,7 +58,7 @@
       <tr mat-row *matRowDef="let albumRow; columns: displayedAlbumsColumns;"></tr>
     </table>
   </div>
-  <div *ngIf="albumsDisplayType === 'list'">
+  <div *ngIf="albumsDisplayType === AlbumsDisplayTypeEnum.list">
     <mat-list role="list" *ngFor="let album of albums" class="albums-list">
       <mat-list-item role="listitem" class="font-weight-bold">Id: {{album.id}}</mat-list-item>
       <mat-list-item role="listitem">Name: {{album.name}}</mat-list-item>
@@ -78,7 +78,7 @@
       <mat-list-item role="listitem">Popularity: {{album.popularity}}</mat-list-item>
     </mat-list>
   </div>
-  <div *ngIf="albumsDisplayType === 'grid'">
+  <div *ngIf="albumsDisplayType === AlbumsDisplayTypeEnum.grid">
     <mat-grid-list cols="3" rowHeight="600" class="mt-5">
       <mat-grid-tile *ngFor="let album of albums" class="tile mx-3">
         <mat-card class="album-card">
