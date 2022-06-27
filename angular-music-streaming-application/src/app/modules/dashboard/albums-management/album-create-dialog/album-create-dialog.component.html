@@ -70,9 +70,8 @@
           <mat-form-field appearance="fill" class="mt-2">
             <mat-label>Select album popularity rate</mat-label>
             <mat-select formControlName="popularity">
-              <mat-option value="Low">Low</mat-option>
-              <mat-option value="Medium">Medium</mat-option>
-              <mat-option value="High">High</mat-option>
+              <mat-option *ngFor="let popularityType of popularityTypes | keyvalue" [value]="popularityType.value">
+                {{popularityType.value}}</mat-option>
             </mat-select>
           </mat-form-field>
           <app-error-label [abstractControl]="popularity">

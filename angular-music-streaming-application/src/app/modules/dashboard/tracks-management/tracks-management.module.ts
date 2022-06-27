@@ -12,6 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
 import { MatSortModule } from '@angular/material/sort';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -41,6 +42,7 @@ import { SharedModule } from '../../shared/shared.module';
     MatCheckboxModule,
     MatCardModule,
     MatSortModule,
+    MatAutocompleteModule,
     FormsModule,
     ReactiveFormsModule,
     SharedModule

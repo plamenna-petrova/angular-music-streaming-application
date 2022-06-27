@@ -22,11 +22,17 @@ export class AlbumEditDialogComponent implements OnInit {
 
   isLinear!: boolean;
 
-  albumType: Record<AlbumType, string> = {
-    studio: 'Studio',
-    live: 'Live',
-    ep: 'Extended Play'
-  }
+  albumTypes = [
+    "Studio",
+    "Live",
+    "Extended Play"
+  ]
+
+  popularityTypes = [
+    "Low",
+    "Medium",
+    "High"
+  ]
 
   updatedAlbum = new EventEmitter<Album>();
 
@@ -156,4 +162,3 @@ export class AlbumEditDialogComponent implements OnInit {
 
 }
 
-export type AlbumType = "studio" | "live" | "ep"

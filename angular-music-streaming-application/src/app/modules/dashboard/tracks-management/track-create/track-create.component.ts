@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { take } from 'rxjs';
+import { map, startWith, Observable, take } from 'rxjs';
 import { Album } from 'src/app/core/models/album.model';
 import { Track } from 'src/app/core/models/track.model';
 import { AlbumsService } from 'src/app/core/services/albums.service';
@@ -19,7 +19,9 @@ export class TrackCreateComponent implements OnInit {
 
   albums!: Album[];
 
-  trackCreationForm!: FormGroup
+  trackCreationForm!: FormGroup;
+
+  filteredAlbumNames!: Observable<Album[]>;
 
   constructor(
     private tracksService: TracksService,
@@ -47,6 +49,8 @@ export class TrackCreateComponent implements OnInit {
       take(1)
     ).subscribe((response) => {
       let newTrack = response;
+      console.log("New Track");
+      console.log(newTrack);
       let albumForTrack = this.albums.find(album => album.id === newTrack.albumId);
       this.toastr.success(`The track ${newTrack.title} from the album ${albumForTrack!.name} by ${albumForTrack!.performer} is successfully created.`);
       this.router.navigate(['/dashboard', { outlets: { dashboard: ['tracks-management'] } }]);
@@ -93,9 +97,33 @@ export class TrackCreateComponent implements OnInit {
   ngOnInit(): void {
     this.albumsService.getAllEntities$().pipe(
       take(1)
-    ).subscribe((response) => {
-      this.albums = response;
-    });
+    ).subscribe({
+      next: response => {
+        this.albums = response
+      },
+      error: error => console.log(error),
+      complete: () => {
+        this.filteredAlbumNames = this.albumId.valueChanges.pipe(
+          startWith(''),
+          map(value => {
+            const albumNameInput = typeof value === 'string' ? value : value?.name;
+            return albumNameInput ? this.filterAlbumNames(albumNameInput as string) : this.albums.slice();
+          }),
+        );
+      }
+    })
+  }
+
+  displayAlbumNameByOptionValue(albums: Album[]): (albumId: number) => string {
+    return (albumId: number) => {
+      const correspondingAlbumOption = Array.isArray(albums) ? albums.find(album => album.id === albumId) : null;
+      return correspondingAlbumOption ? correspondingAlbumOption.name : '';
+    }
+  }
+
+  private filterAlbumNames(albumName: string): Album[] {
+    const filteredAlbumNameValue = albumName.toLowerCase();
+    return this.albums.filter(album => album.name.toLowerCase().includes(filteredAlbumNameValue));
   }
 
 }

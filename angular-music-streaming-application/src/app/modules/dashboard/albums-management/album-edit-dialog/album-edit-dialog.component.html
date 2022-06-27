@@ -16,9 +16,7 @@
           <mat-form-field appearance="fill" class="mt-2">
             <mat-label>Select album type</mat-label>
             <mat-select formControlName="type">
-              <mat-option [value]="albumType.studio">{{albumType.studio}}</mat-option>
-              <mat-option [value]="albumType.live">{{albumType.live}}</mat-option>
-              <mat-option [value]="albumType.ep">{{albumType.ep}}</mat-option>
+              <mat-option *ngFor="let albumType of albumTypes" [value]="albumType">{{albumType}}</mat-option>
             </mat-select>
           </mat-form-field>
           <app-error-label [abstractControl]="type">
@@ -69,9 +67,8 @@
           <mat-form-field appearance="fill" class="mt-2">
             <mat-label>Select album popularity rate</mat-label>
             <mat-select formControlName="popularity">
-              <mat-option value="Low">Low</mat-option>
-              <mat-option value="Medium">Medium</mat-option>
-              <mat-option value="High">High</mat-option>
+              <mat-option *ngFor="let popularityType of popularityTypes" [value]="popularityType">{{popularityType}}
+              </mat-option>
             </mat-select>
           </mat-form-field>
           <app-error-label [abstractControl]="popularity">

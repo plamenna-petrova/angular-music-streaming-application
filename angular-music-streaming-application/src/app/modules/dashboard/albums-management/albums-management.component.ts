@@ -1,4 +1,3 @@
-import { compileDeclareClassMetadata } from '@angular/compiler';
 import { AfterViewInit, ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';

@@ -27,6 +27,12 @@ export class AlbumCreateDialogComponent implements OnInit {
     ep: 'Extended Play'
   }
 
+  popularityTypes: PopularityType = {
+    [PopularityTypeEnum.low]: "Low",
+    [PopularityTypeEnum.medium]: "Medium",
+    [PopularityTypeEnum.high]: "High"
+  }
+
   createdAlbum = new EventEmitter<Album>();
 
   constructor(
@@ -35,6 +41,7 @@ export class AlbumCreateDialogComponent implements OnInit {
     public albumCreationDialogRef: MatDialogRef<AlbumCreateDialogComponent>) {
     this.buidAlbumCreationForm();
     this.isLinear = false;
+    console.log(this.popularityTypes);
   }
 
   buidAlbumCreationForm() {
@@ -151,6 +158,24 @@ export class AlbumCreateDialogComponent implements OnInit {
 }
 
 export type AlbumType = "studio" | "live" | "ep"
+
+enum PopularityTypeEnum {
+  low,
+  medium,
+  high
+}
+
+// export type PopularityType = { [key in PopularityTypeEnum]?: string };
+
+export type PopularityType = Partial<Record<PopularityTypeEnum, string>>;
+
+
+
+
+
+
+
+
 
 
 
