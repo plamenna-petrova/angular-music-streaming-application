@@ -12,7 +12,6 @@ import { TracksService } from 'src/app/core/services/tracks.service';
 export class TrackDetailsComponent implements OnInit {
 
   id!: number;
-
   track!: Track;
 
   constructor(private tracksService: TracksService,

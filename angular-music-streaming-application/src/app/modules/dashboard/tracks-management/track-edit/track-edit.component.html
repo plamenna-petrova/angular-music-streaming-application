@@ -14,16 +14,18 @@
     </mat-form-field>
     <app-error-label [abstractControl]="duration">
     </app-error-label>
-    <mat-form-field appearance="fill" class="mt-2">
+    <mat-form-field appearance="fill" class="mt-2" #inputTempRef>
       <mat-label>Select Album</mat-label>
-      <mat-select formControlName="albumId">
-        <mat-option *ngFor="let album of albums" [value]="album.id">
+      <input type="text" matInput [formControl]="albumName" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayAlbumName">
+        <mat-option *ngFor="let album of filteredAlbumNames | async" [value]="album" >
           {{album.name}}
         </mat-option>
-      </mat-select>
+      </mat-autocomplete>
     </mat-form-field>
-    <app-error-label [abstractControl]="albumId">
-    </app-error-label>
+    <mat-error *ngIf="albumName.errors?.['required']" class="text-dark">
+      This field is required
+    </mat-error>
     <mat-form-field appearance="fill" class="mt-2">
       <mat-label>Enter the track's performed language</mat-label>
       <input matInput formControlName="performedLanguage">

@@ -16,11 +16,8 @@ import { TracksService } from 'src/app/core/services/tracks.service';
 export class TrackCreateComponent implements OnInit {
 
   trackToCreate!: Track;
-
   albums!: Album[];
-
   trackCreationForm!: FormGroup;
-
   filteredAlbumNames!: Observable<Album[]>;
 
   constructor(
@@ -111,7 +108,7 @@ export class TrackCreateComponent implements OnInit {
           }),
         );
       }
-    })
+    });
   }
 
   displayAlbumNameByOptionValue(albums: Album[]): (albumId: number) => string {

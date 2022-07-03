@@ -1,8 +1,9 @@
+
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { take } from 'rxjs';
+import { map, startWith, Observable, take, tap } from 'rxjs';
 import { Album } from 'src/app/core/models/album.model';
 import { Track } from 'src/app/core/models/track.model';
 import { AlbumsService } from 'src/app/core/services/albums.service';
@@ -17,10 +18,11 @@ export class TrackEditComponent implements OnInit {
 
   id!: number;
   trackToUpdate!: Track;
-
   albums!: Album[];
+  trackUpdateForm!: FormGroup;
 
-  trackUpdateForm!: FormGroup
+  albumName = new FormControl(null, Validators.required);
+  filteredAlbumNames!: Observable<Album[]>;
 
   constructor(
     private tracksService: TracksService,
@@ -38,14 +40,41 @@ export class TrackEditComponent implements OnInit {
       return;
     }
 
-    const createTrackRequestBody: Track = {
-      ...this.trackToUpdate,
-      ...this.trackUpdateForm.value
+    let editTrackRequestBody = {
+      ...this.trackUpdateForm.value,
+      albumId: this.albumName.value.id  
     }
 
-    createTrackRequestBody.lastUpdatedOn = new Date();
+    if (this.albumName.errors) {
+      return;
+    }
 
-    this.tracksService.updateEntity$(createTrackRequestBody, createTrackRequestBody.id).pipe(
+    if (this.albumName.value.id === undefined) {
+      if (!this.albumName.touched) {
+        editTrackRequestBody.albumId = this.trackToUpdate.album.id;
+      } else {
+        let albumToFind = this.albums.find(album => album.name === this.albumName.value || this.albumName.value.name);
+        console.log(this.albumName.value);
+        console.log(albumToFind);
+        if (albumToFind) {
+          editTrackRequestBody.albumId = albumToFind?.id;
+        } else {
+          this.toastr.error(`Wrong album! Please choose an album from the list!`);
+          return;
+        }
+      }
+    }
+
+    if (editTrackRequestBody.albumId === undefined) {
+      return;
+    }
+
+    editTrackRequestBody.id = this.trackToUpdate.id;
+    editTrackRequestBody.lastUpdatedOn = new Date();
+
+    console.log(editTrackRequestBody);
+
+    this.tracksService.updateEntity$(editTrackRequestBody, editTrackRequestBody.id).pipe(
       take(1)
     ).subscribe((response) => {
       let editedTrack = response;
@@ -61,7 +90,6 @@ export class TrackEditComponent implements OnInit {
         Validators.maxLength(30)
       ])]],
       duration: [track.duration, [Validators.required]],
-      albumId: [track.albumId, Validators.required],
       performedLanguage: [track.performedLanguage, [Validators.required, Validators.compose([
         Validators.minLength(3),
         Validators.maxLength(30)
@@ -78,10 +106,6 @@ export class TrackEditComponent implements OnInit {
     return this.trackUpdateForm.get('duration')!;
   }
 
-  get albumId(): AbstractControl {
-    return this.trackUpdateForm.get('albumId')!;
-  }
-
   get performedLanguage(): AbstractControl {
     return this.trackUpdateForm.get('performedLanguage')!;
   }
@@ -93,20 +117,39 @@ export class TrackEditComponent implements OnInit {
   ngOnInit(): void {
     this.tracksService.getEntityById$(this.id).pipe(
       take(1)
-    ).subscribe((response) => {
-      this.trackToUpdate = response;
-      this.buildTrackUpdateForm(this.trackToUpdate);
-    });
-
-    this.albumsService.getAllEntities$().pipe(
-      take(1)
-    ).subscribe((response) => {
-      this.albums = response;
+    ).subscribe({
+      next: response => {
+        this.trackToUpdate = response;
+        this.buildTrackUpdateForm(this.trackToUpdate);
+      },
+      error: error => console.log(error),
+      complete: () => {
+        this.albumsService.getAllEntities$().pipe(
+          take(1)
+        ).subscribe({
+          next: response => {
+            this.albums = response
+          },
+          error: error => console.log(error),
+          complete: () => {
+            this.albumName.setValue({ name: this.trackToUpdate.album.name });
+            this.filteredAlbumNames = this.albumName.valueChanges.pipe(
+              startWith(''),
+              map(value => typeof value === 'string' ? value : value?.name),
+              map(albumName => albumName ? this.filterAlbums(albumName as string) : this.albums.slice()),
+            )
+          }
+        });
+      }
     });
   }
 
-  ngAfterInit(): void {
-
+  displayAlbumName(album: Album): string {
+    return album && album.name ? album.name : '';
   }
 
+  private filterAlbums(name: string): Album[] {
+    const filterValue = name.toLowerCase();
+    return this.albums.filter(album => album.name.toLowerCase().includes(filterValue));
+  }
 }

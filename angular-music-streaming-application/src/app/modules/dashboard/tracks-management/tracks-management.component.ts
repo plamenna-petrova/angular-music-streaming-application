@@ -34,14 +34,15 @@ export class TracksManagementComponent implements OnInit {
 
   @ViewChild(MatPaginator) tracksPaginator!: MatPaginator;
 
-  constructor(private tracksService: TracksService, private router: Router) {
+  constructor(
+    private tracksService: TracksService
+  ) {
 
   }
 
   private getAllTracks() {
     this.tracksService.getAllEntities$().subscribe(response => {
       this.tracks = response;
-      console.log(this.tracks);
       this.tracksDataSource.data = this.tracks;
     });
   }
@@ -55,7 +56,7 @@ export class TracksManagementComponent implements OnInit {
 
     this.tracksDataSource.data = data.sort((a, b) => {
       const isInAscendingOrder = sort.direction === 'asc';
-      switch(sort.active) {
+      switch (sort.active) {
         case 'id':
           return compareObjectData(a.id, b.id, isInAscendingOrder);
         case 'title':
@@ -65,7 +66,7 @@ export class TracksManagementComponent implements OnInit {
         case 'performedLanguage':
           return compareObjectData(a.performedLanguage, b.performedLanguage, isInAscendingOrder);
         default:
-          return 0;  
+          return 0;
       }
     });
   }

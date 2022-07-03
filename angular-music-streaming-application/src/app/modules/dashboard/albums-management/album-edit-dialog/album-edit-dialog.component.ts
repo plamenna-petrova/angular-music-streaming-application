@@ -16,10 +16,8 @@ export class AlbumEditDialogComponent implements OnInit {
 
   id!: number;
   albumToUpdate!: Album;
-
   albumKeyInformationFormGroup!: FormGroup;
   albumDetailsFormGroup!: FormGroup;
-
   isLinear!: boolean;
 
   albumTypes = [

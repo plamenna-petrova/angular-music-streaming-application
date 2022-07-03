@@ -15,7 +15,6 @@ export class AlbumDeleteDialogComponent implements OnInit {
 
   @Output()
   public deletedAlbum = new EventEmitter<void>();
-
   albumToDelete!: Album;
 
   constructor(

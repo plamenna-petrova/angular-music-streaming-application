@@ -15,10 +15,8 @@ import { AlbumsService } from 'src/app/core/services/albums.service';
 export class AlbumCreateDialogComponent implements OnInit {
 
   albumToCreate!: Album;
-
   albumKeyInformationFormGroup!: FormGroup;
   albumDetailsFormGroup!: FormGroup;
-
   isLinear!: boolean;
 
   albumType: Record<AlbumType, string> = {
@@ -164,8 +162,6 @@ enum PopularityTypeEnum {
   medium,
   high
 }
-
-// export type PopularityType = { [key in PopularityTypeEnum]?: string };
 
 export type PopularityType = Partial<Record<PopularityTypeEnum, string>>;
 
