@@ -102,12 +102,16 @@
       "name": "sdff",
       "type": "Studio",
       "performer": "Mastodon",
-      "genre": "Progressive Metal",
       "coverImageUrl": "https://media.pitchfork.com/photos/613a64a57c34b5ffaef74527/3:2/w_2400,h_1600,c_limit/Mastodon.jpeg",
       "numberOfTracks": 12,
       "description": "ssfff",
       "releaseDate": "2021-11-09T22:00:00.000Z",
       "popularity": "High",
+      "genres": [
+        "Progressive Metal",
+        "Alternative Metal",
+        "Heavy Metal"
+      ],
       "createdOn": "2022-06-06T23:27:38.907Z",
       "lastUpdatedOn": "2022-06-26T22:09:03.767Z",
       "id": 7
@@ -122,6 +126,11 @@
       "description": "Gojira's new album",
       "releaseDate": "2022-06-06T21:00:00.000Z",
       "popularity": "Low",
+      "genres": [
+        "Progressive Metal",
+        "Alternative Metal",
+        "Heavy Metal"
+      ],
       "createdOn": "2022-06-08T15:50:23.465Z",
       "lastUpdatedOn": "2022-06-26T22:09:07.672Z",
       "id": 8
@@ -136,6 +145,11 @@
       "description": "Gojira's new album",
       "releaseDate": "2022-06-07T21:00:00.000Z",
       "popularity": "Medium",
+      "genres": [
+        "Progressive Metal",
+        "Alternative Metal",
+        "Heavy Metal"
+      ],
       "createdOn": "2022-06-09T18:46:54.391Z",
       "lastUpdatedOn": "2022-06-26T22:09:11.368Z",
       "id": 9
@@ -150,6 +164,11 @@
       "description": "Test",
       "releaseDate": "2021-11-09T22:00:00.000Z",
       "popularity": "Medium",
+      "genres": [
+        "Progressive Metal",
+        "Alternative Metal",
+        "Heavy Metal"
+      ],
       "createdOn": "2022-06-25T23:46:13.281Z",
       "lastUpdatedOn": "2022-06-26T22:09:16.454Z",
       "id": 10
@@ -164,6 +183,11 @@
       "description": "Test Vertical Stepper Description",
       "releaseDate": "2022-06-26T21:00:00.000Z",
       "popularity": "Medium",
+      "genres": [
+        "Progressive Metal",
+        "Alternative Metal",
+        "Heavy Metal"
+      ],
       "createdOn": "2022-06-26T20:26:05.507Z",
       "lastUpdatedOn": "2022-06-26T22:07:07.934Z",
       "id": 11
@@ -178,9 +202,32 @@
       "description": "Testing Again after Record implementation",
       "releaseDate": "2022-06-21T21:00:00.000Z",
       "popularity": "Medium",
+      "genres": [
+        "Progressive Metal",
+        "Alternative Metal",
+        "Heavy Metal"
+      ],
       "createdOn": "2022-06-26T22:13:30.983Z",
       "lastUpdatedOn": "2022-06-26T22:13:30.983Z",
       "id": 12
+    },
+    {
+      "name": "All Hove Is Gone",
+      "type": "Live",
+      "performer": "Slipknot",
+      "coverImageUrl": "https://lastfm.freetls.fastly.net/i/u/770x0/b02858166bbc48be9669ced5b0dfd543.jpg",
+      "numberOfTracks": 12,
+      "description": "Test",
+      "releaseDate": "2022-07-21T21:00:00.000Z",
+      "popularity": "Medium",
+      "genres": [
+        "Heavy Metal",
+        "Nu Metal",
+        "Groove Metal"
+      ],
+      "createdOn": "2022-07-23T18:00:27.253Z",
+      "lastUpdatedOn": "2022-07-23T18:41:38.333Z",
+      "id": 13
     }
   ],
   "tracks": [
@@ -189,9 +236,9 @@
       "duration": "4:21",
       "performedLanguage": "English",
       "isTrending": null,
-      "albumId": 7,
+      "albumId": 11,
       "id": 1,
-      "lastUpdatedOn": "2022-07-03T22:08:34.500Z"
+      "lastUpdatedOn": "2022-07-06T18:03:31.690Z"
     },
     {
       "title": "Backbone",

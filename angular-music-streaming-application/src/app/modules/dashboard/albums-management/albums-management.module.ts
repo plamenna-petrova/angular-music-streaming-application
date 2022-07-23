@@ -25,6 +25,8 @@ import { TracksDetailsDialogComponent } from './tracks-details-dialog/tracks-det
 import { AlbumDescriptionDialogComponent } from './album-description-dialog/album-description-dialog.component';
 
 import { SharedModule } from '../../shared/shared.module';
+import { AlbumGenresDialogComponent } from './album-genres-dialog/album-genres-dialog.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { SharedModule } from '../../shared/shared.module';
     AlbumCreateDialogComponent,
     TracksDetailsDialogComponent,
     AlbumDescriptionDialogComponent,
+    AlbumGenresDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -49,6 +52,7 @@ import { SharedModule } from '../../shared/shared.module';
     MatSortModule,
     MatStepperModule,
     MatButtonModule,
+    MatIconModule,
     FormsModule,
     ReactiveFormsModule,
     SharedModule

@@ -1,0 +1,13 @@
+<div class="album-genres-container">
+  <h2>Genres</h2>
+  <mat-dialog-content>
+    <ul class="album-genres-list">
+      <li *ngFor="let genre of albumGenres">
+        {{ genre }}
+      </li>
+    </ul>
+  </mat-dialog-content>
+  <mat-dialog-actions class="d-flex justify-content-end">
+    <button class="btn btn-dark" (click)="closeAlbumGenresDialog()">Close</button>
+  </mat-dialog-actions>
+</div>

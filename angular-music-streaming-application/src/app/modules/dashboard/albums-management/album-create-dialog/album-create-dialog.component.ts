@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventEmitter } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs';
@@ -17,6 +17,7 @@ export class AlbumCreateDialogComponent implements OnInit {
   albumToCreate!: Album;
   albumKeyInformationFormGroup!: FormGroup;
   albumDetailsFormGroup!: FormGroup;
+  albumGenresFormGroup!: FormGroup;
   isLinear!: boolean;
 
   albumType: Record<AlbumType, string> = {
@@ -39,7 +40,6 @@ export class AlbumCreateDialogComponent implements OnInit {
     public albumCreationDialogRef: MatDialogRef<AlbumCreateDialogComponent>) {
     this.buidAlbumCreationForm();
     this.isLinear = false;
-    console.log(this.popularityTypes);
   }
 
   buidAlbumCreationForm() {
@@ -56,11 +56,6 @@ export class AlbumCreateDialogComponent implements OnInit {
         Validators.minLength(2),
         Validators.maxLength(50)
       ])),
-      genre: new FormControl(this.albumToCreate.genre, Validators.compose([
-        Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(25)
-      ]))
     });
     this.albumDetailsFormGroup = new FormGroup({
       coverImageUrl: new FormControl(this.albumToCreate.coverImageUrl, Validators.required),
@@ -76,6 +71,9 @@ export class AlbumCreateDialogComponent implements OnInit {
       ])),
       releaseDate: new FormControl(this.albumToCreate.releaseDate, Validators.required),
       popularity: new FormControl(this.albumToCreate.popularity, Validators.required)
+    });
+    this.albumGenresFormGroup = new FormGroup({
+      genres: new FormArray([])
     });
   }
 
@@ -115,6 +113,23 @@ export class AlbumCreateDialogComponent implements OnInit {
     return this.albumDetailsFormGroup.get('popularity')!;
   }
 
+  get genres(): FormArray {
+    return this.albumGenresFormGroup.get('genres')! as FormArray;
+  }
+
+  addGenre(): void {
+    if (this.genres.length > 4) {
+      this.toastr.error('Sorry, cannot add more than 7 genres to an album', 'Error');
+      return;
+    } else {
+      this.genres.push(new FormControl('', Validators.maxLength(40)));
+    }
+  }
+
+  removeGenre(genreIndex: number): void {
+    this.genres.removeAt(genreIndex);
+  }
+
   closeCreateAlbumDialog(): void {
     this.albumCreationDialogRef.close();
   }
@@ -132,7 +147,8 @@ export class AlbumCreateDialogComponent implements OnInit {
 
     const albumCreationRequestBody: Album = {
       ...this.albumKeyInformationFormGroup.value,
-      ...this.albumDetailsFormGroup.value
+      ...this.albumDetailsFormGroup.value,
+      ...this.albumGenresFormGroup.value
     }
 
     albumCreationRequestBody.createdOn = new Date();
@@ -141,7 +157,6 @@ export class AlbumCreateDialogComponent implements OnInit {
     this.albumsService.createEntity$(albumCreationRequestBody).pipe(
       take(1)
     ).subscribe((response) => {
-      console.log(response);
       let newAlbum = response;
       this.toastr.success(`The album ${newAlbum.name} by ${newAlbum.performer} is successfully created`, `Success`);
       this.closeCreateAlbumDialog();

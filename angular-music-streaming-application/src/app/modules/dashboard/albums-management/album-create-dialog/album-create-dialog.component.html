@@ -30,12 +30,6 @@
           </mat-form-field>
           <app-error-label [abstractControl]="performer">
           </app-error-label>
-          <mat-form-field appearance="fill" class="mt-2">
-            <mat-label>Enter the genre of the album</mat-label>
-            <input matInput formControlName="genre">
-          </mat-form-field>
-          <app-error-label [abstractControl]="genre">
-          </app-error-label>
         </form>
       </mat-step>
       <mat-step [stepControl]="albumDetailsFormGroup">
@@ -76,6 +70,31 @@
           </mat-form-field>
           <app-error-label [abstractControl]="popularity">
           </app-error-label>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="albumGenresFormGroup">
+        <form *ngIf="albumGenresFormGroup" [formGroup]="albumGenresFormGroup">
+          <ng-template matStepLabel>Fill the album Genres</ng-template>
+          <button class="btn btn-danger" (click)="addGenre()">Add Genre</button>
+          <ul class="list-group">
+            <li class="list-group-item" formArrayName="genres" *ngFor="let genre of genres.controls let i = index;">
+              <div class="row">
+                <div class="col-12 col-sm-11">
+                  <mat-form-field appearance="fill" class="mt-2">
+                    <input matInput [formControlName]="i" placeholder="Enter Genre #{{ i+1 }}" />
+                  </mat-form-field>
+                  <app-error-label [abstractControl]="genre"></app-error-label>
+                </div>
+                <div class="col-12 col-sm-1 delete-album-genre-col">
+                  <div class="delete-album-genre-button-container">
+                    <button mat-mini-fab color="primary" aria-label="Delete album genre button">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
         </form>
       </mat-step>
       <mat-step>

@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
-import { first, take, timeout } from 'rxjs';
+import { first, take } from 'rxjs';
 import { Album } from 'src/app/core/models/album.model';
 import { AlbumsService } from 'src/app/core/services/albums.service';
 import { EventEmitter } from '@angular/core';
@@ -15,9 +15,13 @@ import { EventEmitter } from '@angular/core';
 export class AlbumEditDialogComponent implements OnInit {
 
   id!: number;
+
   albumToUpdate!: Album;
+
   albumKeyInformationFormGroup!: FormGroup;
   albumDetailsFormGroup!: FormGroup;
+  albumGenresFormGroup!: FormGroup;
+
   isLinear!: boolean;
 
   albumTypes = [
@@ -56,11 +60,6 @@ export class AlbumEditDialogComponent implements OnInit {
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(50)
-      ])),
-      genre: new FormControl(album.genre, Validators.compose([
-        Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(25)
       ]))
     });
     this.albumDetailsFormGroup = new FormGroup({
@@ -76,7 +75,10 @@ export class AlbumEditDialogComponent implements OnInit {
         Validators.maxLength(500)
       ])),
       releaseDate: new FormControl(album.releaseDate, Validators.required),
-      popularity: new FormControl(album.popularity, Validators.required)
+      popularity: new FormControl(album.popularity, Validators.required),
+    });
+    this.albumGenresFormGroup = new FormGroup({
+      genres: new FormArray([])
     });
   }
 
@@ -116,8 +118,31 @@ export class AlbumEditDialogComponent implements OnInit {
     return this.albumDetailsFormGroup.get('popularity')!;
   }
 
+  get genres(): FormArray {
+    return this.albumGenresFormGroup.get('genres')! as FormArray;
+  }
+
   closeEditAlbumDialog(): void {
     this.albumEditingDialogRef.close();
+  }
+
+  fillAlbumGenresFormControls(): void {
+    for (let genre of this.albumToUpdate.genres) {
+      this.genres.push(new FormControl(genre, Validators.maxLength(40)));
+    }
+  }
+
+  addGenre(): void {
+    if (this.genres.length > 4) {
+      this.toastr.error('Sorry, cannot add more than 7 genres to an album', 'Error');
+      return;
+    } else {
+      this.genres.push(new FormControl('', Validators.maxLength(40)));
+    }
+  }
+
+  removeGenre(genreIndex: number): void {
+    this.genres.removeAt(genreIndex);
   }
 
   submitAlbumUpdateForm(): void {
@@ -134,7 +159,8 @@ export class AlbumEditDialogComponent implements OnInit {
     const updateAlbumRequestBody: Album = {
       ...this.albumToUpdate,
       ...this.albumKeyInformationFormGroup.value,
-      ...this.albumDetailsFormGroup.value
+      ...this.albumDetailsFormGroup.value,
+      ...this.albumGenresFormGroup.value
     };
 
     updateAlbumRequestBody.lastUpdatedOn = new Date();
@@ -152,9 +178,17 @@ export class AlbumEditDialogComponent implements OnInit {
   ngOnInit(): void {
     this.albumsService.getEntityById$(this.id).pipe(
       first()
-    ).subscribe((response) => {
-      this.albumToUpdate = response;
-      this.buildAlbumUpdateForm(this.albumToUpdate);
+    ).subscribe({
+      next: (response) => {
+        this.albumToUpdate = response;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+      complete: () => {
+        this.buildAlbumUpdateForm(this.albumToUpdate);
+        this.fillAlbumGenresFormControls();
+      }
     });
   }
 

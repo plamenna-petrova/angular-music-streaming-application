@@ -25,9 +25,15 @@
         <th mat-header-cell *matHeaderCellDef>Performer</th>
         <td mat-cell *matCellDef="let album"> {{album.performer}} </td>
       </ng-container>
-      <ng-container matColumnDef="genre">
+      <ng-container matColumnDef="genres">
         <th mat-header-cell *matHeaderCellDef>Genre</th>
-        <td mat-cell *matCellDef="let album"> {{album.genre}} </td>
+        <td mat-cell *matCellDef="let album">
+          <ul class="album-genres-list">
+            <li *ngFor="let genre of album.genres">
+              {{ genre }}
+            </li>
+          </ul>
+        </td>
       </ng-container>
       <ng-container matColumnDef="coverImageUrl">
         <th mat-header-cell *matHeaderCellDef>Image On Cover</th>
@@ -64,7 +70,7 @@
       <mat-list-item role="listitem">Name: {{album.name}}</mat-list-item>
       <mat-list-item role="listitem">Type: {{album.type}}</mat-list-item>
       <mat-list-item role="listitem">Performer: {{album.performer}}</mat-list-item>
-      <mat-list-item role="listitem">Genre: {{album.genre}}</mat-list-item>
+      <mat-list-item role="listitem" *ngFor="let genre of album.genres">Genre: {{genre}}</mat-list-item>
       <mat-list-item role="listitem" class="my-3">Cover Image: <img class="table-or-list-image"
           [src]="album.coverImageUrl" /></mat-list-item>
       <mat-list-item role="listitem">Number Of Tracks: {{album.numberOfTracks}}</mat-list-item>

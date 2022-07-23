@@ -46,8 +46,6 @@ export class TrackCreateComponent implements OnInit {
       take(1)
     ).subscribe((response) => {
       let newTrack = response;
-      console.log("New Track");
-      console.log(newTrack);
       let albumForTrack = this.albums.find(album => album.id === newTrack.albumId);
       this.toastr.success(`The track ${newTrack.title} from the album ${albumForTrack!.name} by ${albumForTrack!.performer} is successfully created.`);
       this.router.navigate(['/dashboard', { outlets: { dashboard: ['tracks-management'] } }]);

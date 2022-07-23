@@ -24,7 +24,7 @@ export class AlbumsComponent implements OnInit {
     'name',
     'type',
     'performer',
-    'genre',
+    'genres',
     'coverImageUrl',
     'numberOfTracks',
     'description',

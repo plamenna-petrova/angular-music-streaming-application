@@ -21,7 +21,7 @@ export class TrackEditComponent implements OnInit {
   albums!: Album[];
   trackUpdateForm!: FormGroup;
 
-  albumName = new FormControl(null, Validators.required);
+  albumControl = new FormControl(null, Validators.required);
   filteredAlbumNames!: Observable<Album[]>;
 
   constructor(
@@ -42,20 +42,18 @@ export class TrackEditComponent implements OnInit {
 
     let editTrackRequestBody = {
       ...this.trackUpdateForm.value,
-      albumId: this.albumName.value.id  
+      albumId: this.albumControl.value.id  
     }
 
-    if (this.albumName.errors) {
+    if (this.albumControl.errors) {
       return;
     }
 
-    if (this.albumName.value.id === undefined) {
-      if (!this.albumName.touched) {
+    if (this.albumControl.value.id === undefined) {
+      if (!this.albumControl.touched) {
         editTrackRequestBody.albumId = this.trackToUpdate.album.id;
       } else {
-        let albumToFind = this.albums.find(album => album.name === this.albumName.value || this.albumName.value.name);
-        console.log(this.albumName.value);
-        console.log(albumToFind);
+        let albumToFind = this.albums.find(album => album.name === this.albumControl.value || this.albumControl.value.name);
         if (albumToFind) {
           editTrackRequestBody.albumId = albumToFind?.id;
         } else {
@@ -71,8 +69,6 @@ export class TrackEditComponent implements OnInit {
 
     editTrackRequestBody.id = this.trackToUpdate.id;
     editTrackRequestBody.lastUpdatedOn = new Date();
-
-    console.log(editTrackRequestBody);
 
     this.tracksService.updateEntity$(editTrackRequestBody, editTrackRequestBody.id).pipe(
       take(1)
@@ -132,8 +128,8 @@ export class TrackEditComponent implements OnInit {
           },
           error: error => console.log(error),
           complete: () => {
-            this.albumName.setValue({ name: this.trackToUpdate.album.name });
-            this.filteredAlbumNames = this.albumName.valueChanges.pipe(
+            this.albumControl.setValue({ name: this.trackToUpdate.album.name });
+            this.filteredAlbumNames = this.albumControl.valueChanges.pipe(
               startWith(''),
               map(value => typeof value === 'string' ? value : value?.name),
               map(albumName => albumName ? this.filterAlbums(albumName as string) : this.albums.slice()),

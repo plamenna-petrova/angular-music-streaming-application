@@ -16,14 +16,14 @@
     </app-error-label>
     <mat-form-field appearance="fill" class="mt-2" #inputTempRef>
       <mat-label>Select Album</mat-label>
-      <input type="text" matInput [formControl]="albumName" [matAutocomplete]="auto">
+      <input type="text" matInput [formControl]="albumControl" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayAlbumName">
         <mat-option *ngFor="let album of filteredAlbumNames | async" [value]="album" >
           {{album.name}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-    <mat-error *ngIf="albumName.errors?.['required']" class="text-dark">
+    <mat-error *ngIf="albumControl.errors?.['required']" class="text-dark">
       This field is required
     </mat-error>
     <mat-form-field appearance="fill" class="mt-2">

@@ -99,7 +99,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnChanges(): void {
-    console.log(this.registerForm);
+    
   }
 
 }

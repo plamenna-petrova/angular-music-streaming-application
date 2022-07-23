@@ -11,7 +11,13 @@
               style="height: 400px;">
             <div class="content-details fadeIn-bottom">
               <h3 class="content-title">{{album.performer}} {{album.name}}</h3>
-              <p class="content-text">{{album.genre}}</p>
+              <div class="content-text">
+                <ul class="album-genres-list">
+                  <li *ngFor="let genre of album.genres">
+                    {{ genre }}
+                  </li>
+                </ul>
+              </div>
             </div>
           </a> </div>
       </div>
@@ -20,7 +26,13 @@
             <div class="content-overlay"></div> <img class="content-image" [src]="album.coverImageUrl">
             <div class="content-details fadeIn-bottom">
               <h3 class="content-title">{{album.performer}} {{album.name}}</h3>
-              <p class="content-text">{{album.genre}}</p>
+              <div class="content-text">
+                <ul class="album-genres-list">
+                  <li *ngFor="let genre of album.genres">
+                    {{ genre }}
+                  </li>
+                </ul>
+              </div>
             </div>
           </a> </div>
       </div>

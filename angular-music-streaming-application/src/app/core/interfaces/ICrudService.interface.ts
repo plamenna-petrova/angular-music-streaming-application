@@ -1,6 +1,4 @@
-import { HttpParams } from "@angular/common/http";
 import { Observable } from "rxjs";
-
 
 export interface ICrudService<TEntity, TID> {
     getAllEntities$(): Observable<TEntity[]>;

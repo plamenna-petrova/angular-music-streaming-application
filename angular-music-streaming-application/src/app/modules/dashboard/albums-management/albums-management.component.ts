@@ -14,6 +14,7 @@ import { AlbumEditDialogComponent } from './album-edit-dialog/album-edit-dialog.
 import { TracksDetailsDialogComponent } from './tracks-details-dialog/tracks-details-dialog.component';
 
 import { compareObjectData } from 'src/utils/tokenHelper';
+import { AlbumGenresDialogComponent } from './album-genres-dialog/album-genres-dialog.component';
 
 @Component({
   selector: 'app-albums-management',
@@ -30,7 +31,7 @@ export class AlbumsManagementComponent implements AfterViewInit {
     'name',
     'type',
     'performer',
-    'genre',
+    'genres',
     'coverImageUrl',
     'numberOfTracks',
     'description',
@@ -54,6 +55,15 @@ export class AlbumsManagementComponent implements AfterViewInit {
       width: '400px',
       data: {
         description: description
+      }
+    });
+  }
+
+  onAlbumGenresClick(genres: string[]): void {
+    const albumGenresDialogRef = this.albumDialog.open(AlbumGenresDialogComponent, {
+      width: '400px',
+      data: {
+        genres: genres
       }
     });
   }
@@ -136,8 +146,6 @@ export class AlbumsManagementComponent implements AfterViewInit {
           return compareObjectData(a.type, b.type, isInAscendingOrder);
         case 'performer':
           return compareObjectData(a.performer, b.performer, isInAscendingOrder);
-        case 'genre':
-          return compareObjectData(a.genre, b.genre, isInAscendingOrder);
         case 'numberOfTracks':
           return compareObjectData(a.numberOfTracks, b.numberOfTracks, isInAscendingOrder);
         case 'popularity':

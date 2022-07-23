@@ -7,7 +7,13 @@
         <span class="d-block">Performed Language : {{track.performedLanguage}}</span>
         <span class="d-block">Album: {{track.album.name}}</span>
         <span class="d-block">Performer: {{track.album.performer}}</span>
-        <span class="d-block">Genre: {{track.album.genre}}</span>
+        <div class="d-block">
+          <ul class="album-genres-list">
+            <li *ngFor="let genre of track.album.genres">
+              {{ genre }}
+            </li>
+          </ul>
+        </div>
         <span class="d-block">Is Trending: {{track.isTrending ? 'Trending' : 'Not Trending'}}</span>
       </mat-card-subtitle>
     </mat-card-header>
