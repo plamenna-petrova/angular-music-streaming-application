@@ -18,7 +18,7 @@
               <label mdbLabel class="form-label" for="username">Username</label>
             </mdb-form-control>
             <span class="text-danger"
-              *ngIf="loginForm.get('username')!.hasError('required') && loginForm.touched">Required Field</span>
+              *ngIf="loginForm.get('username')!.hasError('required') && loginForm.touched">Username Required</span>
           </div>
           <!-- Password input -->
           <div class="form-outline mb-3">
@@ -28,7 +28,7 @@
               <label mdbLabel class="form-label" for="password">Password</label>
             </mdb-form-control>
             <span class="text-danger"
-              *ngIf="loginForm.get('password')!.hasError('required') && loginForm.touched">Required Field</span>
+              *ngIf="loginForm.get('password')!.hasError('required') && loginForm.touched">Password Required</span>
           </div>
           <div class="text-center text-lg-start mt-4 pt-2">
             <button type="button" class="btn btn-danger btn-lg signin-button"

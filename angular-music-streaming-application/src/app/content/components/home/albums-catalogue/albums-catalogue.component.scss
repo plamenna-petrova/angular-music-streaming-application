@@ -82,6 +82,11 @@ ul {
   padding: 0px;
 }
 
+.content-text li {
+  list-style-type: none;
+  color: #fff;
+}
+
 @media screen and (max-width: 480px) {
   .new-releases-container {
     padding-left: 25px !important;

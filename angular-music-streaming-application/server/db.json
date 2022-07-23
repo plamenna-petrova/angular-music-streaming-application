@@ -73,14 +73,6 @@
       "id": 9
     },
     {
-      "email": "",
-      "username": "",
-      "password": "",
-      "role": "Normal User",
-      "token": "2VC1iMOJctIZXxEP7FKPB9LKrMbRtXHR",
-      "id": 10
-    },
-    {
       "email": "johnathan@test.com",
       "username": "Johnny",
       "password": "12345",
@@ -95,6 +87,20 @@
       "role": "Normal User",
       "token": "lEJ8xJLgeQfxaQYqbfwH397hatPn2ZoN",
       "id": 12
+    },
+    {
+      "email": "password-comparer@test.com",
+      "username": "Passwordo",
+      "role": "Normal User",
+      "token": "1kxsSK4OATOfNTskwTn2orN5hu6iFssP",
+      "id": 13
+    },
+    {
+      "email": "tester3",
+      "username": "ddtest",
+      "role": "Normal User",
+      "token": "MiGghep1AbgveLTtHRc4VO4sxxef9Stp",
+      "id": 14
     }
   ],
   "albums": [

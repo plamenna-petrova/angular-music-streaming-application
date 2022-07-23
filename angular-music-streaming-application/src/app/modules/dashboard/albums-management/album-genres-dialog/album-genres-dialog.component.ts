@@ -12,8 +12,6 @@ export class AlbumGenresDialogComponent implements OnInit {
 
   constructor(public albumGenresDialogRef: MatDialogRef<AlbumGenresDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public albumDialogData: {genres: string[]}) {
-    console.log('genres');
-    console.log(this.albumDialogData.genres);
     this.albumGenres = this.albumDialogData.genres;
   }
 

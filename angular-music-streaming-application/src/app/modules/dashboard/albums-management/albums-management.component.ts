@@ -123,7 +123,6 @@ export class AlbumsManagementComponent implements AfterViewInit {
       take(1)
     ).subscribe((response) => {
       this.albums = response;
-      console.log(this.albums);
       this.albumsDataSource.data = this.albums;
     })
   }

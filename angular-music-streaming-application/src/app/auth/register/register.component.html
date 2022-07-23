@@ -10,17 +10,17 @@
           <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
             <p class="lead fw-normal mb-4 me-3">Sign up to Rockstodons</p>
           </div>
-
           <!-- Email input -->
           <div class="form-outline mb-4">
             <mdb-form-control>
               <input mdbInput type="text" id="email" class="form-control form-control-lg" formControlName="email" />
               <label mdbLabel class="form-label" for="email">Email</label>
             </mdb-form-control>
-            <span class="text-danger" *ngIf="email!.hasError('required') && registerForm.touched">The email is
-              required</span>
+            <div *ngIf="email.hasError('required') && registerForm.touched" class="mt-2">
+              <span class="text-danger">The email is
+                required</span>
+            </div>
           </div>
-
           <!-- Username input -->
           <div class="form-outline mb-4">
             <mdb-form-control>
@@ -28,27 +28,42 @@
                 formControlName="username" />
               <label mdbLabel class="form-label" for="username">Username</label>
             </mdb-form-control>
-            <span class="text-danger" *ngIf="username!.hasError('required') && registerForm.touched">The username is
-              required</span>
-          </div>
-
-          <!-- Password input -->
-          <div class="form-outline mb-3">
-            <mdb-form-control>
-              <input mdbInput type="text" id="password" class="form-control form-control-lg"
-                formControlName="password" />
-              <label mdbLabel class="form-label" for="password">Password</label>
-            </mdb-form-control>
-            <div *ngIf="password!.touched">
-              <span class="text-danger"
-              *ngIf="password!.errors?.['required']">The password is
-              required</span>
-            <span class="text-danger"
-              *ngIf="password!.errors?.['minlength']">The password must be
-              at least 5 symbols long</span>
+            <div *ngIf="username.hasError('required') && registerForm.touched" class="mt-2">
+              <span class="text-danger">The username is
+                required</span>
             </div>
           </div>
-
+          <div formGroupName="matchingPasswords">
+            <!-- Password input -->
+            <div class="form-outline mb-3">
+              <mdb-form-control>
+                <input mdbInput type="text" id="password" class="form-control form-control-lg"
+                  formControlName="password" />
+                <label mdbLabel class="form-label" for="password">Password</label>
+              </mdb-form-control>
+              <div *ngIf="password.touched" class="mt-2">
+                <span class="text-danger" *ngIf="password.errors?.['required']">The password is
+                  required</span>
+                <span class="text-danger" *ngIf="password.errors?.['minlength']">The password must be
+                  at least 5 symbols long</span>
+              </div>
+            </div>
+            <!-- Password Confirmation -->
+            <div class="form-outline mb-3">
+              <mdb-form-control>
+                <input mdbInput type="text" id="password" class="form-control form-control-lg"
+                  formControlName="passwordConfirm" />
+                <label mdbLabel class="form-label" for="password">Confirm Password</label>
+              </mdb-form-control>
+              <div *ngIf="passwordConfirm.touched" class="mt-2">
+                <span class="text-danger" *ngIf="passwordConfirm.errors?.['required']">The confirmation password is
+                  required</span>
+              </div>
+            </div>
+            <span class="text-danger" *ngIf="matchingPasswords.hasError('mismatch') && passwordConfirm.dirty">The password and the
+              confimration password do not match
+            </span>
+          </div>
           <div class="text-center text-lg-start mt-4 pt-2">
             <button type="button" class="btn btn-danger btn-lg signup-button"
               style="padding-left: 2.5rem; padding-right: 2.5rem;" (click)="submitRegistrationForm()">Register</button>
@@ -56,7 +71,6 @@
                 class="link-danger login-link">Login</a>
             </h3>
           </div>
-
         </form>
       </div>
     </div>

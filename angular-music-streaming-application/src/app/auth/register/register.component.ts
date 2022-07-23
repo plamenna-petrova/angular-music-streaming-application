@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { RegisterModel } from 'src/app/core/models/register.model';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Router } from '@angular/router';
@@ -16,6 +16,7 @@ import { ToastrService } from 'ngx-toastr';
 export class RegisterComponent implements OnInit {
 
   registerForm!: FormGroup;
+  matchingPasswordsGroup!: FormGroup;
   response!: {};
   users!: User[];
 
@@ -24,26 +25,40 @@ export class RegisterComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private toastr: ToastrService) {
-    this.registerForm = this.fromBuilder.group({
-      email: ['', Validators.required],
-      username: ['', Validators.required],
-      password: ['', Validators.compose([
-        Validators.required,
-        Validators.minLength(5),
-      ])]
+    this.matchingPasswordsGroup = new FormGroup({
+      password: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      passwordConfirm: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    }, this.passwordMatchValidator);
+    this.registerForm = new FormGroup({
+      email: new FormControl('', Validators.required),
+      username: new FormControl('', Validators.required),
+      matchingPasswords: this.matchingPasswordsGroup
     });
   }
 
+  passwordMatchValidator(matchingPasswordsGroup: AbstractControl) {
+    return matchingPasswordsGroup.get('password')!.value === matchingPasswordsGroup.get('passwordConfirm')!.value
+      ? null : { 'mismatch': true };
+  }
+
   get email() {
-    return this.registerForm.get('email');
+    return this.registerForm.get('email')!;
   }
 
   get username() {
-    return this.registerForm.get('username');
+    return this.registerForm.get('username')!;
   }
 
-  get password() {
-    return this.registerForm.get('password');
+  get matchingPasswords() {
+    return this.registerForm.get('matchingPasswords')!;
+  }
+
+  get password(): AbstractControl {
+    return this.matchingPasswords.get('password')!;
+  }
+
+  get passwordConfirm(): AbstractControl {
+    return this.matchingPasswords.get('passwordConfirm')!;
   }
 
   submitRegistrationForm(): void {
@@ -64,6 +79,15 @@ export class RegisterComponent implements OnInit {
         invalidUsername = true;
       }
     });
+
+    if (this.registerForm.invalid) {
+      this.registerForm.markAllAsTouched();
+      this.toastr.error('Errors Found in some of the input fields', 'Cannot complete user registration', {
+        timeOut: 2000,
+        positionClass: 'toast-bottom-right'
+      })
+      return;
+    }
 
     if (invalidEmail || invalidUsername) {
       this.toastr.error('Cannot proceed further with registration', 'Credentials already taken', {
@@ -96,10 +120,11 @@ export class RegisterComponent implements OnInit {
         return user;
       });
     });
-  }
-
-  ngOnChanges(): void {
-    
+    this.passwordConfirm.valueChanges.subscribe(value => {
+      if (value === '') {
+        this.passwordConfirm.markAsPristine();
+      }
+    });
   }
 
 }
