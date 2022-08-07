@@ -20,6 +20,7 @@ export class AlbumDescriptionDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
 }

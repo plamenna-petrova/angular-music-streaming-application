@@ -41,7 +41,6 @@ export class AlbumEditDialogComponent implements OnInit {
   constructor(
     private albumsService: AlbumsService,
     private toastr: ToastrService,
-    private formBuilder: FormBuilder,
     public albumEditingDialogRef: MatDialogRef<AlbumEditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public albumDialogData: { id: number }) {
     this.id = this.albumDialogData.id;
@@ -134,7 +133,7 @@ export class AlbumEditDialogComponent implements OnInit {
 
   addGenre(): void {
     if (this.genres.length > 4) {
-      this.toastr.error('Sorry, cannot add more than 7 genres to an album', 'Error');
+      this.toastr.error('Sorry, cannot add more than 5 genres to an album', 'Error');
       return;
     } else {
       this.genres.push(new FormControl('', Validators.maxLength(40)));
@@ -193,4 +192,3 @@ export class AlbumEditDialogComponent implements OnInit {
   }
 
 }
-

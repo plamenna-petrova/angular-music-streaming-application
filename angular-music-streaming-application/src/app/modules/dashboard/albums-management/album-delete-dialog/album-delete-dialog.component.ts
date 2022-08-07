@@ -40,6 +40,7 @@ export class AlbumDeleteDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
 }

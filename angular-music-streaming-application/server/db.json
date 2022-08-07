@@ -1,290 +1,181 @@
 {
-  "users": [
-    {
-      "email": "admin@admin.com",
-      "username": "admin",
-      "password": "admin123",
-      "role": "Administrator",
-      "token": "STBg6np7priSURSBfCrCrnMCRdpzRtf7",
-      "id": 1
-    },
-    {
-      "email": "plamennavp@abv.bg",
-      "username": "duncan",
-      "password": "123",
-      "role": "Normal User",
-      "token": "G1orXfey4EU4VyRjQLb6O1Ik846CamoV",
-      "id": 2
-    },
-    {
-      "email": "plamennaavp@abv.bg",
-      "username": "duncanaa",
-      "password": "123",
-      "role": "Normal User",
-      "token": "3ZN4pixmTMFEfvtqdGRdwqYJwyQ1kgOJ",
-      "id": 3
-    },
-    {
-      "email": "plamennavpaaa@abv.bg",
-      "username": "duncan1",
-      "password": "123",
-      "role": "Normal User",
-      "token": "Az3hbuI5WfyrDmhrDwwMD6VVTcxHY8T6",
-      "id": 4
-    },
-    {
-      "email": "johndoe@test.com",
-      "username": "johnathan",
-      "password": "123",
-      "role": "Normal User",
-      "token": "T8yngWsNjHwIlPwbhaRnVXN9Fx5c6MjB",
-      "id": 5
-    },
-    {
-      "email": "plamennavp@gmail.com",
-      "username": "Ronak",
-      "password": "123",
-      "role": "Normal User",
-      "token": "VchKpTS6LWAGVBnRMpZHRRhQxmhp9TkJ",
-      "id": 6
-    },
-    {
-      "email": "janedoe@test.com",
-      "username": "jane",
-      "password": "123",
-      "role": "Normal User",
-      "token": "IOkP6yNAz6l334lYKfNBBGoGQ2z8A41p",
-      "id": 7
-    },
-    {
-      "email": "test@testiiing.com",
-      "username": "Ronakg",
-      "password": "2323",
-      "role": "Normal User",
-      "token": "pjJ45A3Oo7wyAgdvWfr3zs4clWxZ2vyz",
-      "id": 8
-    },
-    {
-      "email": "tee@test.com",
-      "username": "fggg",
-      "password": "123",
-      "role": "Normal User",
-      "token": "VdIs2mojddRdgJhLYWSIK0J5XTPWajWs",
-      "id": 9
-    },
-    {
-      "email": "johnathan@test.com",
-      "username": "Johnny",
-      "password": "12345",
-      "role": "Normal User",
-      "token": "h74AZ2WZoH9UZeFHgyQ7oRVY0Su0XkGy",
-      "id": 11
-    },
-    {
-      "email": "jonathandoe@test.com",
-      "username": "JonathanDoe",
-      "password": "johnny123",
-      "role": "Normal User",
-      "token": "lEJ8xJLgeQfxaQYqbfwH397hatPn2ZoN",
-      "id": 12
-    },
-    {
-      "email": "password-comparer@test.com",
-      "username": "Passwordo",
-      "role": "Normal User",
-      "token": "1kxsSK4OATOfNTskwTn2orN5hu6iFssP",
-      "id": 13
-    },
-    {
-      "email": "tester3",
-      "username": "ddtest",
-      "role": "Normal User",
-      "token": "MiGghep1AbgveLTtHRc4VO4sxxef9Stp",
-      "id": 14
-    }
-  ],
-  "albums": [
-    {
-      "name": "sdff",
-      "type": "Studio",
-      "performer": "Mastodon",
-      "coverImageUrl": "https://media.pitchfork.com/photos/613a64a57c34b5ffaef74527/3:2/w_2400,h_1600,c_limit/Mastodon.jpeg",
-      "numberOfTracks": 12,
-      "description": "ssfff",
-      "releaseDate": "2021-11-09T22:00:00.000Z",
-      "popularity": "High",
-      "genres": [
-        "Progressive Metal",
-        "Alternative Metal",
-        "Heavy Metal"
-      ],
-      "createdOn": "2022-06-06T23:27:38.907Z",
-      "lastUpdatedOn": "2022-06-26T22:09:03.767Z",
-      "id": 7
-    },
-    {
-      "name": "Fortitudee",
-      "type": "Live",
-      "performer": "Gojira",
-      "genre": "Heavy Metal",
-      "coverImageUrl": "https://m.media-amazon.com/images/I/81T0NUQTyfL._SL1425_.jpg",
-      "numberOfTracks": 11,
-      "description": "Gojira's new album",
-      "releaseDate": "2022-06-06T21:00:00.000Z",
-      "popularity": "Low",
-      "genres": [
-        "Progressive Metal",
-        "Alternative Metal",
-        "Heavy Metal"
-      ],
-      "createdOn": "2022-06-08T15:50:23.465Z",
-      "lastUpdatedOn": "2022-06-26T22:09:07.672Z",
-      "id": 8
-    },
-    {
-      "name": "Fortitude",
-      "type": "EP",
-      "performer": "Gojira",
-      "genre": "Heavy Metal",
-      "coverImageUrl": "https://m.media-amazon.com/images/I/81T0NUQTyfL._SL1425_.jpg",
-      "numberOfTracks": 5,
-      "description": "Gojira's new album",
-      "releaseDate": "2022-06-07T21:00:00.000Z",
-      "popularity": "Medium",
-      "genres": [
-        "Progressive Metal",
-        "Alternative Metal",
-        "Heavy Metal"
-      ],
-      "createdOn": "2022-06-09T18:46:54.391Z",
-      "lastUpdatedOn": "2022-06-26T22:09:11.368Z",
-      "id": 9
-    },
-    {
-      "name": "Fortitudee",
-      "type": "Live",
-      "performer": "Gojira",
-      "genre": "Metaal",
-      "coverImageUrl": "https://rebelstore.net/wp-content/uploads/2021/06/Gojira-Fortitude-CD.jpg",
-      "numberOfTracks": 10,
-      "description": "Test",
-      "releaseDate": "2021-11-09T22:00:00.000Z",
-      "popularity": "Medium",
-      "genres": [
-        "Progressive Metal",
-        "Alternative Metal",
-        "Heavy Metal"
-      ],
-      "createdOn": "2022-06-25T23:46:13.281Z",
-      "lastUpdatedOn": "2022-06-26T22:09:16.454Z",
-      "id": 10
-    },
-    {
-      "name": "Hushed and Grimmmm",
-      "type": "EP",
-      "performer": "Mastodon",
-      "genre": "Heavy Metal",
-      "coverImageUrl": "https://www.comarecords.com/wp-content/uploads/2021/09/mastodon.jpg",
-      "numberOfTracks": 3,
-      "description": "Test Vertical Stepper Description",
-      "releaseDate": "2022-06-26T21:00:00.000Z",
-      "popularity": "Medium",
-      "genres": [
-        "Progressive Metal",
-        "Alternative Metal",
-        "Heavy Metal"
-      ],
-      "createdOn": "2022-06-26T20:26:05.507Z",
-      "lastUpdatedOn": "2022-06-26T22:07:07.934Z",
-      "id": 11
-    },
-    {
-      "name": "Test",
-      "type": "Extended Play",
-      "performer": "Tester",
-      "genre": "Test Genre",
-      "coverImageUrl": "https://350927.smushcdn.com/1388247/wp-content/uploads/2020/11/Unknown-Album-Cover-PP1.jpg?lossy=0&strip=1&webp=1",
-      "numberOfTracks": 2,
-      "description": "Testing Again after Record implementation",
-      "releaseDate": "2022-06-21T21:00:00.000Z",
-      "popularity": "Medium",
-      "genres": [
-        "Progressive Metal",
-        "Alternative Metal",
-        "Heavy Metal"
-      ],
-      "createdOn": "2022-06-26T22:13:30.983Z",
-      "lastUpdatedOn": "2022-06-26T22:13:30.983Z",
-      "id": 12
-    },
-    {
-      "name": "All Hove Is Gone",
-      "type": "Live",
-      "performer": "Slipknot",
-      "coverImageUrl": "https://lastfm.freetls.fastly.net/i/u/770x0/b02858166bbc48be9669ced5b0dfd543.jpg",
-      "numberOfTracks": 12,
-      "description": "Test",
-      "releaseDate": "2022-07-21T21:00:00.000Z",
-      "popularity": "Medium",
-      "genres": [
-        "Heavy Metal",
-        "Nu Metal",
-        "Groove Metal"
-      ],
-      "createdOn": "2022-07-23T18:00:27.253Z",
-      "lastUpdatedOn": "2022-07-23T18:41:38.333Z",
-      "id": 13
-    }
-  ],
-  "tracks": [
-    {
-      "title": "Pain with an Anchor",
-      "duration": "4:21",
-      "performedLanguage": "English",
-      "isTrending": null,
-      "albumId": 11,
-      "id": 1,
-      "lastUpdatedOn": "2022-07-06T18:03:31.690Z"
-    },
-    {
-      "title": "Backbone",
-      "duration": "3:40",
-      "albumId": 10,
-      "performedLanguage": "English",
-      "isTrending": true,
-      "createdOn": "2022-06-26T16:00:41.345Z",
-      "lastUpdatedOn": "2022-06-26T16:00:41.345Z",
-      "id": 2
-    },
-    {
-      "title": "Pain with an Anchor",
-      "duration": "4:20",
-      "albumId": 8,
-      "performedLanguage": "English",
-      "isTrending": null,
-      "createdOn": "2022-06-27T20:30:52.110Z",
-      "lastUpdatedOn": "2022-06-27T20:30:52.110Z",
-      "id": 3
-    },
-    {
-      "title": "Test Track",
-      "duration": "4:23",
-      "albumId": 11,
-      "performedLanguage": "English",
-      "isTrending": true,
-      "createdOn": "2022-06-27T20:31:29.522Z",
-      "lastUpdatedOn": "2022-06-27T20:31:29.522Z",
-      "id": 4
-    },
-    {
-      "title": "Sickle And Peace",
-      "duration": "4:20",
-      "albumId": 11,
-      "performedLanguage": "English",
-      "isTrending": null,
-      "createdOn": "2022-06-27T20:40:40.803Z",
-      "lastUpdatedOn": "2022-06-27T20:40:40.803Z",
-      "id": 5
-    }
-  ]
+  "users": [{
+    "email": "olivier@mail.com",
+    "password": "bestPassw0rd",
+    "role": "admin",
+    "id": 1
+  }, {
+    "email": "olivier1@mail.com",
+    "password": "$2a$10$QD2d6G4Awh9nerUb2KgRoO2.eBWVzhBAO9CMjVWovx2AGpCOwrpS2",
+    "id": 2
+  }, {
+    "email": "olivier123@mail.com",
+    "password": "$2a$10$jAgm5xqbL53IoRk3XCO3X.39RFbmjpoN0F81.ISv6Yt.Rj6Yj.rau",
+    "firstname": "Olivier",
+    "lastname": "Monge",
+    "age": 32,
+    "id": 3
+  }, {
+    "email": "oll@mail.com",
+    "password": "$2a$10$nWzRiNzUvnF2ZKelbsyTFelDHsHhQOMFZXyjlbMRbZ8LPTX.sFiKu",
+    "id": 4
+  }, {
+    "email": "oll3422@mail.com",
+    "password": "$2a$10$xPDSORDkRLnyyKVjzdM4Xu4s67GO2EYvkxuGn9JBQPdo9GdIEdyEO",
+    "id": 5
+  }, {
+    "id": 6,
+    "email": "oll342312@mail.com",
+    "password": "$2b$10$obGSXRsWN6N2.JS94v7cruNG1HrR8B0pKdAVoGZMSIwlXFZUHn7Oi"
+  }, {
+    "id": 7,
+    "email": "oll3423112@mail.com",
+    "password": "$2b$10$SPD84WGXp4hmhA1Tpl79he4GdNyU/fUfjWUB9mxmqtMEpyrjYLiT."
+  }, {
+    "id": 8,
+    "email": "oll342311212@mail.com",
+    "password": "$2b$10$UuWCCiTJZ2fJuKdGbMubwuV0Ads5ZVJJS8OP.F3bCa3eQaCXLPd0e"
+  }],
+  "albums": [{
+    "name": "sdff",
+    "type": "Studio",
+    "performer": "Mastodon",
+    "coverImageUrl": "https://media.pitchfork.com/photos/613a64a57c34b5ffaef74527/3:2/w_2400,h_1600,c_limit/Mastodon.jpeg",
+    "numberOfTracks": 12,
+    "description": "ssfff",
+    "releaseDate": "2021-11-09T22:00:00.000Z",
+    "popularity": "High",
+    "genres": ["Progressive Metal", "Alternative Metal", "Heavy Metal"],
+    "createdOn": "2022-06-06T23:27:38.907Z",
+    "lastUpdatedOn": "2022-06-26T22:09:03.767Z",
+    "id": 7
+  }, {
+    "name": "Fortitudee",
+    "type": "Live",
+    "performer": "Gojira",
+    "genre": "Heavy Metal",
+    "coverImageUrl": "https://m.media-amazon.com/images/I/81T0NUQTyfL._SL1425_.jpg",
+    "numberOfTracks": 11,
+    "description": "Gojira's new album",
+    "releaseDate": "2022-06-06T21:00:00.000Z",
+    "popularity": "Low",
+    "genres": ["Progressive Metal", "Alternative Metal", "Heavy Metal"],
+    "createdOn": "2022-06-08T15:50:23.465Z",
+    "lastUpdatedOn": "2022-06-26T22:09:07.672Z",
+    "id": 8
+  }, {
+    "name": "Fortitude",
+    "type": "EP",
+    "performer": "Gojira",
+    "genre": "Heavy Metal",
+    "coverImageUrl": "https://m.media-amazon.com/images/I/81T0NUQTyfL._SL1425_.jpg",
+    "numberOfTracks": 5,
+    "description": "Gojira's new album",
+    "releaseDate": "2022-06-07T21:00:00.000Z",
+    "popularity": "Medium",
+    "genres": ["Progressive Metal", "Alternative Metal", "Heavy Metal"],
+    "createdOn": "2022-06-09T18:46:54.391Z",
+    "lastUpdatedOn": "2022-06-26T22:09:11.368Z",
+    "id": 9
+  }, {
+    "name": "Fortitudee",
+    "type": "Live",
+    "performer": "Gojira",
+    "genre": "Metaal",
+    "coverImageUrl": "https://rebelstore.net/wp-content/uploads/2021/06/Gojira-Fortitude-CD.jpg",
+    "numberOfTracks": 10,
+    "description": "Test",
+    "releaseDate": "2021-11-09T22:00:00.000Z",
+    "popularity": "Medium",
+    "genres": ["Progressive Metal", "Alternative Metal", "Heavy Metal"],
+    "createdOn": "2022-06-25T23:46:13.281Z",
+    "lastUpdatedOn": "2022-06-26T22:09:16.454Z",
+    "id": 10
+  }, {
+    "name": "Hushed and Grimmmm",
+    "type": "EP",
+    "performer": "Mastodon",
+    "genre": "Heavy Metal",
+    "coverImageUrl": "https://www.comarecords.com/wp-content/uploads/2021/09/mastodon.jpg",
+    "numberOfTracks": 3,
+    "description": "Test Vertical Stepper Description",
+    "releaseDate": "2022-06-26T21:00:00.000Z",
+    "popularity": "Medium",
+    "genres": ["Progressive Metal", "Alternative Metal", "Heavy Metal"],
+    "createdOn": "2022-06-26T20:26:05.507Z",
+    "lastUpdatedOn": "2022-06-26T22:07:07.934Z",
+    "id": 11
+  }, {
+    "name": "Test",
+    "type": "Extended Play",
+    "performer": "Tester",
+    "genre": "Test Genre",
+    "coverImageUrl": "https://350927.smushcdn.com/1388247/wp-content/uploads/2020/11/Unknown-Album-Cover-PP1.jpg?lossy=0&strip=1&webp=1",
+    "numberOfTracks": 2,
+    "description": "Testing Again after Record implementation",
+    "releaseDate": "2022-06-21T21:00:00.000Z",
+    "popularity": "Medium",
+    "genres": ["Progressive Metal", "Alternative Metal", "Heavy Metal"],
+    "createdOn": "2022-06-26T22:13:30.983Z",
+    "lastUpdatedOn": "2022-06-26T22:13:30.983Z",
+    "id": 12
+  }, {
+    "name": "All Hove Is Gone",
+    "type": "Live",
+    "performer": "Slipknot",
+    "coverImageUrl": "https://lastfm.freetls.fastly.net/i/u/770x0/b02858166bbc48be9669ced5b0dfd543.jpg",
+    "numberOfTracks": 12,
+    "description": "Test",
+    "releaseDate": "2022-07-21T21:00:00.000Z",
+    "popularity": "Medium",
+    "genres": ["Heavy Metal", "Nu Metal", "Groove Metal"],
+    "createdOn": "2022-07-23T18:00:27.253Z",
+    "lastUpdatedOn": "2022-07-23T18:41:38.333Z",
+    "id": 13
+  }],
+  "tracks": [{
+    "title": "Pain with an Anchor",
+    "duration": "4:21",
+    "performedLanguage": "English",
+    "isTrending": null,
+    "albumId": 11,
+    "id": 1,
+    "lastUpdatedOn": "2022-07-06T18:03:31.690Z"
+  }, {
+    "title": "Backbone",
+    "duration": "3:40",
+    "albumId": 10,
+    "performedLanguage": "English",
+    "isTrending": true,
+    "createdOn": "2022-06-26T16:00:41.345Z",
+    "lastUpdatedOn": "2022-06-26T16:00:41.345Z",
+    "id": 2
+  }, {
+    "title": "Pain with an Anchor",
+    "duration": "4:20",
+    "albumId": 8,
+    "performedLanguage": "English",
+    "isTrending": null,
+    "createdOn": "2022-06-27T20:30:52.110Z",
+    "lastUpdatedOn": "2022-06-27T20:30:52.110Z",
+    "id": 3
+  }, {
+    "title": "Test Track",
+    "duration": "4:23",
+    "albumId": 11,
+    "performedLanguage": "English",
+    "isTrending": true,
+    "createdOn": "2022-06-27T20:31:29.522Z",
+    "lastUpdatedOn": "2022-06-27T20:31:29.522Z",
+    "id": 4
+  }, {
+    "title": "Sickle And Peace",
+    "duration": "4:20",
+    "albumId": 11,
+    "performedLanguage": "English",
+    "isTrending": null,
+    "createdOn": "2022-06-27T20:40:40.803Z",
+    "lastUpdatedOn": "2022-06-27T20:40:40.803Z",
+    "id": 5
+  }]
 }

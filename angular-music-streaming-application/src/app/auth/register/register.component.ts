@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { generateToken } from 'src/utils/tokenHelper';
 import { User } from 'src/app/core/models/user.model';
 import { ToastrService } from 'ngx-toastr';
+import { comparePasswords } from 'src/app/core/validators/password-match';
 
 @Component({
   selector: 'app-register',
@@ -21,24 +22,18 @@ export class RegisterComponent implements OnInit {
   users!: User[];
 
   constructor(
-    private fromBuilder: FormBuilder,
+    private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
     private toastr: ToastrService) {
-    this.matchingPasswordsGroup = new FormGroup({
-      password: new FormControl('', [Validators.required, Validators.minLength(2)]),
-      passwordConfirm: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    }, this.passwordMatchValidator);
-    this.registerForm = new FormGroup({
-      email: new FormControl('', Validators.required),
-      username: new FormControl('', Validators.required),
-      matchingPasswords: this.matchingPasswordsGroup
-    });
-  }
-
-  passwordMatchValidator(matchingPasswordsGroup: AbstractControl) {
-    return matchingPasswordsGroup.get('password')!.value === matchingPasswordsGroup.get('passwordConfirm')!.value
-      ? null : { 'mismatch': true };
+    this.registerForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      username: ['', Validators.required],
+      matchingPasswords: this.formBuilder.group({
+        password: ['', [Validators.required, Validators.minLength(2)]],
+        passwordConfirm: ['', [Validators.required, Validators.minLength(2)]]
+      }, {validators: comparePasswords})
+    })
   }
 
   get email() {

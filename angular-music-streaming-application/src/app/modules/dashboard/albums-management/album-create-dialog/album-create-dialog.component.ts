@@ -119,7 +119,7 @@ export class AlbumCreateDialogComponent implements OnInit {
 
   addGenre(): void {
     if (this.genres.length > 4) {
-      this.toastr.error('Sorry, cannot add more than 7 genres to an album', 'Error');
+      this.toastr.error('Sorry, cannot add more than 5 genres to an album', 'Error');
       return;
     } else {
       this.genres.push(new FormControl('', Validators.maxLength(40)));
@@ -179,14 +179,3 @@ enum PopularityTypeEnum {
 }
 
 export type PopularityType = Partial<Record<PopularityTypeEnum, string>>;
-
-
-
-
-
-
-
-
-
-
-
