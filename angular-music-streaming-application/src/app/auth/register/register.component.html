@@ -16,9 +16,11 @@
               <input mdbInput type="text" id="email" class="form-control form-control-lg" formControlName="email" />
               <label mdbLabel class="form-label" for="email">Email</label>
             </mdb-form-control>
-            <div *ngIf="email.hasError('required') && registerForm.touched" class="mt-2">
-              <span class="text-danger">The email is
-                required</span>
+            <div *ngIf="email.hasError('required') && email.touched" class="mt-2">
+              <span class="text-danger">The email is required</span>
+            </div>
+            <div *ngIf="email.hasError('pattern') && email.touched" class="mt-2">
+              <span class="text-danger">Invalid email</span>
             </div>
           </div>
           <!-- Username input -->

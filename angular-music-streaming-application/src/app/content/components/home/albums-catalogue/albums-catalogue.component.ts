@@ -9,7 +9,6 @@ import { take } from 'rxjs';
   styleUrls: ['./albums-catalogue.component.scss']
 })
 export class AlbumsCatalogueComponent implements OnInit {
-
   albumsForCatalogue!: Album[];
   albumsTopCatalogueResults!: Album[];
   albumsBottomCatalogueResults!: Album[];
@@ -27,5 +26,4 @@ export class AlbumsCatalogueComponent implements OnInit {
       this.albumsBottomCatalogueResults = this.albumsForCatalogue.slice(4, 10);
     });
   }
-
 }

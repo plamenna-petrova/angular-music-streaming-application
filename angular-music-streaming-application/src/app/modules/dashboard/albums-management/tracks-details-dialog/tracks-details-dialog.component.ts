@@ -9,7 +9,6 @@ import { Track } from 'src/app/core/models/track.model';
   styleUrls: ['./tracks-details-dialog.component.scss']
 })
 export class TracksDetailsDialogComponent implements OnInit {
-
   tracks!: Track[];
 
   constructor(
@@ -23,6 +22,6 @@ export class TracksDetailsDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
-
 }

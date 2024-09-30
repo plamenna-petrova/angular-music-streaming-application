@@ -7,7 +7,6 @@ import { ICrudService } from "../interfaces/ICrudService.interface";
     providedIn: 'root'
 })
 export abstract class CrudService<TEntity, TID> implements ICrudService<TEntity, TID> {
-
     constructor(
         protected httpClient: HttpClient,
         @Inject(String) protected baseApiUrl: string) {
@@ -38,5 +37,4 @@ export abstract class CrudService<TEntity, TID> implements ICrudService<TEntity,
         const deleteEntityApiUrl = `${this.baseApiUrl}/${id}`;
         return this.httpClient.delete<void>(deleteEntityApiUrl);
     }
-
 }

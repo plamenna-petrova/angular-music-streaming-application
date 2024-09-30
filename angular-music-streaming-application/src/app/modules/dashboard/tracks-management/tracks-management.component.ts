@@ -14,7 +14,6 @@ import { compareObjectData } from 'src/utils/tokenHelper';
   styleUrls: ['./tracks-management.component.scss']
 })
 export class TracksManagementComponent implements OnInit {
-
   tracks!: Track[];
 
   displayedTracksColumns: string[] = [
@@ -34,9 +33,7 @@ export class TracksManagementComponent implements OnInit {
 
   @ViewChild(MatPaginator) tracksPaginator!: MatPaginator;
 
-  constructor(
-    private tracksService: TracksService
-  ) {
+  constructor(private tracksService: TracksService) {
 
   }
 
@@ -78,5 +75,4 @@ export class TracksManagementComponent implements OnInit {
   ngAfterViewInit() {
     this.tracksDataSource.paginator = this.tracksPaginator;
   }
-
 }

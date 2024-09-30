@@ -11,7 +11,6 @@ import { take } from 'rxjs';
   styleUrls: ['./tracks.component.scss']
 })
 export class TracksComponent implements OnInit {
-
   tracks!: Track[];
 
   displayedTracksColumns: string[] = [
@@ -38,5 +37,4 @@ export class TracksComponent implements OnInit {
       this.tracksDataSource.data = this.tracks;
     })
   }
-
 }

@@ -13,7 +13,6 @@ import { AuthService } from 'src/app/core/services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
   loginForm!: FormGroup;
   response!: {};
   token?: string;
@@ -44,6 +43,7 @@ export class LoginComponent implements OnInit {
         next: data => {
           this.response = data;
           let user = this.response as User;
+          
           if (user.role === 'Administrator') {
             this.router.navigate(['/dashboard', { outlets: { dashboard: ['albums-management'] } }]);
           } else {
@@ -61,7 +61,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
-
 }
-

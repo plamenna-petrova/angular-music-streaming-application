@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventEmitter } from '@angular/core';
-import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs';
@@ -13,7 +13,6 @@ import { AlbumsService } from 'src/app/core/services/albums.service';
   styleUrls: ['./album-create-dialog.component.scss']
 })
 export class AlbumCreateDialogComponent implements OnInit {
-
   albumToCreate!: Album;
   albumKeyInformationFormGroup!: FormGroup;
   albumDetailsFormGroup!: FormGroup;
@@ -167,7 +166,6 @@ export class AlbumCreateDialogComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
 }
 
 export type AlbumType = "studio" | "live" | "ep"

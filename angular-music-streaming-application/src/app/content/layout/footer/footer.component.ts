@@ -12,7 +12,6 @@ import { navigateToComponent } from 'src/utils/navigationFunctions';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-
   currentYear!: number;
   currentUser$!: Observable<User | null>;
 
@@ -33,5 +32,4 @@ export class FooterComponent implements OnInit {
     this.currentYear = new Date().getFullYear();
     this.currentUser$ = this.authService.user$;
   }
-
 }

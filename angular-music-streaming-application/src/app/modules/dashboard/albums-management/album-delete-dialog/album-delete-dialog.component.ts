@@ -12,7 +12,6 @@ import { EventEmitter } from '@angular/core';
   styleUrls: ['./album-delete-dialog.component.scss']
 })
 export class AlbumDeleteDialogComponent implements OnInit {
-
   @Output()
   public deletedAlbum = new EventEmitter<void>();
   albumToDelete!: Album;
@@ -42,5 +41,4 @@ export class AlbumDeleteDialogComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
 }

@@ -11,7 +11,6 @@ import { navigateToComponent } from 'src/utils/navigationFunctions';
   styleUrls: ['./navigation-bar.component.scss']
 })
 export class NavigationBarComponent implements OnInit {
-
   projectLogoPath!: String;
   currentUser$!: Observable<User | null>;
   currentUsername?: string;
@@ -33,6 +32,7 @@ export class NavigationBarComponent implements OnInit {
   ngOnInit(): void {
     this.projectLogoPath = "../../../../assets/images/rockstodons-logo-removebg-preview.png";
     this.currentUser$ = this.authService.user$;
+    
     this.currentUser$.subscribe(currentUser => {
       this.currentUsername = currentUser?.username;
       this.currentUserRole = currentUser?.role;

@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,7 +14,6 @@ import { TracksService } from 'src/app/core/services/tracks.service';
   styleUrls: ['./track-edit.component.scss']
 })
 export class TrackEditComponent implements OnInit {
-
   id!: number;
   trackToUpdate!: Track;
   albums!: Album[];

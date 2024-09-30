@@ -13,7 +13,6 @@ import { EventEmitter } from '@angular/core';
   styleUrls: ['./album-edit-dialog.component.scss']
 })
 export class AlbumEditDialogComponent implements OnInit {
-
   id!: number;
 
   albumToUpdate!: Album;
@@ -190,5 +189,4 @@ export class AlbumEditDialogComponent implements OnInit {
       }
     });
   }
-
 }

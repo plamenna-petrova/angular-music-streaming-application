@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Track } from 'src/app/core/models/track.model';
 import { take } from 'rxjs';
 import { TracksService } from 'src/app/core/services/tracks.service';
@@ -10,7 +10,6 @@ import { TracksService } from 'src/app/core/services/tracks.service';
   styleUrls: ['./track-details.component.scss']
 })
 export class TrackDetailsComponent implements OnInit {
-
   id!: number;
   track!: Track;
 
@@ -27,5 +26,4 @@ export class TrackDetailsComponent implements OnInit {
       this.track = response;
     });
   }
-
 }

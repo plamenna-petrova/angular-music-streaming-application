@@ -6,13 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./masthead-header.component.scss']
 })
 export class MastheadHeaderComponent implements OnInit {
-
   mastheadBackgroundImageUrl!: String
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit(): void {
     this.mastheadBackgroundImageUrl = "../../../../assets/images/pexels-edward-eyer-811838.jpg";
   }
-
 }

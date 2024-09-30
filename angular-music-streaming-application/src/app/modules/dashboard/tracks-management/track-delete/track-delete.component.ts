@@ -1,13 +1,10 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Observable, take, tap } from 'rxjs';
+import { take, tap } from 'rxjs';
 import { Album } from 'src/app/core/models/album.model';
 import { Track } from 'src/app/core/models/track.model';
-import { AlbumsService } from 'src/app/core/services/albums.service';
 import { TracksService } from 'src/app/core/services/tracks.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-tracks-delete',
@@ -15,14 +12,12 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./track-delete.component.scss']
 })
 export class TrackDeleteComponent implements OnInit {
-
   id!: number;
   trackToDelete!: Track;
   albums!: Album[]
 
   constructor(
     private tracksService: TracksService,
-    private albumsService: AlbumsService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private toastr: ToastrService) {
@@ -52,5 +47,4 @@ export class TrackDeleteComponent implements OnInit {
       }
     });
   }
-
 }

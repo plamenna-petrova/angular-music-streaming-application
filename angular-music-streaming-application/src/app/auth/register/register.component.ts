@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegisterModel } from 'src/app/core/models/register.model';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Router } from '@angular/router';
-
-import { generateToken } from 'src/utils/tokenHelper';
 import { User } from 'src/app/core/models/user.model';
 import { ToastrService } from 'ngx-toastr';
 import { comparePasswords } from 'src/app/core/validators/password-match';
@@ -15,7 +13,6 @@ import { comparePasswords } from 'src/app/core/validators/password-match';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
   registerForm!: FormGroup;
   matchingPasswordsGroup!: FormGroup;
   response!: {};
@@ -25,15 +22,16 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private toastr: ToastrService) {
+    private toastr: ToastrService
+  ) {
     this.registerForm = this.formBuilder.group({
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       username: ['', Validators.required],
       matchingPasswords: this.formBuilder.group({
         password: ['', [Validators.required, Validators.minLength(2)]],
         passwordConfirm: ['', [Validators.required, Validators.minLength(2)]]
-      }, {validators: comparePasswords})
-    })
+      }, { validators: comparePasswords })
+    });
   }
 
   get email() {
@@ -59,9 +57,11 @@ export class RegisterComponent implements OnInit {
   submitRegistrationForm(): void {
     let registrationCredentials = new RegisterModel();
 
+    console.log(this.registerForm.value);
+
     registrationCredentials.email = this.registerForm.value.email;
     registrationCredentials.username = this.registerForm.value.username;
-    registrationCredentials.password = this.registerForm.value.password;
+    registrationCredentials.password = this.registerForm.value.matchingPasswords.password;
 
     let invalidEmail = false;
     let invalidUsername = false;
@@ -93,12 +93,10 @@ export class RegisterComponent implements OnInit {
     }
 
     registrationCredentials.role = 'Normal User';
-    registrationCredentials.token = generateToken();
 
     this.authService.register(registrationCredentials).subscribe({
       next: data => {
         this.response = data;
-        localStorage.setItem('token', JSON.stringify(registrationCredentials.token));
         this.router.navigate(['/home']);
       },
       error: error => {
@@ -121,5 +119,4 @@ export class RegisterComponent implements OnInit {
       }
     });
   }
-
 }

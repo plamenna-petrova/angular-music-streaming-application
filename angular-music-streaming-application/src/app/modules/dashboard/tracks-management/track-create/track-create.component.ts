@@ -14,7 +14,6 @@ import { TracksService } from 'src/app/core/services/tracks.service';
   styleUrls: ['./track-create.component.scss']
 })
 export class TrackCreateComponent implements OnInit {
-
   trackToCreate!: Track;
   albums!: Album[];
   trackCreationForm!: FormGroup;
@@ -120,5 +119,4 @@ export class TrackCreateComponent implements OnInit {
     const filteredAlbumNameValue = albumName.toLowerCase();
     return this.albums.filter(album => album.name.toLowerCase().includes(filteredAlbumNameValue));
   }
-
 }

@@ -7,7 +7,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./album-genres-dialog.component.scss']
 })
 export class AlbumGenresDialogComponent implements OnInit {
-
   albumGenres!: string[];
 
   constructor(public albumGenresDialogRef: MatDialogRef<AlbumGenresDialogComponent>,
@@ -22,5 +21,4 @@ export class AlbumGenresDialogComponent implements OnInit {
   ngOnInit(): void {
     
   }
-
 }

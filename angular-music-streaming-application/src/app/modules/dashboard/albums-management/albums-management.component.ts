@@ -23,7 +23,6 @@ import { AlbumGenresDialogComponent } from './album-genres-dialog/album-genres-d
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AlbumsManagementComponent implements AfterViewInit {
-
   albums!: Album[];
 
   displayedAlbumsColumns: string[] = [
@@ -163,7 +162,3 @@ export class AlbumsManagementComponent implements AfterViewInit {
     this.albumsDataSource.paginator = this.albumsPaginator;
   }
 }
-
-
-
-

@@ -4,7 +4,6 @@ import { take } from "rxjs";
 import { Album } from 'src/app/core/models/album.model';
 import { IAlbum } from 'src/app/core/interfaces/IAlbum.interface';
 import { MatTableDataSource } from '@angular/material/table';
-import { AlbumDescriptionDialogComponent } from 'src/app/modules/dashboard/albums-management/album-description-dialog/album-description-dialog.component';
 
 @Component({
   selector: 'app-albums',
@@ -12,7 +11,6 @@ import { AlbumDescriptionDialogComponent } from 'src/app/modules/dashboard/album
   styleUrls: ['./albums.component.scss']
 })
 export class AlbumsComponent implements OnInit {
-
   public AlbumsDisplayTypeEnum = AlbumsDisplayType;
 
   albumsDisplayType: AlbumsDisplayType = AlbumsDisplayType.table;
@@ -51,7 +49,6 @@ export class AlbumsComponent implements OnInit {
       this.albumsDataSource.data = this.albums;
     })
   }
-
 }
 
 export enum AlbumsDisplayType {
