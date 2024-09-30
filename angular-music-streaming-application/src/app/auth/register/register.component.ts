@@ -57,8 +57,6 @@ export class RegisterComponent implements OnInit {
   submitRegistrationForm(): void {
     let registrationCredentials = new RegisterModel();
 
-    console.log(this.registerForm.value);
-
     registrationCredentials.email = this.registerForm.value.email;
     registrationCredentials.username = this.registerForm.value.username;
     registrationCredentials.password = this.registerForm.value.matchingPasswords.password;

@@ -26,12 +26,8 @@ export class AuthService {
   
     return this.httpClient.post<User>(`${apiUrl}/api/auth/register`, registerModel).pipe(
       tap((user: User) => {
-        console.log('User object:', user);
-  
         if (user && user.token) {
           localStorage.setItem('token', user.token);
-          console.log('Token:', user.token);
-  
           let registeredUserToStore = { ...user };
           delete registeredUserToStore.token; 
           localStorage.setItem('user', JSON.stringify(registeredUserToStore));
@@ -51,7 +47,6 @@ export class AuthService {
 
     return this.httpClient.post<User>(`${apiUrl}/api/auth/login`, loginModel).pipe(
         tap((user: User) => {
-            console.log(user);
             this.userSubject$.next(user);
 
             if (user.token) {
